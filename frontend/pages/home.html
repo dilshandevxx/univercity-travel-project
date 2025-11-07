@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home - Travel Website</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+      header {
+        background-color: #333;
+        color: white;
+        padding: 20px;
+        text-align: center;
+      }
+      nav {
+        background-color: #4caf50;
+        padding: 10px;
+        text-align: center;
+      }
+      nav a {
+        color: white;
+        text-decoration: none;
+        margin: 0 15px;
+        padding: 10px;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+      }
+      nav a:hover {
+        background-color: #45a049;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .welcome {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .features {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+      }
+      .feature {
+        flex: 1;
+        min-width: 250px;
+        margin: 10px;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 5px;
+        text-align: center;
+      }
+      .feature h3 {
+        color: #4caf50;
+      }
+      .logout {
+        text-align: center;
+        margin-top: 30px;
+      }
+      .logout button {
+        background-color: #f44336;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .logout button:hover {
+        background-color: #d32f2f;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Welcome to Our Travel Website</h1>
+    </header>
+    <nav>
+      <a href="destination.html">Destinations</a>
+      <a href="hotel-restro.html">Hotels & Restaurants</a>
+      <a href="photo-hallary.html">Photo Gallery</a>
+      <a href="blog-story.html">Blog & Stories</a>
+      <a href="guider-register.html">Guider Registration</a>
+    </nav>
+    <div class="container">
+      <div class="welcome">
+        <h2>Hello, Traveler!</h2>
+        <p>
+          Explore amazing destinations, discover great places to stay and eat,
+          and share your travel experiences.
+        </p>
+      </div>
+      <div class="features">
+        <div class="feature">
+          <h3>Destinations</h3>
+          <p>Discover breathtaking places around the world.</p>
+        </div>
+        <div class="feature">
+          <h3>Hotels & Restaurants</h3>
+          <p>Find the best accommodations and dining options.</p>
+        </div>
+        <div class="feature">
+          <h3>Photo Gallery</h3>
+          <p>View stunning travel photos and memories.</p>
+        </div>
+        <div class="feature">
+          <h3>Blog & Stories</h3>
+          <p>Read inspiring travel stories and tips.</p>
+        </div>
+      </div>
+      <div class="logout">
+        <button onclick="logout()">Logout</button>
+      </div>
+    </div>
+
+    <script>
+      // Check if user is logged in
+      const token = localStorage.getItem("token");
+      if (!token) {
+        window.location.href = "start-page.html";
+      }
+
+      function logout() {
+        localStorage.removeItem("token");
+        window.location.href = "start-page.html";
+      }
+
+      // Optional: Add token validation on page load
+      window.addEventListener("load", async () => {
+        if (token) {
+          try {
+            // You can add a token validation endpoint if needed
+            // For now, just check if token exists
+            console.log("User is logged in");
+          } catch (error) {
+            localStorage.removeItem("token");
+            window.location.href = "start-page.html";
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
