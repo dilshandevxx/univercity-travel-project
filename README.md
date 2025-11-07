@@ -31,9 +31,9 @@ Users can explore destinations, read travel stories, register as guides, and vie
 - **Abisegan** — [https://github.com/Abisegan](https://github.com/Abisegan)
 - **Fathima Asma** — [https://github.com/mtfasmatharik-boop](https://github.com/mtfasmatharik-boop)
 - **Dasun Kavinda** — [https://github.com/DASUN53](https://github.com/DASUN53)
-- **Janith Sasindu** — [https://github.com/janith-sasindu](https://github.com/janith-sasindu)
 - **Vivekanantharaja Kathirsan** — [https://github.com/Kathirsan](https://github.com/Kathirsan)
 - **Nadun Sulochana** — [https://github.com/snadun319-netizen](https://github.com/snadun319-netizen)
+- **Janith Sasindu** — [https://github.com/janith-sasindu](https://github.com/janith-sasindu)
 - **Dilshan Prathapaarachchi** — [https://github.com/dilshandevxx](https://github.com/dilshandevxx)
 
 ## ⚙️ Setup Instructions
