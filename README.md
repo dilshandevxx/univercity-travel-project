@@ -26,6 +26,10 @@ Users can explore destinations, read travel stories, register as guides, and vie
 
 ---
 
+👥 Collaborators
+
+Abisegan — https://github.com/Abisegan
+
 ## ⚙️ Setup Instructions
 
 1. Clone this repository:
