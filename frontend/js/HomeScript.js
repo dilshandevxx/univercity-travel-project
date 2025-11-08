@@ -1,12 +1,12 @@
-const animation_element = document.querySelectorAll(".destination-section");
+const animation_element = document.querySelectorAll(".animate-on-scroll");
 
 const observer = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("animate");
-      } else {
-        entry.target.classList.remove("animate");
+
+        //entry.target.classList.remove("animate");
       }
     });
   },

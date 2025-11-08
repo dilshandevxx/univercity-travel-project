@@ -288,15 +288,6 @@ body {
   border-radius: 20px;
   margin: 40px auto;
   max-width: 1400px;
-
-  opacity: 0;
-  transform: translateX(-300px);
-  transition: all 0.8s ease-out;
-  transition-delay: 0.2s;
-}
-.animate {
-  opacity: 1;
-  transform: translateX(0);
 }
 
 .destination-section h2 {
@@ -691,10 +682,565 @@ body {
   margin: 0;
   opacity:  0.7;
 }
+/* Animation on scroll */
 
-/*.animate-on-scroll {
+.animate-on-scroll {
   opacity: 0;
   transform: translateX(-300px);
-  transition: all 0.4s ease-out;
+  transition: all 1s ease-out;
   transition-delay: 0.2s;
-} */
+}
+.animate {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ==========================================
+   RESPONSIVE STYLES FOR PEARLGUIDE WEBSITE
+   Add these media queries to your existing CSS
+   ========================================== */
+
+/* ==========================================
+   TABLET AND BELOW (MAX-WIDTH: 991px)
+   ========================================== */
+@media (max-width: 991px) {
+  /* === NAVBAR === */
+  .navbar-nav {
+    margin-top: 15px;
+  }
+
+  .navbar-nav .nav-link {
+    padding: 10px 0;
+  }
+
+  .search-box {
+    margin-top: 15px;
+    width: 100%;
+  }
+
+  .search-box input {
+    width: 100%;
+  }
+
+  .user-section {
+    margin-top: 15px;
+    justify-content: center;
+  }
+
+  /* === HERO SECTION === */
+  .hero-section {
+    height: 70vh;
+    min-height: 600px;
+    padding-top: 100px;
+  }
+
+  .hero-section h1 {
+    font-size: 3.5rem;
+  }
+
+  .hero-section p {
+    font-size: 1.1rem;
+    padding: 0 20px;
+  }
+
+  /* === MAP SECTION === */
+  .map-section {
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0;
+    margin-top: 50px;
+    gap: 30px;
+    height: auto;
+    padding: 20px;
+  }
+
+  .destination-card {
+    width: 90%;
+    max-width: 400px;
+    order: 2;
+  }
+
+  #map {
+    width: 90%;
+    max-width: 500px;
+    height: 400px;
+    order: 1;
+  }
+
+  /* === DESTINATION SECTION === */
+  .destination-section {
+    padding: 30px 15px;
+  }
+
+  .destination-section h2 {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .card-group {
+    gap: 15px;
+  }
+
+  .card {
+    min-width: 240px;
+  }
+
+  /* === HOTEL SECTION === */
+  .hotel-section {
+    padding: 40px 20px;
+  }
+
+  .hotel-content {
+    text-align: center;
+  }
+
+  .hotel-content h2,
+  .hotel-content p {
+    margin-left: 0;
+  }
+
+  .hotel-card-group {
+    gap: 25px;
+    height: auto;
+  }
+
+  .hotel-card {
+    width: 280px;
+  }
+
+  /* === BLOG/GUIDER SECTION === */
+  .section-row {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .blog-section,
+  .Guider-section {
+    width: 100%;
+  }
+
+  /* === FOOTER === */
+  .footer {
+    padding: 40px 0 20px;
+  }
+
+  .footer .col-lg-3,
+  .footer .col-md-6 {
+    margin-bottom: 30px;
+  }
+}
+
+/* MOBILE LANDSCAPE (MAX-WIDTH: 768px) */
+
+@media (max-width: 768px) {
+  /* === HERO SECTION === */
+  .hero-section {
+    height: 60vh;
+    min-height: 500px;
+  }
+
+  .hero-section h1 {
+    font-size: 2.8rem;
+  }
+
+  .hero-section p {
+    font-size: 1rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 15px;
+    width: 80%;
+  }
+
+  .btn-hero {
+    width: 100%;
+    padding: 12px 30px;
+  }
+
+  /*  MAP SECTION  */
+  .map-section {
+    margin-top: 30px;
+    margin-bottom: 50px;
+  }
+
+  #map {
+    height: 350px;
+  }
+
+  .destination-card {
+    width: 95%;
+  }
+
+  /*  DESTINATION SECTION  */
+  .destination-section {
+    margin: 20px auto;
+  }
+
+  .card-group {
+    padding-bottom: 15px;
+  }
+
+  .card {
+    min-width: 220px;
+  }
+
+  .card-img-top {
+    height: 160px;
+  }
+
+  /*  HOTEL SECTION  */
+  .hotel-section {
+    padding: 30px 15px;
+    margin-bottom: 50px;
+  }
+
+  .hotel-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .hotel-card {
+    width: 100%;
+    max-width: 310px;
+  }
+
+  .hotel-card-group {
+    gap: 20px;
+  }
+
+  /* BLOG/GUIDER SECTION  */
+  .blog-guider {
+    margin-bottom: 50px;
+    padding: 0 15px;
+  }
+
+  .section-row {
+    gap: 20px;
+  }
+
+  /* FOOTER */
+  .footer h5 {
+    font-size: 1.1rem;
+  }
+
+  .social-icons a {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+/* MOBILE PORTRAIT (MAX-WIDTH: 576px) */
+@media (max-width: 576px) {
+  /* === NAVBAR === */
+  .navbar-logo {
+    height: 40px;
+  }
+
+  .navbar {
+    padding: 10px 0;
+  }
+
+  /*  HERO SECTION */
+  .hero-section {
+    height: 50vh;
+    min-height: 450px;
+    padding-top: 80px;
+  }
+
+  .hero-section h1 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+  }
+
+  .hero-section p {
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+  }
+
+  .hero-buttons {
+    width: 90%;
+  }
+
+  .btn-hero {
+    padding: 10px 25px;
+    font-size: 1rem;
+  }
+
+  /*  MAP SECTION */
+  .map-section {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    padding: 10px;
+  }
+
+  #map {
+    width: 100%;
+    height: 300px;
+    border-radius: 15px;
+  }
+
+  .destination-card {
+    width: 100%;
+    height: auto;
+    min-height: 250px;
+    padding: 15px;
+  }
+
+  .destination-card img {
+    height: 120px;
+  }
+
+  .destination-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .destination-card p {
+    font-size: 0.9rem;
+  }
+
+  /* DESTINATION SECTION */
+  .destination-section {
+    padding: 20px 10px;
+    margin: 20px 10px;
+  }
+
+  .destination-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  .card-group {
+    gap: 10px;
+  }
+
+  .card {
+    min-width: 200px;
+  }
+
+  .card-img-top {
+    height: 140px;
+  }
+
+  .card-title {
+    font-size: 16px;
+  }
+
+  .card-text {
+    font-size: 13px;
+  }
+
+  .explore-btn {
+    padding: 6px 14px;
+    font-size: 13px;
+  }
+
+  .card-group .see-more {
+    font-size: 13px;
+    padding: 6px 14px;
+  }
+
+  /*  HOTEL SECTION  */
+  .hotel-section {
+    padding: 25px 10px;
+    margin-bottom: 30px;
+  }
+
+  .hotel-content h2 {
+    font-size: 1.5rem;
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .hotel-content p {
+    font-size: 0.9rem;
+    margin-left: 0;
+    text-align: center;
+    padding: 0 10px;
+  }
+
+  .hotel-card-group {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    gap: 25px;
+  }
+
+  .hotel-card {
+    width: 100%;
+    max-width: 100%;
+    height: 200px;
+  }
+
+  .hotel-card:hover {
+    height: 280px;
+  }
+
+  .overlay h3 {
+    font-size: 14px;
+  }
+
+  .overlay p {
+    font-size: 12px;
+  }
+
+  .rating {
+    font-size: 12px;
+  }
+
+  .review-btn {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  .see-more {
+    margin-top: 30px;
+    padding: 8px 20px;
+    font-size: 13px;
+  }
+
+  /*  BLOG/GUIDER SECTION  */
+  .blog-guider {
+    margin-bottom: 30px;
+    padding: 0 10px;
+  }
+
+  .blog-section,
+  .Guider-section {
+    padding: 15px;
+  }
+
+  .blog-title h2,
+  .guider-header h2 {
+    font-size: 1.3rem;
+  }
+
+  .guider-topic {
+    font-size: 0.9rem;
+  }
+
+  /* FOOTER  */
+  .footer {
+    padding: 30px 0 15px;
+  }
+
+  .footer-logo img {
+    height: 50px;
+  }
+
+  .footer h5 {
+    font-size: 1rem;
+    margin-bottom: 15px;
+  }
+
+  .footer-links li,
+  .footer-contacts li {
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+  }
+
+  .social-icons {
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .social-icons a {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+
+  .footer-bottom {
+    margin-top: 25px;
+    padding-top: 15px;
+  }
+
+  .footer-bottom p {
+    font-size: 0.85rem;
+  }
+}
+
+/* SMALL MOBILE (MAX-WIDTH: 375px) */
+@media (max-width: 375px) {
+  /* === HERO SECTION === */
+  .hero-section h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-section p {
+    font-size: 0.85rem;
+  }
+
+  /* MAP SECTION */
+  #map {
+    height: 250px;
+  }
+
+  .destination-card {
+    padding: 12px;
+  }
+
+  .destination-card h3 {
+    font-size: 1.1rem;
+  }
+
+  /* DESTINATION SECTION  */
+  .destination-section h2 {
+    font-size: 1.3rem;
+  }
+
+  .card {
+    min-width: 180px;
+  }
+
+  .card-img-top {
+    height: 120px;
+  }
+
+  /*  HOTEL SECTION */
+  .hotel-content h2 {
+    font-size: 1.3rem;
+  }
+
+  .hotel-card {
+    height: 180px;
+  }
+
+  .hotel-card:hover {
+    height: 260px;
+  }
+}
+
+/* UTILITY CLASSES FOR RESPONSIVE IMAGES */
+@media (max-width: 768px) {
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/*FIX HORIZONTAL SCROLL ISSUES */
+@media (max-width: 991px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .container {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}
+
+/* IMPROVE TOUCH TARGETS FOR MOBILE */
+@media (max-width: 768px) {
+  .nav-link,
+  .dropdown-item,
+  .explore-btn,
+  .review-btn,
+  .see-more,
+  .btn-hero {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
