@@ -153,7 +153,7 @@ body {
   min-height: 100vh;
   background:
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("../assets/HomeAssets/HeroPhoto.jpg") center/cover;
+    url("../assets/HomeAssets/Hero-02.jpg") center/cover;
 
   background-attachment: fixed;
   background-size: cover;
