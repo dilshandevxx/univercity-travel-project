@@ -232,14 +232,41 @@
     </section>
     <!------------Blog section ------------>
     <section class="blog-guider">
-      <section class="blog-section">
-        <h2>Blog and Stroties </h2>
-        
-      </section>
+        <div class="container">
+            <div class="section-row">
+                <div class="blog-section">
+                    <div class="blog-title">
+                        <h2>Blog and Stroties </h2>
+                    </div>
+                    
+                    <div class="blog-content">
+                        <p>This is a blog section </p>
+                    </div>
+
+                    <div class="blog-button">
+                        <button class="btn btn-primary custom-btn">
+                                Find More
+                        </button>
+                    </div>
+                </div>
   
-      <section class="Guider-section">
-        <h2>Find a Guider </h2>
-      </section>
+                <div class="Guider-section">
+                    <div class="guider-header">
+                        <h2>Find a Guider </h2>
+                        <p class="guider-topic">
+                            See the real Sri Lanka with a local expert. They know secret places and hidden spots most tourists miss.
+                        </p>
+                    </div>
+                    <div class="expert-list">
+                        <div class="expert-card">
+                            
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>    
+        </div>    
   </section>
     
   <!-- Footer -->
@@ -395,5 +422,6 @@
       const offcanvasElementList = document.querySelectorAll('.offcanvas')
 const offcanvasList = [...offcanvasElementList].map(offcanvasEl => new bootstrap.Offcanvas(offcanvasEl))
     </script>
+    <script src="../js/HomeScript.js"></script>
   </body>
 </html>
