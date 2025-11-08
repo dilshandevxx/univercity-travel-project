@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PearlGuide</title>
+    <link rel="stylesheet" href="../css/HomeStyle.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!--------------Navigation bar---------------->
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="../assets/HomeAssets/Logo.png" alt="Logo" class="navbar-logo" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+              >
+                Destinations
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#byCity">By City</a></li>
+                <li>
+                  <a class="dropdown-item" href="#byCategory">By Category</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Hotels & Restaurants</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Find a Guide</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Blog/Stories</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About us</a>
+            </li>
+          </ul>
+          <div class="d-flex align-items-center gap-3">
+            <div class="search-box">
+              <input type="text" class="form-control" placeholder="Search" />
+              <i class="fas fa-search"></i>
+            </div>
+            <div class="user-section">
+              <i class="fas fa-user"></i>
+              <span>User Name</span>
+              
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-------------Hero section --------------->
+
+    <section class="hero-section">
+      <h1>Welcome to</h1>
+      <h1>Sri Lanka</h1>
+      <p>"Discover Your New Adventure."</p>
+    </section>
+
+    <!------------Map section ----------------->
+
+    <section class="map-section">
+      <div id="destination-card" class="destination-card">
+        <img id="destination-image" src="" alt="Destination" />
+        <h3 id="destination-title"></h3>
+        <p id="destination-description"></p>
+      </div>
+      <div id="map"></div>
+    </section>
+
+    <!------------Destination section ------------->
+
+    <section class="destination-section animate-on-scroll">
+      <h2>Popular Destinations</h2>
+      <div class="card-group animate-on-scroll">
+        <div class="col">
+          <div class="card h-100">
+            <img src="../assets/HomeAssets/SigiriyaCard.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Sigiriya</h5>
+              <p class="card-text">
+                Ancient palace on a giant rock. Climb to see ruins and amazing
+                views.
+              </p>
+              <button class="explore-btn">Explore</button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <img src="../assets/HomeAssets/NineArchcard.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Nine Arch Bridge</h5>
+              <p class="card-text">
+                Famous stone train bridge in green mountains. Perfect for
+                photos.
+              </p>
+              <button class="explore-btn">Explore</button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <img
+              src="../assets/HomeAssets/TempleOFTooth.jpg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">Temple of Tooth</h5>
+              <p class="card-text">
+                Important Buddhist temple. Houses Buddha's sacred tooth relic.
+              </p>
+              <button class="explore-btn">Explore</button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <img src="../assets/HomeAssets/yala.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Yala national Park</h5>
+              <p class="card-text">
+                Go on safari to see leopards, elephants, and birds.
+              </p>
+              <button class="explore-btn">Explore</button>
+            </div>
+          </div>
+        </div>
+        </div>
+        <button class="see-more">See more</button>
+      </div>
+    </section>
+
+    <!--------- Hotels and Restuarant ---------->
+    <section class="hotel-section ">
+      <div class="hotel-content">
+        <h2>Hotels & Restaurants</h2>
+        <p>
+          Find great places to stay and eat. <br />
+          From luxury hotels to local restaurants with authentic food.
+        </p>
+      </div>
+
+      <div class="hotel-card-group">
+        <!-- Card 1 -->
+        <div class="hotel-card">
+          <img src="../assets/HomeAssets/Shangri-la.jpeg" alt="Hotel" />
+          <div class="overlay">
+            <span class="tag">Hotel</span>
+            <h3>Shangri-La Colombo</h3>
+            <p>Good food, great wine. A cozy place to eat and relax.</p>
+
+            <div class="rating">★★★★☆ <span class="rate-text">4.2</span></div>
+
+            <button class="review-btn">Add Review</button>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="hotel-card featured">
+          <img src="../assets/HomeAssets/tuk-tuk.jpeg" alt="Restaurant" />
+          <div class="overlay">
+            <span class="tag">Restaurant</span>
+            <h3>TukTuk Wine & Dine</h3>
+            <p>Good food, great wine. A cozy place to eat and relax.</p>
+
+            <div class="rating">★★★★☆ <span class="rate-text">4.2</span></div>
+
+            <button class="review-btn">Add Review</button>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="hotel-card">
+          <img src="../assets/HomeAssets/jetwin.jpeg" alt="Hotel" />
+          <div class="overlay">
+            <span class="tag">Hotel</span>
+            <h3>Jetwing Blue</h3>
+            <p>Good food, great wine. A cozy place to eat and relax.</p>
+
+            <div class="rating">★★★★☆ <span class="rate-text">4.2</span></div>
+
+            <button class="review-btn">Add Review</button>
+          </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="hotel-card">
+          <img src="../assets/HomeAssets/jetwin.jpeg" alt="Hotel" />
+          <div class="overlay">
+            <span class="tag">Hotel</span>
+            <h3>Jetwing Blue</h3>
+            <p>Good food, great wine. A cozy place to eat and relax.</p>
+
+            <div class="rating">★★★★☆ <span class="rate-text">4.2</span></div>
+
+            <button class="review-btn">Add Review</button>
+          </div>
+        </div>
+      </div>
+
+      <button class="see-more">See more</button>
+    </section>
+    <!------------Blog section ------------>
+    <section class="blog-guider">
+        <div class="container">
+            <div class="section-row">
+                <div class="blog-section">
+                    <div class="blog-title">
+                        <h2>Blog and Stroties </h2>
+                    </div>
+                    
+                    <div class="blog-content">
+                        <p>This is a blog section </p>
+                    </div>
+
+                    <div class="blog-button">
+                        <button class="btn btn-primary custom-btn">
+                                Find More
+                        </button>
+                    </div>
+                </div>
+  
+                <div class="Guider-section">
+                    <div class="guider-header">
+                        <h2>Find a Guider </h2>
+                        <p class="guider-topic">
+                            See the real Sri Lanka with a local expert. They know secret places and hidden spots most tourists miss.
+                        </p>
+                    </div>
+                    <div class="expert-list">
+                        <div class="expert-card">
+                            
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>    
+        </div>    
+  </section>
+    
+  <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="footer-logo">
+              <img src="../assets/HomeAssets/Logo.png" alt="Logo" height="60px">
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mb-4">
+            <h5>Quick Links</h5>
+            <ul class="footer-links">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Destinations</a></li>
+              <li><a href="#">Hotels & Restaurant</a></li>
+              <li><a href="#">Find a guide</a></li>
+              <li><a href="#">Blog / Stories</a></li>
+              <li><a href="#">Contacts</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mb-4">
+            <h5>Contacts</h5>
+            <ul class="footer-contacts">
+              <li>
+                <i class="fas fa-map-marker-alt"></i> 1234 Sample Street<br />Austin
+                Texas 78704
+              </li>
+              <li><i class="fas fa-phone"></i> 512.333.2222</li>
+              <li><i class="fas fa-envelope"></i> sampleemail@gmail.com</li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mb-4">
+            <h5>Social Media</h5>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-pinterest"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 All Rights Reserved</p>
+        </div>
+      </div>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOBm6QEzOgcmz65vAr3709cDtM3E-0Ar8&callback=initMap"
+      async
+      defer
+    ></script>
+    <script>
+        const sriLanka = { lat: 7.8731, lng: 80.7718 };
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 7,
+          center: sriLanka,
+        });
+
+
+        let currentMarker = null;
+        let selectedMarker = null;
+
+        destinations.forEach((dest) => {
+          const marker = new google.maps.Marker({
+            position: dest.position,
+            map: map,
+            title: dest.title,
+          });
+
+          marker.addListener("mouseover", () => {
+            if (selectedMarker !== marker) {
+              // Show card on left
+              document.getElementById("destination-image").src = dest.image;
+              document.getElementById("destination-title").textContent =
+                dest.title;
+              document.getElementById("destination-description").textContent =
+                dest.description;
+              document.getElementById("destination-card").style.display =
+                "flex";
+              currentMarker = marker;
+            }
+          });
+
+          marker.addListener("mouseout", () => {
+            // Hide card after a delay to allow mouse to move to card, but not if selected
+            setTimeout(() => {
+              if (currentMarker === marker && selectedMarker !== marker) {
+                document.getElementById("destination-card").style.display =
+                  "none";
+                currentMarker = null;
+              }
+            }, 100);
+          });
+
+          marker.addListener("click", () => {
+            // Select marker and keep card visible
+            selectedMarker = marker;
+            document.getElementById("destination-image").src = dest.image;
+            document.getElementById("destination-title").textContent =
+              dest.title;
+            document.getElementById("destination-description").textContent =
+              dest.description;
+            document.getElementById("destination-card").style.display = "flex";
+          });
+        });
+
+        // Keep card visible when hovering over the card itself
+        const card = document.getElementById("destination-card");
+        card.addEventListener("mouseover", () => {
+          // Keep card visible
+        });
+
+        card.addEventListener("mouseout", () => {
+          // Hide card when mouse leaves the card, but not if selected
+          setTimeout(() => {
+            if (selectedMarker === null) {
+              document.getElementById("destination-card").style.display =
+                "none";
+              currentMarker = null;
+            }
+          }, 100);
+        });
+
+        // Hide card when clicking on map (deselect)
+        map.addListener("click", () => {
+          selectedMarker = null;
+          document.getElementById("destination-card").style.display = "none";
+          currentMarker = null;
+        });
+      
+
+      //Hotel section
+      document.querySelectorAll(".hotel-card").forEach((card) => {
+        card.addEventListener("mouseenter", () => {
+          card.style.boxShadow = "0 0 30px rgba(255,255,255,0.35)";
+        });
+
+        card.addEventListener("mouseleave", () => {
+          card.style.boxShadow = "none";
+        });
+      });
+      const offcanvasElementList = document.querySelectorAll('.offcanvas')
+const offcanvasList = [...offcanvasElementList].map(offcanvasEl => new bootstrap.Offcanvas(offcanvasEl))
+    </script>
+    <script src="../js/HomeScript.js"></script>
+  </body>
+</html>
