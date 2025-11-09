@@ -89,15 +89,55 @@
 
     <!------------Map section ----------------->
 
-    <section class="map-section">
-      <div id="destination-card" class="destination-card">
-        <img id="destination-image" src="" alt="Destination" />
-        <h3 id="destination-title"></h3>
-        <p id="destination-description"></p>
-      </div>
-      <div id="map"></div>
-    </section>
+    <div class="trip-planner-section">
+        <div class="section-header">
+            <h2>Plan Your Sri Lankan Adventure</h2>
+            <p>Customize your perfect journey through the Pearl of the Indian Ocean</p>
+        </div>
+        <div class="planner-container">
+            <!-- Planning Info -->
+            <div class="planning-info">
+                <h3>Ready to Explore the Wonders of Sri Lanka?</h3>
+                <p>Let us help you create an unforgettable journey tailored to your interests and preferences. From ancient temples to pristine beaches, wildlife safaris to tea plantations, we'll craft the perfect itinerary just for you.</p>
 
+                <div class="features-list">
+                    <div class="feature-item">
+                        <div class="feature-icon">✓</div>
+                        <div class="feature-text">Personalized itineraries based on your interests</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">✓</div>
+                        <div class="feature-text">Expert recommendations for hidden gems</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">✓</div>
+                        <div class="feature-text">Flexible planning for all budgets and durations</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">✓</div>
+                        <div class="feature-text">Accommodation and transport suggestions</div>
+                    </div>
+                </div>
+
+                <button class="plan-trip-btn" onclick="openModal()">Start Planning Your Trip</button>
+            </div>
+
+          <!-- Map Container -->
+            <div class="map-container">
+                <div class="map-wrapper">
+                    <div class="map-header">
+                        <h3>Explore Destinations</h3>
+                    </div>
+
+                    <div class="search-box">
+                        <input type="text" id="mapSearch" placeholder="Search for a destination...">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
     <!------------Destination section ------------->
 
     <section class="destination-section animate-on-scroll">
@@ -240,8 +280,43 @@
                         <h2>Blog and Stroties </h2>
                     </div>
                     
-                    <div class="blog-content">
-                        <p>This is a blog section </p>
+                    <div class="row row-cols-1 row-cols-md-2 g-4">
+                      <div class="col">
+                        <div class="card">
+                          <img src="..." class="card-img-top" alt="...">
+                          <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="card">
+                          <img src="..." class="card-img-top" alt="...">
+                          <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="card">
+                          <img src="..." class="card-img-top" alt="...">
+                          <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="card">
+                          <img src="..." class="card-img-top" alt="...">
+                          <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
 
                     <div class="blog-button">
@@ -260,8 +335,63 @@
                     </div>
                     <div class="expert-list">
                         <div class="expert-card">
+                            <div class="card mb-3" style="max-width: 540px;">
+                              <div class="row g-0">
+                                <div class="col-md-4">
+                                  <img src="..." class="img-fluid rounded-start" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                  <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                             
-
+                            <div class="card mb-3" style="max-width: 540px;">
+                              <div class="row g-0">
+                                <div class="col-md-4">
+                                  <img src="..." class="img-fluid rounded-start" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                  <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card mb-3" style="max-width: 540px;">
+                              <div class="row g-0">
+                                <div class="col-md-4">
+                                  <img src="..." class="img-fluid rounded-start" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                  <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card mb-3" style="max-width: 540px;">
+                              <div class="row g-0">
+                                <div class="col-md-4">
+                                  <img src="..." class="img-fluid rounded-start" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                  <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                         </div>
 
                     </div>
