@@ -185,44 +185,6 @@ body {
   animation: fadeInUp 1s ease-out 0.3s both;
 }
 
-.hero-buttons {
-  display: flex;
-  gap: 30px;
-  animation: fadeInUp 1s ease-out 0.6s both;
-}
-
-.btn-hero {
-  padding: 15px 50px;
-  font-size: 1.1rem;
-  border-radius: 30px;
-  font-weight: 600;
-  transition: all 0.3s;
-  border: none;
-  cursor: pointer;
-}
-
-.btn-city {
-  background: var(--primary-color);
-  color: white;
-}
-
-.btn-city:hover {
-  background: #0d3252;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-}
-
-.btn-category {
-  background: var(--primary-color);
-  color: white;
-}
-
-.btn-category:hover {
-  background: #0d3252;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-}
-
 /* Map Section */
 .map-section {
   width: 100%;

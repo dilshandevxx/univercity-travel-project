@@ -20,4 +20,3 @@ for (let i = 0; i < animation_element.length; i++) {
 
   observer.observe(el);
 }
-
