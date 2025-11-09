@@ -220,7 +220,8 @@
                         <button class="search-btn " type="button">Search</button>
                       </div>
                     </div>
-
+                    <!-- 🗺 Google Map Area -->
+                  <div id="map"></div>
                 </div>
             </div>
         </div>
@@ -626,90 +627,9 @@
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
       crossorigin="anonymous"
     ></script>
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOBm6QEzOgcmz65vAr3709cDtM3E-0Ar8&callback=initMap"
-      async
-      defer
-    ></script>
+
     <script>
-        const sriLanka = { lat: 7.8731, lng: 80.7718 };
-        const map = new google.maps.Map(document.getElementById("map"), {
-          zoom: 7,
-          center: sriLanka,
-        });
-
-
-        let currentMarker = null;
-        let selectedMarker = null;
-
-        destinations.forEach((dest) => {
-          const marker = new google.maps.Marker({
-            position: dest.position,
-            map: map,
-            title: dest.title,
-          });
-
-          marker.addListener("mouseover", () => {
-            if (selectedMarker !== marker) {
-              // Show card on left
-              document.getElementById("destination-image").src = dest.image;
-              document.getElementById("destination-title").textContent =
-                dest.title;
-              document.getElementById("destination-description").textContent =
-                dest.description;
-              document.getElementById("destination-card").style.display =
-                "flex";
-              currentMarker = marker;
-            }
-          });
-
-          marker.addListener("mouseout", () => {
-            // Hide card after a delay to allow mouse to move to card, but not if selected
-            setTimeout(() => {
-              if (currentMarker === marker && selectedMarker !== marker) {
-                document.getElementById("destination-card").style.display =
-                  "none";
-                currentMarker = null;
-              }
-            }, 100);
-          });
-
-          marker.addListener("click", () => {
-            // Select marker and keep card visible
-            selectedMarker = marker;
-            document.getElementById("destination-image").src = dest.image;
-            document.getElementById("destination-title").textContent =
-              dest.title;
-            document.getElementById("destination-description").textContent =
-              dest.description;
-            document.getElementById("destination-card").style.display = "flex";
-          });
-        });
-
-        // Keep card visible when hovering over the card itself
-        const card = document.getElementById("destination-card");
-        card.addEventListener("mouseover", () => {
-          // Keep card visible
-        });
-
-        card.addEventListener("mouseout", () => {
-          // Hide card when mouse leaves the card, but not if selected
-          setTimeout(() => {
-            if (selectedMarker === null) {
-              document.getElementById("destination-card").style.display =
-                "none";
-              currentMarker = null;
-            }
-          }, 100);
-        });
-
-        // Hide card when clicking on map (deselect)
-        map.addListener("click", () => {
-          selectedMarker = null;
-          document.getElementById("destination-card").style.display = "none";
-          currentMarker = null;
-        });
-      
+        
 
       //Hotel section
       document.querySelectorAll(".hotel-card").forEach((card) => {
@@ -722,8 +642,10 @@
         });
       });
       const offcanvasElementList = document.querySelectorAll('.offcanvas')
-const offcanvasList = [...offcanvasElementList].map(offcanvasEl => new bootstrap.Offcanvas(offcanvasEl))
+      const offcanvasList = [...offcanvasElementList].map(offcanvasEl => new bootstrap.Offcanvas(offcanvasEl))
     </script>
     <script src="../js/HomeScript.js"></script>
-  </body>
-</html>
+    <script
+      async
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAChRoPGVZOF3zieCZPZAlEACB1HB7ZoqY&callback=initMap"
+    ></script>

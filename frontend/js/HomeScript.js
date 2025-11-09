@@ -44,3 +44,5 @@ window.addEventListener("click", (e) => {
     modal.style.display = "none";
   }
 });
+
+// GOOGLE MAP SCRIPT
