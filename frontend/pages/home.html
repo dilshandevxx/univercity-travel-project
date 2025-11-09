@@ -119,7 +119,93 @@
                     </div>
                 </div>
 
-                <button class="plan-trip-btn" onclick="openModal()">Start Planning Your Trip</button>
+                <button class="plan-trip-btn" id="openBtn" onclick="openModal()">Start Planning Your Trip</button>
+                
+                <!-- Popup container -->
+                <div id="popupForm" class="modal">
+                  <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Plan Your Trip</h2>
+                    <form>
+                      <div class="mb-3">
+                        <label for="fullName" class="form-label" style="color:#1e3d1f; font-weight:600;">
+                          Full Name <span class="text-danger">*</span>
+                        </label>
+                        <input type="text" class="form-control" id="fullName" placeholder="Enter your full name" required>
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="email" class="form-label" style="color:#1e3d1f; font-weight:600;">
+                          Email <span class="text-danger">*</span>
+                        </label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter your email address" required>
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="startDate" class="form-label">Start Date <span class="text-danger">*</span></label>
+                        <input type="date" class="form-control" id="startDate" required>
+                        
+                      </div>
+                      <div class="mb-3">
+                        <label for="duration" class="form-label" style="color:#1e3d1f; font-weight:600;">
+                          Duration <span class="text-danger">*</span>
+                        </label>
+                        <select class="form-select" id="duration" required>
+                          <option value="" selected>Select duration</option>
+                          <option value="3-5">3–5 Days</option>
+                          <option value="6-8">6–8 Days</option>
+                          <option value="9-12">9–12 Days</option>
+                          <option value="13+">13+ Days</option>
+                        </select>
+                      </div>
+                      <div class="mb-3">
+                        <label for="travelers" class="form-label" style="color:#1e3d1f; font-weight:600;">
+                          Travelers <span class="text-danger">*</span>
+                        </label>
+                        <select class="form-select" id="travelers" required>
+                          <option value="1" selected>1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5+">5+</option>
+                        </select>
+                      </div>
+                      <div class="mb-3">
+                        <label for="budget" class="form-label" style="color:#1e3d1f; font-weight:600;">
+                          Budget <span class="text-danger">*</span>
+                        </label>
+                        <select class="form-select" id="budget" required>
+                          <option value="" selected>Select budget</option>
+                          <option value="under1000">Under $1,000</option>
+                          <option value="1000-3000">$1,000 – $3,000</option>
+                          <option value="3000-5000">$3,000 – $5,000</option>
+                          <option value="5000+">$5,000+</option>
+                        </select>
+                      </div>
+                      <div class="mb-3">
+                        <label for="interests" class="form-label" style="color:#1e3d1f; font-weight:600;">
+                          Interests
+                        </label>
+                        <select class="form-select" id="interests">
+                          <option value="" selected>Select interests</option>
+                          <option value="adventure">Adventure</option>
+                          <option value="relaxation">Relaxation</option>
+                          <option value="culture">Culture</option>
+                          <option value="nature">Nature</option>
+                          <option value="food">Food & Wine</option>
+                        </select>
+                      </div>
+                      <div class="mb-3">
+                        <label for="requirements" class="form-label" style="color:#1e3d1f; font-weight:600;">
+                          Additional Requirements
+                        </label>
+                        <textarea class="form-control" id="requirements" rows="3"
+                          placeholder="Special requirements, dietary needs, or places you'd like to visit..."></textarea>
+                      </div>
+                      <button type="submit" class="plan-trip-btn">Submit</button>
+                    </form>
+                  </div>
+                </div>
             </div>
 
           <!-- Map Container -->
@@ -128,11 +214,13 @@
                     <div class="map-header">
                         <h3>Explore Destinations</h3>
                     </div>
-
-                    <div class="search-box">
-                        <input type="text" id="mapSearch" placeholder="Search for a destination...">
-                        
+                    <div class="mb-3">
+                      <div class="input-group">
+                        <input type="text" class="form-control" id="search" placeholder="Search..." aria-label="Search">
+                        <button class="search-btn " type="button">Search</button>
+                      </div>
                     </div>
+
                 </div>
             </div>
         </div>
