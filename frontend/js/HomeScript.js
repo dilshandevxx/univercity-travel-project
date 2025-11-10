@@ -46,3 +46,5 @@ window.addEventListener("click", (e) => {
 });
 
 // GOOGLE MAP SCRIPT
+
+//Contact form

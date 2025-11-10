@@ -568,9 +568,65 @@
       
     </section>
     <!---------- Contact Form  ------------->
-    <section class="contact-form">
-      <h2>Contact Us</h2>
+   <section class="contact-about-section">
+      <div class="section-header">
+            <h2>Get to Know Us</h2>
+            <p>Discover our story and connect with our team</p>
+        </div>
+        <div class="content-container">
+          <!-- About Us Section -->
+            <div class="about-us-content">
+                <h3>About Pearl Guide</h3>
+                <p>We are passionate explorers and local experts dedicated to showcasing the beauty and wonder of Sri Lanka. With years of experience in the travel industry, we've helped thousands of travelers discover the hidden gems and iconic landmarks of this tropical paradise.</p>
+                
+                <p>Our mission is to create authentic, memorable experiences that go beyond typical tourist trails. We believe in sustainable tourism, supporting local communities, and preserving the natural beauty that makes Sri Lanka truly special.</p>
+            </div>
+            <!-- Contact Us Section -->
+            <div class="contact-us-content">
+                <h3>Get In Touch</h3>
+                <p>Have questions about your Sri Lankan adventure? Our friendly team is here to help you plan the perfect trip. Reach out to us through any of the channels below, and we'll respond within 24 hours.</p>
+                
+                <form>
+                  <div class="mb-3">
+                        <label for="fullName" class="form-label" style="color:#1e3d1f; font-weight:600;">
+                          Full Name <span class="text-danger">*</span>
+                        </label>
+                        <input type="text" class="form-control" id="fullName" placeholder="Enter your full name" required>
+                      </div>
+                  <div class="mb-3">
+                        <label for="email" class="form-label" style="color:#1e3d1f; font-weight:600;">
+                          Email <span class="text-danger">*</span>
+                        </label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter your email address" required>
+                      </div>
+                    <div class="mb-3">
+                        <label for="travelers" class="form-label" style="color:#1e3d1f; font-weight:600;">
+                          Subject <span class="text-danger">*</span>
+                        </label>
+                        <select class="form-select" id="subject" required>
+                          <option value="select" selected>Select a subject</option>
+                          <option value="general">General Inquiry</option>
+                          <option value="booking">Booking assistant</option>
+                          <option value="itinerary">Itinerary Planning</option>
+                          <option value="accommodation">Accommodation Query</option>
+                          <option value="transport">Transport Information</option>
+                          <option value="other">Other</option>
+                        </select>
+                      </div>  
+                      <div class="mb-3">
+                        <label for="Message" class="form-label" style="color:#1e3d1f; font-weight:600;">
+                          Message
+                        </label>
+                        <textarea class="form-control" id="message" rows="5"
+                          placeholder="Tell us how we can help you..."></textarea>
+                      </div>
+                  <button class="plan-trip-btn" id="openBtn">Submit</button>
 
+                </form>
+            </div>  
+            
+        </div>
+        
     </section>
   <!-- Footer -->
     <footer class="footer">
