@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hotels and Restuatant</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/hotel-restro.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="Assets/Logo.png" alt="Logo" class="navbar-logo" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+              >
+                Destinations
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#byCity">By City</a></li>
+                <li>
+                  <a class="dropdown-item" href="#byCategory">By Category</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Hotels & Restaurants</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Find a Guide</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Blog/Stories</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About us</a>
+            </li>
+          </ul>
+        </div>
+        <div class="d-flex align-items-center gap-3">
+          <div class="search-box">
+            <input type="text" class="form-control" placeholder="Search" />
+            <i class="fa-solid fa-magnifying-glass" href="#"></i>
+          </div>
+          <div class="user-section">
+            <i class="fas fa-user"></i>
+            <span>User Name</span>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>
+          Hotels &<br />
+          Resturants
+        </h1>
+        <p>
+          "Rest Your Head in Paradise - Find your Perfect Stay Amidst Sri Lankan
+          Hospitality"
+        </p>
+        <div class="search-box-middle">
+          <input type="text" class="form-control" placeholder="Search hotels" />
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+      </div>
+    </section>
+    <section class="places">
+      <h1>Discover Your Perfect Stay</h1>
+      <div class="places-paragraph">
+        <p>
+          Looking for a hotel? We make it easy.Choose your favorite Sri Lankan
+          city or landscape,and we'll show you the best palces to stay.<br />
+          Read real reviews, see prices,and book your room in just a few
+          clicks.Ypur jouney is waiting .
+        </p>
+      </div>
+
+      <figure class="top-figure">
+        <img src="/travel-website/images/4.jpeg" alt="" />
+      </figure>
+
+      <!-- card -->
+      <!-- <div class="card city-card" style="max-width: 540px; cursor: pointer">
+        <div class="row g-0 align-items-center">
+          <div class="col-md-4">
+            <img
+              src="/travel-website/images/5.jpeg"
+              class="img-fluid rounded-start"
+              alt="Kandy"
+            />
+          </div>
+
+          <div class="col-md-8">
+            <div class="card-body">
+              <p class="card-text">Kandy</p>
+            </div>
+          </div>
+        </div>
+/////////
+        <div class="city-info">
+          <p style="margin: 0">
+            Kandy, the hill country jewel, is home to the sacred Temple of the
+            Tooth Relic, a UNESCO World Heritage site. Surrounded by misty
+            mountains and the serene Kandy Lake, this cultural hub comes alive
+            during the Esala Perahera festival with vibrant processions.
+          </p>
+        </div>
+
+        /////////// -->
+      <!-- </div> -->
+
+      <!-- card gpt -->
+      <section class="places">
+        <h1>Discover Your Perfect Stay</h1>
+
+        <div class="card city-card" style="max-width: 540px; cursor: pointer">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img
+                src="/travel-website/images/5.jpeg"
+                class="img-fluid rounded-start"
+                alt="Kandy"
+              />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <p class="card-text">Kandy</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card city-card" style="max-width: 540px; cursor: pointer">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img
+                src="/travel-website/images/6.jpeg"
+                class="img-fluid rounded-start"
+                alt="Galle"
+              />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <p class="card-text">Galle</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- City Info Overlay Panel -->
+      <div class="city-info-overlay" id="cityInfoOverlay">
+        <div class="city-info-content">
+          <span class="close-btn">&times;</span>
+          <h2 id="cityName"></h2>
+          <p id="cityDescription"></p>
+        </div>
+      </div>
+
+      <!-- card gpt -->
+
+      <!-- /////////card///////// -->
+      <div class="card-secound" style="max-width: 540px">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img
+              src="/travel-website/images/6.jpeg"
+              class="img-fluid rounded-start"
+              alt="..."
+            />
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <p class="card-text">Galle</p>
+              <a href="hotels.html"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-third" style="max-width: 540px">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img
+              src="/travel-website/images/7.jpeg"
+              class="img-fluid rounded-start"
+              alt="..."
+            />
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <p class="card-text">Nuwara Eliya</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-fourth" style="max-width: 540px">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img
+              src="/travel-website/images/8.jpeg"
+              class="img-fluid rounded-start"
+              alt="..."
+            />
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <p class="card-text">Negombo</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-fifth" style="max-width: 540px">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img
+              src="/travel-website/images/9.jpeg"
+              class="img-fluid rounded-start"
+              alt="..."
+            />
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <p class="card-text">Sigiriya</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- card -->
+    </section>
+    <script>
+      const cityData = {
+        Kandy:
+          "Kandy, the hill country jewel, is home to the sacred Temple of the Tooth Relic, a UNESCO World Heritage site. Surrounded by misty mountains and the serene Kandy Lake, this cultural hub comes alive during the Esala Perahera festival with vibrant processions.",
+        Galle:
+          "Galle, a coastal gem, is famous for its well-preserved Dutch Fort and colonial architecture. The city offers a mix of history, beaches, and boutique hotels overlooking the Indian Ocean.",
+      };
+
+      const overlay = document.getElementById("cityInfoOverlay");
+      const cityName = document.getElementById("cityName");
+      const cityDescription = document.getElementById("cityDescription");
+      const closeBtn = overlay.querySelector(".close-btn");
+
+      document.querySelectorAll(".city-card").forEach((card) => {
+        card.addEventListener("click", () => {
+          const city = card.querySelector(".card-text").textContent.trim();
+          cityName.textContent = city;
+          cityDescription.textContent =
+            cityData[city] || "No details available.";
+          overlay.classList.add("active");
+        });
+      });
+
+      closeBtn.addEventListener("click", () => {
+        overlay.classList.remove("active");
+      });
+    </script>
+  </body>
+</html>
