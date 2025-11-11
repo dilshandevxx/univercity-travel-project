@@ -232,7 +232,7 @@
 .hero {
   margin-top: 80px;
   height: 620px;
-  background-image: url("/travel-website/images/3.jpg");
+  background-image: url("/univercity-travel-project/frontend/assets/images/3.jpg");
   background-position: center;
   background-size: cover;
   text-align: center;
@@ -293,234 +293,135 @@
   color: #666;
 }
 
-/* Places section */
-.places {
+/* ////////////////////////card new add////////////////////// */
+
+/* City Filter Card Styling (Left Column) */
+.city-card {
+  /* Use a consistent, smaller max-width to look like the image */
+  width: 100%; /* Take full width of its column */
+  max-width: 350px;
+  height: 100px; /* Consistent height for all cards */
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent; /* Base border */
+}
+
+.city-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.city-card.active {
+  /* Highlight the selected card with a border color like the image */
+  border: 2px solid var(--secondary-color);
+  box-shadow: 0 0 10px rgba(76, 154, 178, 0.5); /* Light glow */
+}
+
+.city-card .row {
+  height: 100%;
+}
+
+.city-card img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.city-card .card-body {
+  /* Make the card body white/light gray like in the image */
+  background-color: #f8f9fa; /* Light background for city name */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0;
+}
+
+.city-card .card-text {
+  font-size: 1.2rem; /* Adjusted for column layout */
+  font-weight: bold;
+  color: var(--primary-color);
+  margin: 0;
+}
+
+/* Hotel Details View Styling (Right Column) */
+.city-details-view {
+  padding-left: 30px; /* Add some space between the columns */
+}
+
+.city-details-view h2 {
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.city-details-view #city-description {
+  max-width: 80%;
+  line-height: 1.6;
+}
+
+/* Hotel Card Styling */
+.hotel-card img {
+  width: 100%;
+  height: 180px; /* Uniform image height */
+  object-fit: cover;
+}
+
+.hotel-card {
   text-align: left;
 }
-.top-figure img {
-  width: 350px;
-  height: 130px;
-  border-radius: 15px;
-  margin-bottom: 20px;
-}
-places-card {
-  position: relative;
-  display: inline-block;
-  border-radius: 15px;
-  background-color: #e5e5e5;
-  max-width: 100%;
-  height: 100px;
-}
-.place-card img {
-  width: 50%;
-  height: 100%;
-  object-fit: cover;
+
+.hotel-name {
+  color: var(--primary-color);
+  font-weight: 600;
 }
 
-.place-card img {
-  width: 50%;
-  height: 100%;
-  object-fit: cover;
+.hotel-description {
+  font-size: 0.9rem;
+  color: #6c757d;
+  min-height: 4.5em; /* Ensure uniform card height */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Limit description to 3 lines */
+  -webkit-box-orient: vertical;
 }
 
-.place-name {
-  position: absolute;
-  bottom: 15px;
-  left: 20px;
-  background: rgba(255, 255, 255, 0.7);
-  color: #000;
+/* Star Rating */
+.rating i {
+  font-size: 1rem;
+}
+
+/* See More Button */
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+.btn-primary:hover {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+/* ------------------------------------------- */
+/* --- Removed complex overlay styles --- */
+/* The old .city-info-overlay is no longer needed */
+/* ------------------------------------------- */
+
+/* Savor the Flavors Section */
+.savor-flavors h2 {
+  color: var(--primary-color);
   font-weight: 700;
-  font-size: 1.5rem;
-  padding: 5px 15px;
-  border-radius: 10px;
+}
+.savor-flavors .btn-outline-primary {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+.savor-flavors .btn-outline-primary:hover {
+  background-color: var(--primary-color);
+  color: white;
 }
 
-/* card section */
-
-.card {
-  /* width: 350px !important; */
-  width: 350px;
-  height: 110px;
-  border-radius: 15px;
-  overflow: hidden;
-  /* margin: 2px auto; */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  margin-left: 5px;
-}
-.card img {
-  height: 100%;
-  object-fit: cover;
-}
-.card-body {
-  background-color: #c8c3c3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  /* height: 200px; */
-}
-
-.card-text {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #333;
-}
-
-/* ///////////////////////////////////////// */
-.card-secound {
-  /* width: 350px !important; */
-  width: 350px;
-  height: 100px;
-  border-radius: 15px;
-  overflow: hidden;
-  /* margin: 2px auto; */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  margin-left: 5px;
-}
-.card-secound img {
-  height: 100px;
-  object-fit: cover;
-}
-.card-secound-body {
-  background-color: #c8c3c3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  /* height: 200px; */
-}
-
-.card-secound-text {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #333;
-}
-/* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
-
-.card-third {
-  /* width: 350px !important; */
-  width: 350px;
-  height: 100px;
-  border-radius: 15px;
-  overflow: hidden;
-  /* margin: 2px auto; */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  margin-left: 5px;
-}
-.card-third img {
-  height: 100px;
-  object-fit: cover;
-}
-.card-third-body {
-  background-color: #c8c3c3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  /* height: 200px; */
-}
-
-.card-third-text {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #333;
-}
-
-/* /////////////////////////////////////////// */
-.card-fourth {
-  /* width: 350px !important; */
-  width: 350px;
-  height: 100px;
-  border-radius: 15px;
-  overflow: hidden;
-  /* margin: 2px auto; */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  margin-left: 5px;
-}
-.card-fourth img {
-  height: 100px;
-  object-fit: cover;
-}
-.card-fourth-body {
-  background-color: #c8c3c3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  /* height: 200px; */
-}
-
-.card-fourth-text {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #333;
-}
-
-/* /////////////////////////////////////////////// */
-
-.card-fifth {
-  /* width: 350px !important; */
-  width: 350px;
-  height: 90px;
-  border-radius: 15px;
-  overflow: hidden;
-  /* margin: 2px auto; */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  margin-left: 5px;
-}
-.card-fifth img {
-  height: 100px;
-  object-fit: cover;
-}
-.card-fifth-body {
-  background-color: #c8c3c3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  /* height: 200px; */
-}
-
-.card-fifth-text {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #333;
-}
-
-/* ///////////city JS////// */
-
-.city-info-overlay {
-  position: absolute;
-  top: 0;
-  left: 350px; /* Adjust based on card column width */
-  width: 60%;
-  height: 100%;
-  background: white;
-  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
-  transform: translateX(100%);
-  transition: transform 0.4s ease;
-  z-index: 100;
-  padding: 20px;
-  border-radius: 10px;
-}
-
-.city-info-overlay.active {
-  transform: translateX(0);
-}
-
-.city-info-content {
-  position: relative;
-}
-
-.close-btn {
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  font-size: 24px;
-  cursor: pointer;
-}
+/* ////////////////////////card new add////////////////////// */
