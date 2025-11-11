@@ -16,7 +16,19 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   overflow-x: hidden;
 }
+html {
+  scroll-behavior: smooth;
+}
 
+/* Adjust this value until it positions correctly */
+section {
+  scroll-margin-top: 60px; /* Reduce this value */
+}
+
+/* Or target specific sections */
+#home, #destinations, #hotels, #guider, #blog, #about {
+  scroll-margin-top: 130px;
+}
 /* Navbar Styles */
 .navbar {
   background: rgba(255, 255, 255, var(--navbar-transparency));
@@ -80,7 +92,11 @@ body {
 .navbar-nav .nav-link:hover {
   color: var(--secondary-color) !important;
 }
-
+/* --- NEW CSS TO ADD --- */
+.navbar-nav .active-link .nav-link::after {
+  /* This targets the 'Home' link's underline */
+  width: 30%;
+}
 .dropdown-menu {
   border: none;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -650,7 +666,13 @@ body {
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
-
+.blog-button{
+  margin-top: 75px;
+}
+.img-fluid {
+  height:fit-content;
+  border-radius: 50%;
+}
 @media (max-width: 768px) {
   .section-row {
     flex-direction: column;
@@ -1105,11 +1127,17 @@ label:hover {
   font-size: 1.2rem;
   margin-bottom: 20px;
   font-weight: 600;
+  justify-content: center;
 }
-
+.col-lg-3 h5 {
+    text-align: left;
+    padding-left: 0;
+    margin-left: 0;
+}
 .footer-links {
   list-style: none;
   padding: 0;
+  text-align: left;
 }
 
 .footer-links li {
@@ -1130,6 +1158,7 @@ label:hover {
 .footer-contacts {
   list-style: none;
   padding: 0;
+  text-align: left;
 }
 
 .footer-contacts li {
@@ -1148,17 +1177,18 @@ label:hover {
 .social-icons {
   display: flex;
   gap: 15px;
+  text-align: left;
 }
 
 .social-icons a {
   width: 40px;
   height: 40px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(232, 230, 230, 0.1);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: rgb(255, 255, 255);
   transition: all 0.3s;
   text-decoration: none;
 }
@@ -1191,7 +1221,9 @@ label:hover {
   opacity: 1;
   transform: translateX(0);
 }
-
+.footer-logo{
+  margin-left: -50px;  
+}
 /* ==========================================
    RESPONSIVE STYLES FOR PEARLGUIDE WEBSITE
    Add these media queries to your existing CSS

@@ -11,6 +11,9 @@
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous"
     />
+    <!-- Add Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
       <!-- ✅ Leaflet CSS (no integrity needed) -->
       <link
         rel="stylesheet"
@@ -39,13 +42,13 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav mx-auto">
-            <li class="nav-item">
+            <li class="nav-item active-link">
               <a class="nav-link" href="#">Home</a>
             </li>
             <li class="nav-item dropdown">
               <a
-                class="nav-link dropdown-toggle"
-                href="#"
+                class="nav-link "
+                href="#destinations"
                 role="button"
                 data-bs-toggle="dropdown"
               >
@@ -59,16 +62,16 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Hotels & Restaurants</a>
+              <a class="nav-link" href="#hotels">Hotels & Restaurants</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Find a Guide</a>
+              <a class="nav-link" href="#guider">Find a Guide</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Blog/Stories</a>
+              <a class="nav-link" href="#blog">Blog/Stories</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About us</a>
+              <a class="nav-link" href="#about">About us</a>
             </li>
           </ul>
           <div class="d-flex align-items-center gap-3">
@@ -89,7 +92,7 @@
 
     <!-------------Hero section --------------->
 
-    <section class="hero-section">
+    <section class="hero-section" id="hero">
       <h1>Welcome to</h1>
       <h1>Sri Lanka</h1>
       <p>"Discover Your New Adventure."</p>
@@ -238,7 +241,7 @@
     </div>
     <!------------Destination section ------------->
 
-    <section class="destination-section animate-on-scroll">
+    <section class="destination-section animate-on-scroll" id="destinations">
       <h2>Popular Destinations</h2>
       <div class="card-group animate-on-scroll">
         <div class="col">
@@ -301,7 +304,7 @@
     </section>
 
     <!--------- Hotels and Restuarant ---------->
-    <section class="hotel-section ">
+    <section class="hotel-section " id="hotels">
       <div class="hotel-content">
         <h2>Hotels & Restaurants</h2>
         <p>
@@ -370,61 +373,62 @@
       <button class="see-more">See more</button>
     </section>
     <!------------Blog section ------------>
-    <section class="blog-guider">
+    <section class="blog-guider" >
         <div class="container">
             <div class="section-row">
-                <div class="blog-section">
+                <div class="blog-section" id="blog">
                     <div class="blog-title">
-                        <h2>Blog and Stroties </h2>
+                        <h2>Blog and Stories </h2>
                     </div>
                     
                     <div class="row row-cols-1 row-cols-md-2 g-4">
                       <div class="col">
                         <div class="card">
-                          <img src="..." class="card-img-top" alt="...">
+                          <img src="../assets/HomeAssets/Anuradhapura.jpg" class="card-img-top" alt="Anuradhapura">
                           <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <h5 class="card-title">Culture & History</h5>
+                            <h7 class="card-sub">The Ancient Kingdom of Anuradhapura: A Spiritual Journey</h7>
+                            <p class="card-text">Walk in the footsteps of ancient kings among sprawling ruins and sacred Bodhi trees.</p>
                           </div>
                         </div>
                       </div>
                       <div class="col">
                         <div class="card">
-                          <img src="..." class="card-img-top" alt="...">
+                          <img src="../assets/HomeAssets/Adams peak.jpg" class="card-img-top" alt="Adams-peak">
                           <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <h5 class="card-title">Adventure & Nature</h5>
+                            <h7 class="card-sub">Conquer Adam's Peak: A Pilgrimage Under the Stars</h7>
+                            <p class="card-text">Join the thousands who make the pre-dawn climb to the summit of Sri Pada.</p>
                           </div>
                         </div>
                       </div>
                       <div class="col">
                         <div class="card">
-                          <img src="..." class="card-img-top" alt="...">
+                          <img src="../assets/HomeAssets/Mirissa.jpg" class="card-img-top" alt="Mirissa">
                           <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                            <h5 class="card-title">Beaches & Relaxation</h5>
+                            <h7 class="card-sub">Beyond the Beach: Unwinding in Mirissa's Coastal Charm</h7>
+                            <p class="card-text">Mirissa is more than just golden sands and turquoise waters.</p>
                           </div>
                         </div>
                       </div>
                       <div class="col">
                         <div class="card">
-                          <img src="..." class="card-img-top" alt="...">
+                          <img src="../assets/HomeAssets/Anuradhpura-2.jpg" class="card-img-top" alt="Anuradhpura-2 ">
                           <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <h5 class="card-title">Scenic Travel</h5>
+                            <h7 class="card-sub">The Ancient Kingdom of Anuradhapura: A Spiritual Journey</h7>
+                            <p class="card-text">Often called the most beautiful train ride in the world, this journey is a destination in itself.</p>
                           </div>
                         </div>
                       </div>
                     </div>
-
                     <div class="blog-button">
-                        <button class="btn btn-primary custom-btn">
-                                Find More
-                        </button>
+                        <button class="explore-btn">Find more</button>
                     </div>
                 </div>
                 <!------------ Guider Section ----------->
-                <div class="Guider-section">
+                <div class="Guider-section" id="guider">
                     <div class="guider-header">
                         <h2>Find a Guider </h2>
                         <p class="guider-topic">
@@ -436,14 +440,16 @@
                             <div class="card mb-3" style="max-width: 540px;">
                               <div class="row g-0">
                                 <div class="col-md-4">
-                                  <img src="..." class="img-fluid rounded-start" alt="...">
+                                  <img src="../assets/HomeAssets/Guider-1.png" class="img-fluid rounded-start" alt="Guider-1">
                                 </div>
                                 <div class="col-md-8">
                                   <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                                    <h5 class="card-title">Ravindu Perera</h5>
+                                    <p class="card-text">Passionate about Sri Lanka's wilderness and wildlife. I'll take you to hidden waterfalls, secret hiking trails, and the best spots for leopard sightings in Yala. 15 years of experience exploring every corner of this beautiful island.</p>
+                                    <p class="card-text"><small class="text-body-secondary">Adventure & Wildlife Specialist</small></p>
+                                    
                                   </div>
+                                  
                                 </div>
                               </div>
                             </div>
@@ -451,13 +457,13 @@
                             <div class="card mb-3" style="max-width: 540px;">
                               <div class="row g-0">
                                 <div class="col-md-4">
-                                  <img src="..." class="img-fluid rounded-start" alt="...">
+                                  <img src="../assets/HomeAssets/Guider-2.png" class="img-fluid rounded-start" alt="Guider-2">
                                 </div>
                                 <div class="col-md-8">
                                   <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                                    <h5 class="card-title">Chamari Silva</h5>
+                                    <p class="card-text">Certified archaeologist and historian specializing in ancient kingdoms. I'll share untold stories of Sigiriya, Polonnaruwa, and Anuradhapura. Experience Sri Lanka's 2,500-year history through local eyes and ancient wisdom.</p>
+                                    <p class="card-text"><small class="text-body-secondary">Cultural Heritage Expert</small></p>
                                   </div>
                                 </div>
                               </div>
@@ -465,34 +471,22 @@
                             <div class="card mb-3" style="max-width: 540px;">
                               <div class="row g-0">
                                 <div class="col-md-4">
-                                  <img src="..." class="img-fluid rounded-start" alt="...">
+                                  <img src="../assets/HomeAssets/Guider-3.png" class="img-fluid rounded-start" alt="Guider-3">
                                 </div>
                                 <div class="col-md-8">
                                   <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                                    <h5 class="card-title">Nuwan Fernando</h5>
+                                    <p class="card-text">Born and raised in Mirissa, I know every secret beach, surfing spot, and snorkeling paradise along the southern coast. Let me show you where locals go for the best seafood and pristine, crowd-free beaches at sunrise.</p>
+                                    <p class="card-text"><small class="text-body-secondary">Coastal & Water Sports Guide</small></p>
                                   </div>
                                 </div>
                               </div>
                             </div>
-                            <div class="card mb-3" style="max-width: 540px;">
-                              <div class="row g-0">
-                                <div class="col-md-4">
-                                  <img src="..." class="img-fluid rounded-start" alt="...">
-                                </div>
-                                <div class="col-md-8">
-                                  <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
+                            
                         </div>
 
                     </div>
+                    <button class="explore-btn">View more</button>
                 </div>
             </div>    
         </div>    
@@ -577,7 +571,7 @@
       
     </section>
     <!---------- Contact Form  ------------->
-   <section class="contact-about-section">
+   <section class="contact-about-section" id="about">
       <div class="section-header">
             <h2>Get to Know Us</h2>
             <p>Discover our story and connect with our team</p>
@@ -643,19 +637,19 @@
         <div class="row">
           <div class="col-lg-3 col-md-6 mb-4">
             <div class="footer-logo">
-              <img src="../assets/HomeAssets/Logo.png" alt="Logo" height="60px">
+              <img src="../assets/HomeAssets/Footer-Logo-1.png" alt="Logo" height="200px" class="footer-logo">
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6 mb-4">
             <h5>Quick Links</h5>
             <ul class="footer-links">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Destinations</a></li>
-              <li><a href="#">Hotels & Restaurant</a></li>
-              <li><a href="#">Find a guide</a></li>
-              <li><a href="#">Blog / Stories</a></li>
-              <li><a href="#">Contacts</a></li>
+              <li><a href="#hero">Home</a></li>
+              <li><a href="#destinations">Destinations</a></li>
+              <li><a href="#hotels">Hotels & Restaurant</a></li>
+              <li><a href="#guider">Find a guide</a></li>
+              <li><a href="#blog">Blog / Stories</a></li>
+              <li><a href="#about">Contacts</a></li>
             </ul>
           </div>
 
