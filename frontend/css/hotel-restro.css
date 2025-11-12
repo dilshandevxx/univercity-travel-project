@@ -12,6 +12,9 @@
   padding: 15px 0;
   transition: all 0.3s;
 }
+.navbar .container {
+  max-width: 1400px; /* Adjust this value as needed */
+}
 
 .navbar.scrolled {
   background: rgba(255, 255, 255, var(--navbar-transparency));
