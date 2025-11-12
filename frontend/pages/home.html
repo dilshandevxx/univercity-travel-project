@@ -11,6 +11,18 @@
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous"
     />
+    <!-- Add Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+      <!-- ✅ Leaflet CSS (no integrity needed) -->
+      <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      />
+      <style>
+        #map { height: 500px; width: 100%; }
+        body { margin: 0; padding: 0; }
+      </style>
   </head>
   <body>
     <!--------------Navigation bar---------------->
@@ -30,13 +42,13 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav mx-auto">
-            <li class="nav-item">
+            <li class="nav-item active-link">
               <a class="nav-link" href="#">Home</a>
             </li>
             <li class="nav-item dropdown">
               <a
-                class="nav-link dropdown-toggle"
-                href="#"
+                class="nav-link "
+                href="#destinations"
                 role="button"
                 data-bs-toggle="dropdown"
               >
@@ -50,16 +62,16 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Hotels & Restaurants</a>
+              <a class="nav-link" href="#hotels">Hotels & Restaurants</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Find a Guide</a>
+              <a class="nav-link" href="#guider">Find a Guide</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Blog/Stories</a>
+              <a class="nav-link" href="#blog">Blog/Stories</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About us</a>
+              <a class="nav-link" href="#about">About us</a>
             </li>
           </ul>
           <div class="d-flex align-items-center gap-3">
@@ -80,7 +92,7 @@
 
     <!-------------Hero section --------------->
 
-    <section class="hero-section">
+    <section class="hero-section" id="hero">
       <h1>Welcome to</h1>
       <h1>Sri Lanka</h1>
       <p>"Discover Your New Adventure."</p>
@@ -89,18 +101,147 @@
 
     <!------------Map section ----------------->
 
-    <section class="map-section">
-      <div id="destination-card" class="destination-card">
-        <img id="destination-image" src="" alt="Destination" />
-        <h3 id="destination-title"></h3>
-        <p id="destination-description"></p>
-      </div>
-      <div id="map"></div>
-    </section>
+    <div class="trip-planner-section">
+        <div class="section-header">
+            <h2>Plan Your Sri Lankan Adventure</h2>
+            <p>Customize your perfect journey through the Pearl of the Indian Ocean</p>
+        </div>
+        <div class="planner-container">
+            <!-- Planning Info -->
+            <div class="planning-info">
+                <h3>Ready to Explore the Wonders of Sri Lanka?</h3>
+                <p>Let us help you create an unforgettable journey tailored to your interests and preferences. From ancient temples to pristine beaches, wildlife safaris to tea plantations, we'll craft the perfect itinerary just for you.</p>
 
+                <div class="features-list">
+                    <div class="feature-item">
+                        <div class="feature-icon">✓</div>
+                        <div class="feature-text">Personalized itineraries based on your interests</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">✓</div>
+                        <div class="feature-text">Expert recommendations for hidden gems</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">✓</div>
+                        <div class="feature-text">Flexible planning for all budgets and durations</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">✓</div>
+                        <div class="feature-text">Accommodation and transport suggestions</div>
+                    </div>
+                </div>
+
+                <button class="plan-trip-btn" id="openBtn" onclick="openModal()">Start Planning Your Trip</button>
+                
+                <!-- Popup container -->
+                <div id="popupForm" class="modal">
+                  <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Plan Your Trip</h2>
+                    <form>
+                      <div class="mb-3">
+                        <label for="fullName" class="form-label" style="color:#1e3d1f; font-weight:600;">
+                          Full Name <span class="text-danger">*</span>
+                        </label>
+                        <input type="text" class="form-control" id="fullName" placeholder="Enter your full name" required>
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="email" class="form-label" style="color:#1e3d1f; font-weight:600;">
+                          Email <span class="text-danger">*</span>
+                        </label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter your email address" required>
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="startDate" class="form-label">Start Date <span class="text-danger">*</span></label>
+                        <input type="date" class="form-control" id="startDate" required>
+                        
+                      </div>
+                      <div class="mb-3">
+                        <label for="duration" class="form-label" style="color:#1e3d1f; font-weight:600;">
+                          Duration <span class="text-danger">*</span>
+                        </label>
+                        <select class="form-select" id="duration" required>
+                          <option value="" selected>Select duration</option>
+                          <option value="3-5">3–5 Days</option>
+                          <option value="6-8">6–8 Days</option>
+                          <option value="9-12">9–12 Days</option>
+                          <option value="13+">13+ Days</option>
+                        </select>
+                      </div>
+                      <div class="mb-3">
+                        <label for="travelers" class="form-label" style="color:#1e3d1f; font-weight:600;">
+                          Travelers <span class="text-danger">*</span>
+                        </label>
+                        <select class="form-select" id="travelers" required>
+                          <option value="1" selected>1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5+">5+</option>
+                        </select>
+                      </div>
+                      <div class="mb-3">
+                        <label for="budget" class="form-label" style="color:#1e3d1f; font-weight:600;">
+                          Budget <span class="text-danger">*</span>
+                        </label>
+                        <select class="form-select" id="budget" required>
+                          <option value="" selected>Select budget</option>
+                          <option value="under1000">Under $1,000</option>
+                          <option value="1000-3000">$1,000 – $3,000</option>
+                          <option value="3000-5000">$3,000 – $5,000</option>
+                          <option value="5000+">$5,000+</option>
+                        </select>
+                      </div>
+                      <div class="mb-3">
+                        <label for="interests" class="form-label" style="color:#1e3d1f; font-weight:600;">
+                          Interests
+                        </label>
+                        <select class="form-select" id="interests">
+                          <option value="" selected>Select interests</option>
+                          <option value="adventure">Adventure</option>
+                          <option value="relaxation">Relaxation</option>
+                          <option value="culture">Culture</option>
+                          <option value="nature">Nature</option>
+                          <option value="food">Food & Wine</option>
+                        </select>
+                      </div>
+                      <div class="mb-3">
+                        <label for="requirements" class="form-label" style="color:#1e3d1f; font-weight:600;">
+                          Additional Requirements
+                        </label>
+                        <textarea class="form-control" id="requirements" rows="3"
+                          placeholder="Special requirements, dietary needs, or places you'd like to visit..."></textarea>
+                      </div>
+                      <button type="submit" class="plan-trip-btn">Submit</button>
+                    </form>
+                  </div>
+                </div>
+            </div>
+
+          <!-- Map Container -->
+            <div class="map-container">
+                <div class="map-wrapper">
+                    <div class="map-header">
+                        <h3>Explore Destinations</h3>
+                    </div>
+                    <div class="mb-3">
+                      <div class="input-group">
+                        <input type="text" class="form-control" id="search" placeholder="Search..." aria-label="Search">
+                        <button class="search-btn " type="button">Search</button>
+                      </div>
+                    </div>
+                    <!-- 🗺 Google Map Area -->
+                  <div id="map"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
     <!------------Destination section ------------->
 
-    <section class="destination-section animate-on-scroll">
+    <section class="destination-section animate-on-scroll" id="destinations">
       <h2>Popular Destinations</h2>
       <div class="card-group animate-on-scroll">
         <div class="col">
@@ -163,7 +304,7 @@
     </section>
 
     <!--------- Hotels and Restuarant ---------->
-    <section class="hotel-section ">
+    <section class="hotel-section " id="hotels">
       <div class="hotel-content">
         <h2>Hotels & Restaurants</h2>
         <p>
@@ -232,26 +373,62 @@
       <button class="see-more">See more</button>
     </section>
     <!------------Blog section ------------>
-    <section class="blog-guider">
+    <section class="blog-guider" >
         <div class="container">
             <div class="section-row">
-                <div class="blog-section">
+                <div class="blog-section" id="blog">
                     <div class="blog-title">
-                        <h2>Blog and Stroties </h2>
+                        <h2>Blog and Stories </h2>
                     </div>
                     
-                    <div class="blog-content">
-                        <p>This is a blog section </p>
+                    <div class="row row-cols-1 row-cols-md-2 g-4">
+                      <div class="col">
+                        <div class="card">
+                          <img src="../assets/HomeAssets/Anuradhapura.jpg" class="card-img-top" alt="Anuradhapura">
+                          <div class="card-body">
+                            <h5 class="card-title">Culture & History</h5>
+                            <h7 class="card-sub">The Ancient Kingdom of Anuradhapura: A Spiritual Journey</h7>
+                            <p class="card-text">Walk in the footsteps of ancient kings among sprawling ruins and sacred Bodhi trees.</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="card">
+                          <img src="../assets/HomeAssets/Adams peak.jpg" class="card-img-top" alt="Adams-peak">
+                          <div class="card-body">
+                            <h5 class="card-title">Adventure & Nature</h5>
+                            <h7 class="card-sub">Conquer Adam's Peak: A Pilgrimage Under the Stars</h7>
+                            <p class="card-text">Join the thousands who make the pre-dawn climb to the summit of Sri Pada.</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="card">
+                          <img src="../assets/HomeAssets/Mirissa.jpg" class="card-img-top" alt="Mirissa">
+                          <div class="card-body">
+                            <h5 class="card-title">Beaches & Relaxation</h5>
+                            <h7 class="card-sub">Beyond the Beach: Unwinding in Mirissa's Coastal Charm</h7>
+                            <p class="card-text">Mirissa is more than just golden sands and turquoise waters.</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="card">
+                          <img src="../assets/HomeAssets/Anuradhpura-2.jpg" class="card-img-top" alt="Anuradhpura-2 ">
+                          <div class="card-body">
+                            <h5 class="card-title">Scenic Travel</h5>
+                            <h7 class="card-sub">The Ancient Kingdom of Anuradhapura: A Spiritual Journey</h7>
+                            <p class="card-text">Often called the most beautiful train ride in the world, this journey is a destination in itself.</p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-
                     <div class="blog-button">
-                        <button class="btn btn-primary custom-btn">
-                                Find More
-                        </button>
+                        <button class="explore-btn">Find more</button>
                     </div>
                 </div>
                 <!------------ Guider Section ----------->
-                <div class="Guider-section">
+                <div class="Guider-section" id="guider">
                     <div class="guider-header">
                         <h2>Find a Guider </h2>
                         <p class="guider-topic">
@@ -260,11 +437,56 @@
                     </div>
                     <div class="expert-list">
                         <div class="expert-card">
+                            <div class="card mb-3" style="max-width: 540px;">
+                              <div class="row g-0">
+                                <div class="col-md-4">
+                                  <img src="../assets/HomeAssets/Guider-1.png" class="img-fluid rounded-start" alt="Guider-1">
+                                </div>
+                                <div class="col-md-8">
+                                  <div class="card-body">
+                                    <h5 class="card-title">Ravindu Perera</h5>
+                                    <p class="card-text">Passionate about Sri Lanka's wilderness and wildlife. I'll take you to hidden waterfalls, secret hiking trails, and the best spots for leopard sightings in Yala. 15 years of experience exploring every corner of this beautiful island.</p>
+                                    <p class="card-text"><small class="text-body-secondary">Adventure & Wildlife Specialist</small></p>
+                                    
+                                  </div>
+                                  
+                                </div>
+                              </div>
+                            </div>
                             
-
+                            <div class="card mb-3" style="max-width: 540px;">
+                              <div class="row g-0">
+                                <div class="col-md-4">
+                                  <img src="../assets/HomeAssets/Guider-2.png" class="img-fluid rounded-start" alt="Guider-2">
+                                </div>
+                                <div class="col-md-8">
+                                  <div class="card-body">
+                                    <h5 class="card-title">Chamari Silva</h5>
+                                    <p class="card-text">Certified archaeologist and historian specializing in ancient kingdoms. I'll share untold stories of Sigiriya, Polonnaruwa, and Anuradhapura. Experience Sri Lanka's 2,500-year history through local eyes and ancient wisdom.</p>
+                                    <p class="card-text"><small class="text-body-secondary">Cultural Heritage Expert</small></p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card mb-3" style="max-width: 540px;">
+                              <div class="row g-0">
+                                <div class="col-md-4">
+                                  <img src="../assets/HomeAssets/Guider-3.png" class="img-fluid rounded-start" alt="Guider-3">
+                                </div>
+                                <div class="col-md-8">
+                                  <div class="card-body">
+                                    <h5 class="card-title">Nuwan Fernando</h5>
+                                    <p class="card-text">Born and raised in Mirissa, I know every secret beach, surfing spot, and snorkeling paradise along the southern coast. Let me show you where locals go for the best seafood and pristine, crowd-free beaches at sunrise.</p>
+                                    <p class="card-text"><small class="text-body-secondary">Coastal & Water Sports Guide</small></p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            
                         </div>
 
                     </div>
+                    <button class="explore-btn">View more</button>
                 </div>
             </div>    
         </div>    
@@ -349,9 +571,65 @@
       
     </section>
     <!---------- Contact Form  ------------->
-    <section class="contact-form">
-      <h2>Contact Us</h2>
+   <section class="contact-about-section" id="about">
+      <div class="section-header">
+            <h2>Get to Know Us</h2>
+            <p>Discover our story and connect with our team</p>
+        </div>
+        <div class="content-container">
+          <!-- About Us Section -->
+            <div class="about-us-content">
+                <h3>About Pearl Guide</h3>
+                <p>We are passionate explorers and local experts dedicated to showcasing the beauty and wonder of Sri Lanka. With years of experience in the travel industry, we've helped thousands of travelers discover the hidden gems and iconic landmarks of this tropical paradise.</p>
+                
+                <p>Our mission is to create authentic, memorable experiences that go beyond typical tourist trails. We believe in sustainable tourism, supporting local communities, and preserving the natural beauty that makes Sri Lanka truly special.</p>
+            </div>
+            <!-- Contact Us Section -->
+            <div class="contact-us-content">
+                <h3>Get In Touch</h3>
+                <p>Have questions about your Sri Lankan adventure? Our friendly team is here to help you plan the perfect trip. Reach out to us through any of the channels below, and we'll respond within 24 hours.</p>
+                
+                <form>
+                  <div class="mb-3">
+                        <label for="fullName" class="form-label" style="color:#1e3d1f; font-weight:600;">
+                          Full Name <span class="text-danger">*</span>
+                        </label>
+                        <input type="text" class="form-control" id="fullName" placeholder="Enter your full name" required>
+                      </div>
+                  <div class="mb-3">
+                        <label for="email" class="form-label" style="color:#1e3d1f; font-weight:600;">
+                          Email <span class="text-danger">*</span>
+                        </label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter your email address" required>
+                      </div>
+                    <div class="mb-3">
+                        <label for="travelers" class="form-label" style="color:#1e3d1f; font-weight:600;">
+                          Subject <span class="text-danger">*</span>
+                        </label>
+                        <select class="form-select" id="subject" required>
+                          <option value="select" selected>Select a subject</option>
+                          <option value="general">General Inquiry</option>
+                          <option value="booking">Booking assistant</option>
+                          <option value="itinerary">Itinerary Planning</option>
+                          <option value="accommodation">Accommodation Query</option>
+                          <option value="transport">Transport Information</option>
+                          <option value="other">Other</option>
+                        </select>
+                      </div>  
+                      <div class="mb-3">
+                        <label for="Message" class="form-label" style="color:#1e3d1f; font-weight:600;">
+                          Message
+                        </label>
+                        <textarea class="form-control" id="message" rows="5"
+                          placeholder="Tell us how we can help you..."></textarea>
+                      </div>
+                  <button class="plan-trip-btn" id="openBtn">Submit</button>
 
+                </form>
+            </div>  
+            
+        </div>
+        
     </section>
   <!-- Footer -->
     <footer class="footer">
@@ -359,19 +637,19 @@
         <div class="row">
           <div class="col-lg-3 col-md-6 mb-4">
             <div class="footer-logo">
-              <img src="../assets/HomeAssets/Logo.png" alt="Logo" height="60px">
+              <img src="../assets/HomeAssets/Footer-Logo-1.png" alt="Logo" height="200px" class="footer-logo">
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6 mb-4">
             <h5>Quick Links</h5>
             <ul class="footer-links">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Destinations</a></li>
-              <li><a href="#">Hotels & Restaurant</a></li>
-              <li><a href="#">Find a guide</a></li>
-              <li><a href="#">Blog / Stories</a></li>
-              <li><a href="#">Contacts</a></li>
+              <li><a href="#hero">Home</a></li>
+              <li><a href="#destinations">Destinations</a></li>
+              <li><a href="#hotels">Hotels & Restaurant</a></li>
+              <li><a href="#guider">Find a guide</a></li>
+              <li><a href="#blog">Blog / Stories</a></li>
+              <li><a href="#about">Contacts</a></li>
             </ul>
           </div>
 
@@ -403,95 +681,21 @@
         </div>
       </div>
     </footer>
+      <!-- Leaflet JS -->
+      <!-- ✅ Leaflet JS (no integrity needed) -->
+      <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+      </script>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
       crossorigin="anonymous"
     ></script>
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOBm6QEzOgcmz65vAr3709cDtM3E-0Ar8&callback=initMap"
-      async
-      defer
-    ></script>
+
     <script>
-        const sriLanka = { lat: 7.8731, lng: 80.7718 };
-        const map = new google.maps.Map(document.getElementById("map"), {
-          zoom: 7,
-          center: sriLanka,
-        });
-
-
-        let currentMarker = null;
-        let selectedMarker = null;
-
-        destinations.forEach((dest) => {
-          const marker = new google.maps.Marker({
-            position: dest.position,
-            map: map,
-            title: dest.title,
-          });
-
-          marker.addListener("mouseover", () => {
-            if (selectedMarker !== marker) {
-              // Show card on left
-              document.getElementById("destination-image").src = dest.image;
-              document.getElementById("destination-title").textContent =
-                dest.title;
-              document.getElementById("destination-description").textContent =
-                dest.description;
-              document.getElementById("destination-card").style.display =
-                "flex";
-              currentMarker = marker;
-            }
-          });
-
-          marker.addListener("mouseout", () => {
-            // Hide card after a delay to allow mouse to move to card, but not if selected
-            setTimeout(() => {
-              if (currentMarker === marker && selectedMarker !== marker) {
-                document.getElementById("destination-card").style.display =
-                  "none";
-                currentMarker = null;
-              }
-            }, 100);
-          });
-
-          marker.addListener("click", () => {
-            // Select marker and keep card visible
-            selectedMarker = marker;
-            document.getElementById("destination-image").src = dest.image;
-            document.getElementById("destination-title").textContent =
-              dest.title;
-            document.getElementById("destination-description").textContent =
-              dest.description;
-            document.getElementById("destination-card").style.display = "flex";
-          });
-        });
-
-        // Keep card visible when hovering over the card itself
-        const card = document.getElementById("destination-card");
-        card.addEventListener("mouseover", () => {
-          // Keep card visible
-        });
-
-        card.addEventListener("mouseout", () => {
-          // Hide card when mouse leaves the card, but not if selected
-          setTimeout(() => {
-            if (selectedMarker === null) {
-              document.getElementById("destination-card").style.display =
-                "none";
-              currentMarker = null;
-            }
-          }, 100);
-        });
-
-        // Hide card when clicking on map (deselect)
-        map.addListener("click", () => {
-          selectedMarker = null;
-          document.getElementById("destination-card").style.display = "none";
-          currentMarker = null;
-        });
-      
+       
+        
 
       //Hotel section
       document.querySelectorAll(".hotel-card").forEach((card) => {
@@ -504,8 +708,8 @@
         });
       });
       const offcanvasElementList = document.querySelectorAll('.offcanvas')
-const offcanvasList = [...offcanvasElementList].map(offcanvasEl => new bootstrap.Offcanvas(offcanvasEl))
+      const offcanvasList = [...offcanvasElementList].map(offcanvasEl => new bootstrap.Offcanvas(offcanvasEl))
     </script>
     <script src="../js/HomeScript.js"></script>
-  </body>
+</body>
 </html>
