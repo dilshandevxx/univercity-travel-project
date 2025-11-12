@@ -367,6 +367,26 @@
   margin: 0;
   text-align: center;
 }
+/* hotel */
+.hotel-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+.hotel-card {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent; /* Base border */
+}
+
+.hotel-card.active {
+  /* Highlight the selected card with a border color like the image */
+  border: 2px solid var(--secondary-color);
+  box-shadow: 0 0 10px rgba(76, 154, 178, 0.5); /* Light glow */
+}
 
 /* Hotel Details View Styling (Right Column) */
 .city-details-view {
@@ -556,44 +576,28 @@
 }
 
 /* FOOTER  */
-.footer {
-  padding: 30px 0 15px;
-}
 
-.footer-logo img {
-  height: 50px;
-}
+/* Animation on scroll */
 
-.footer h5 {
-  font-size: 1rem;
-  margin-bottom: 15px;
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateX(-300px);
+  transition: all 1s ease-out;
+  transition-delay: 0.2s;
 }
-
-.footer-links li,
-.footer-contacts li {
-  font-size: 0.9rem;
-  margin-bottom: 8px;
-}
-
-.social-icons {
-  gap: 10px;
-  justify-content: center;
-}
-
-.social-icons a {
-  width: 32px;
-  height: 32px;
-  font-size: 14px;
-}
-
-.footer-bottom {
-  margin-top: 25px;
-  padding-top: 15px;
-}
-
-.footer-bottom p {
-  font-size: 0.85rem;
+.animate {
+  opacity: 1;
+  transform: translateX(0);
 }
 .footer-logo {
   margin-left: -50px;
+}
+/* === FOOTER === */
+.footer {
+  padding: 40px 0 20px;
+}
+
+.footer .col-lg-3,
+.footer .col-md-6 {
+  margin-bottom: 30px;
 }
