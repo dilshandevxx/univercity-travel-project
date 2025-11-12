@@ -1,23 +1,52 @@
 const cityDetails = {
+  Colombo: {
+    title: "Colombo",
+    description:
+      "Colombo is the commercial capital of Sri Lanka, offering a blend of modern high-rises and colonial architecture. It serves as the main gateway to the country.",
+    hotels: [
+      {
+        name: "Shangri-La Colombo",
+        desc: "A luxury 5-star urban sanctuary overlooking the Indian Ocean and Galle Face Green.",
+        rating: 5,
+        image: "/univercity-travel-project/frontend/assets/images/10.jpg",
+      },
+      {
+        name: "Cinnamon Grand Colombo",
+        desc: "Located in the business district, known for its extensive dining options and large pool.",
+        rating: 5,
+        image: "/univercity-travel-project/frontend/assets/images/11.jpg",
+      },
+      {
+        name: "Hilton Colombo Hotel",
+        desc: "Experience world-class hospitality in the heart of the city, perfect for business travelers.",
+        rating: 4.5,
+        image: "/univercity-travel-project/frontend/assets/images/12.jpg",
+      },
+    ],
+  },
+
   Kandy: {
     title: "Kandy",
     description:
       "Kandy, the hill country jewel, is home to the sacred Temple of the Tooth Relic, a UNESCO World Heritage site. Surrounded by misty mountains and the serene Kandy Lake, this cultural hub comes alive during the Esala Perahera festival with vibrant processions.",
     hotels: [
       {
-        name: "Earl's Regency",
-        desc: "A luxury hotel offering stunning views of the surrounding mountains and valleys.",
+        name: "The Trees, Kandy",
+        desc: "The Trees, Kandy offers a 5-star hotel experience in Kandy city center. <br>Guests enjoy a rooftop swimming pool.",
         rating: 5,
+        image: "/univercity-travel-project/frontend/assets/images/13.jpg",
       },
       {
         name: "Cinnamon Citadel Kandy",
         desc: "Set by the Mahaweli River, this hotel is known for its serene setting and exceptional service.",
         rating: 4.5,
+        image: "/univercity-travel-project/frontend/assets/images/14.jpg",
       },
       {
         name: "The Radh",
         desc: "Boutique luxury located right in the heart of Kandy city, close to the Temple of the Tooth.",
         rating: 4,
+        image: "/univercity-travel-project/frontend/assets/images/15.jpg",
       },
     ],
   },
@@ -27,7 +56,7 @@ const cityDetails = {
       "Galle, a coastal gem, is famous for its well-preserved Dutch Fort and colonial architecture. The city offers a mix of history, beaches, and boutique hotels overlooking the Indian Ocean.",
     hotels: [
       {
-        name: "Amari Galle",
+        name: "radisson blu resort",
         desc: "Boasting oceanfront suites and a spectacular rooftop bar overlooking the Indian Ocean.",
         rating: 5,
       },
@@ -58,6 +87,11 @@ const cityDetails = {
         desc: "A unique hotel built within an old tea factory atop a hill.",
         rating: 5,
       },
+      {
+        name: "The Golden Ridge Hotel",
+        desc: "A unique hotel built within an old tea factory atop a hill.",
+        rating: 4.5,
+      },
     ],
   },
   Negombo: {
@@ -73,6 +107,11 @@ const cityDetails = {
       {
         name: "Heritance Negombo",
         desc: "Offers a relaxed, sun-kissed experience with direct beach access.",
+        rating: 4,
+      },
+      {
+        name: "Camelot Beach Hotel",
+        desc: "Offers a pool bar at the beachfront pool. <br>It has an Ayurvedic spa and balcony with partial or full sea views.",
         rating: 4,
       },
     ],
@@ -92,27 +131,10 @@ const cityDetails = {
         desc: "A highly-rated eco-luxury resort built on paddy fields and marshes.",
         rating: 5,
       },
-    ],
-  },
-  Colombo: {
-    title: "Colombo",
-    description:
-      "Colombo is the commercial capital of Sri Lanka, offering a blend of modern high-rises and colonial architecture. It serves as the main gateway to the country.",
-    hotels: [
       {
-        name: "Shangri-La Colombo",
-        desc: "A luxury 5-star urban sanctuary overlooking the Indian Ocean and Galle Face Green.",
+        name: "Elephas Resort & Spa",
+        desc: "Elephas Resort & Spa in Habarana offers family rooms with air-conditioning, private bathrooms, and modern amenities.",
         rating: 5,
-      },
-      {
-        name: "Cinnamon Grand Colombo",
-        desc: "Located in the business district, known for its extensive dining options and large pool.",
-        rating: 5,
-      },
-      {
-        name: "Hilton Colombo Hotel",
-        desc: "Experience world-class hospitality in the heart of the city, perfect for business travelers.",
-        rating: 4.5,
       },
     ],
   },
@@ -148,9 +170,9 @@ function renderHotels(hotels) {
   hotels.forEach((hotel) => {
     const hotelHtml = `
             <div class="col-md-4 hotel-card">
-              <img src="/travel-website/images/hotel-placeholder.jpg" class="img-fluid rounded-3 mb-3" alt="${
-                hotel.name
-              }" />
+              <img src="${
+                hotel.image || "/travel-website/images/hotel-placeholder.jpg"
+              }" class="img-fluid rounded-3 mb-3" alt="${hotel.name}" />
               <h5 class="hotel-name">${hotel.name}</h5>
               <p class="hotel-description">${hotel.desc}</p>
               ${generateStarIcons(hotel.rating)}
