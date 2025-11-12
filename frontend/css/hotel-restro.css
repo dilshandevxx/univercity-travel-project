@@ -331,6 +331,22 @@
   object-fit: cover;
 }
 
+.city-card .card-text-colombo {
+  font-size: 1.2rem; /* Adjusted for column layout */
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 35px;
+  text-align: center;
+}
+
+.city-card .card-text-kandy {
+  font-size: 1.2rem; /* Adjusted for column layout */
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 35px;
+  text-align: center;
+}
+
 .city-card .card-body {
   /* Make the card body white/light gray like in the image */
   background-color: #f8f9fa; /* Light background for city name */
@@ -346,6 +362,7 @@
   font-weight: bold;
   color: var(--primary-color);
   margin: 0;
+  text-align: center;
 }
 
 /* Hotel Details View Styling (Right Column) */
@@ -400,6 +417,8 @@
 .btn-primary {
   background-color: var(--primary-color);
   border-color: var(--primary-color);
+  display: block;
+  margin: 20px auto;
 }
 .btn-primary:hover {
   background-color: var(--secondary-color);
