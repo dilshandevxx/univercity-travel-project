@@ -1,0 +1,116 @@
+/* 🌍 Common Styles */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  height: 100vh;
+  background: url('https://images.unsplash.com/photo-1668912321650-9c5452a1d960?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OTN8fHRyYXZlbCUyMGluJTIwc3JpbGFua2F8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=600') no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 🔹 Dark overlay on background */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+}
+
+/* 🔹 Container for text and form */
+.container, .signup-container {
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  width: 360px;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.4);
+  z-index: 1;
+}
+
+h1, h2 {
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+h1 span {
+  color: #00d4ff;
+}
+
+p {
+  margin-bottom: 20px;
+  font-size: 15px;
+  opacity: 0.9;
+}
+
+/* 🔹 Buttons */
+.btn {
+  display: inline-block;
+  background-color: #00d4ff;
+  color: #fff;
+  padding: 10px 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  margin: 5px;
+  box-shadow: 0 0 10px rgba(0,212,255,0.6);
+}
+
+.btn:hover {
+  background-color: #fff;
+  color: #00d4ff;
+  box-shadow: 0 0 15px rgba(255,255,255,0.9);
+}
+
+.btn.secondary {
+  background: transparent;
+  border: 2px solid #fff;
+}
+
+/* 🔹 Form Styles */
+input {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #00d4ff;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 0 10px rgba(0,212,255,0.5);
+}
+
+button:hover {
+  background-color: #fff;
+  color: #00d4ff;
+}
+
+/* 🔹 Links */
+a {
+  color: #00d4ff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
