@@ -227,3 +227,17 @@ cityCards.forEach((card) => {
 // Initialize with Colombo details on load (or Kandy as in the image)
 updateCityDetails("Kandy"); // Initial load based on the image's selected city
 //
+
+// gallery
+// Hotel filtering and scrolling
+const hotelLabels = document.querySelectorAll(
+  ".hotel-filter-section .top-content label"
+);
+
+hotelLabels.forEach((label) => {
+  label.addEventListener("click", () => {
+    // Scroll to the hotel filter section
+    const filterSection = document.querySelector(".hotel-filter-section");
+    filterSection.scrollIntoView({ behavior: "smooth" });
+  });
+});

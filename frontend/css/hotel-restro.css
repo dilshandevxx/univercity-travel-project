@@ -463,174 +463,7 @@
   background-color: var(--secondary-color);
   border-color: var(--secondary-color);
 }
-
-/* ------------------------------------------- */
-/* --- Removed complex overlay styles --- */
-/* The old .city-info-overlay is no longer needed */
-/* ------------------------------------------- */
-
-/* Savor the Flavors Section */
-.savor-flavors h2 {
-  color: var(--primary-color);
-  font-weight: 700;
-}
-.savor-flavors .btn-outline-primary {
-  color: var(--primary-color);
-  border-color: var(--primary-color);
-}
-.savor-flavors .btn-outline-primary:hover {
-  background-color: var(--primary-color);
-  color: white;
-}
-
-/* ////////////////////////card new add////////////////////// */
-
-/* flavor section */
-.flavor .hotel-card {
-  width: 100%; /* Take full width of its column */
-  max-width: 300px;
-}
-/* //////////////////////////////////////// */
-/* Photo Gallery */
-input {
-  display: none;
-}
-.container {
-  width: 100%;
-  text-align: center;
-  margin-bottom: 20px;
-}
-.container h2 {
-  font-weight: normal;
-  position: relative;
-  margin: 40px 0px;
-}
-.top-content {
-  background-color: rgb(173, 173, 173);
-  width: 60%;
-  margin: 0 auto 20px auto;
-  min-height: 60px;
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: s;
-  flex-wrap: wrap;
-  border-radius: 5px;
-  box-shadow: 3px 3px 5px rgb(80, 80, 80);
-}
-
-label {
-  display: inline-block;
-  height: 60px;
-  margin: 0 10px;
-  line-height: 60px;
-  font-size: 18px;
-  font-weight: 450;
-  color: rgb(50, 50, 50);
-  cursor: pointer;
-  transition: color 0.5s;
-  white-space: nowrap;
-}
-
-label:hover {
-  color: #003a76;
-}
-.photo-gallery {
-  width: 90%;
-  margin: auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-gap: 20px;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.pic {
-  position: relative;
-  height: 230px;
-  width: 100%;
-  overflow: hidden;
-  border-radius: 8px;
-  cursor: pointer;
-}
-/*
-.pic::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  bottom: 0;
-  left: 0;
-  border-radius: 10px;
-  height: 0;
-  background-color: #787878;
-  transition: 0.3s;
-}
-.pic:hover::after {
-  height: 100%;
-  opacity: 1;
-}
-.pic:hover::before {
-  margin-top: 0;
-  opacity: 1;
-}*/
-.pic img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.pic:hover img {
-  transform: scale(1.05);
-}
-
-/* Filtering Logic */
-#check1:checked ~ .container .photo-gallery .pic {
-  display: block;
-}
-
-#check2:checked ~ .container .photo-gallery .pic {
-  display: none;
-}
-
-#check2:checked ~ .container .photo-gallery .place {
-  display: block;
-}
-
-#check3:checked ~ .container .photo-gallery .pic {
-  display: none;
-}
-
-#check3:checked ~ .container .photo-gallery .nature {
-  display: block;
-}
-
-#check4:checked ~ .container .photo-gallery .pic {
-  display: none;
-}
-
-#check4:checked ~ .container .photo-gallery .culture {
-  display: block;
-}
-
-#check5:checked ~ .container .photo-gallery .pic {
-  display: none;
-}
-
-#check5:checked ~ .container .photo-gallery .food {
-  display: block;
-}
-
-/* Active label styling */
-#check1:checked ~ .container .top-content label[for="check1"],
-#check2:checked ~ .container .top-content label[for="check2"],
-#check3:checked ~ .container .top-content label[for="check3"],
-#check4:checked ~ .container .top-content label[for="check4"],
-#check5:checked ~ .container .top-content label[for="check5"] {
-  color: #003a76;
-  font-weight: 600;
-}
-/* ////////////////////////////////////// */
+/* ////////////////////hotel card hover////////////////////// */
 .hotel-section {
   /* background: url("../assets/HomeAssets/Hotel-background.jpeg") center/cover
     no-repeat; */
@@ -702,7 +535,7 @@ label:hover {
   width: 100%;
   height: 30%;
   padding: 12px;
-  background: linear-gradient(to top, rgba(212, 215, 218, 0.95), transparent);
+  background: linear-gradient(to top, rgba(218, 224, 229, 0.95), transparent);
   transition: height 0.4s ease, opacity 0.4s;
   overflow: hidden;
 }
@@ -776,7 +609,7 @@ label:hover {
 
 .review-btn {
   background: #fff;
-  color: #002855;
+  color: #d4d9e0;
   border: none;
   border-radius: 8px;
   padding: 6px 12px;
@@ -789,6 +622,160 @@ label:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(0, 89, 204, 0.4);
 }
+
+/* ////////////////////hotel card hover////////////////////// */
+/* ////////////////////////card new add////////////////////// */
+
+/* ------------------------------------------- */
+/* --- Removed complex overlay styles --- */
+
+/* Savor the Flavors Section */
+.savor-flavors h2 {
+  color: var(--primary-color);
+  font-weight: 700;
+}
+.savor-flavors .btn-outline-primary {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+.savor-flavors .btn-outline-primary:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* flavor section */
+.flavor .hotel-card {
+  width: 100%; /* Take full width of its column */
+  max-width: 300px;
+}
+.hotel-filter-section {
+  padding: 60px 0;
+  background: #f8f9fa;
+}
+
+.hotel-filter-section input[type="radio"] {
+  display: none;
+}
+
+.hotel-filter-section .top-content {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.hotel-filter-section .top-content label {
+  display: inline-block;
+  margin: 0 15px;
+  padding: 10px 20px;
+  background: #ddd;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.hotel-filter-section .top-content label:hover {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.hotel-filter-section .hotel-card-group {
+  display: flex;
+  gap: 35px;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  height: 300px;
+}
+
+.hotel-filter-section .hotel-card {
+  display: none;
+  width: 310px;
+  height: 220px;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: height 0.4s ease, transform 0.4s ease;
+}
+
+.hotel-filter-section .hotel-card img {
+  width: 100%;
+  height: 70%;
+  object-fit: cover;
+  transition: height 0.4s ease;
+}
+
+.hotel-filter-section .overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30%;
+  padding: 12px;
+  background: linear-gradient(to top, rgba(210, 213, 217, 0.95), transparent);
+  transition: height 0.4s ease, opacity 0.4s;
+  overflow: hidden;
+}
+
+.hotel-filter-section .overlay p,
+.hotel-filter-section .rating,
+.hotel-filter-section .review-btn {
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.4s ease;
+}
+
+.hotel-filter-section .hotel-card:hover {
+  height: 300px;
+  transform: translateY(-5px);
+}
+
+.hotel-filter-section .hotel-card:hover img {
+  height: 50%;
+}
+
+.hotel-filter-section .hotel-card:hover .overlay {
+  height: 68%;
+}
+
+.hotel-filter-section .hotel-card:hover .overlay p,
+.hotel-filter-section .hotel-card:hover .rating,
+.hotel-filter-section .hotel-card:hover .review-btn {
+  opacity: 1;
+  pointer-events: auto;
+  margin-top: 6px;
+}
+
+/* Show cards based on checked radio */
+#hotel-check1:checked ~ .container .hotel-card.all {
+  display: block;
+}
+
+#hotel-check2:checked ~ .container .hotel-card.colombo {
+  display: block;
+}
+
+#hotel-check3:checked ~ .container .hotel-card.negombo {
+  display: block;
+}
+
+#hotel-check4:checked ~ .container .hotel-card.galle {
+  display: block;
+}
+
+#hotel-check5:checked ~ .container .hotel-card.kandy {
+  display: block;
+}
+
+/* Highlight active label */
+#hotel-check1:checked ~ .container .top-content label[for="hotel-check1"],
+#hotel-check2:checked ~ .container .top-content label[for="hotel-check2"],
+#hotel-check3:checked ~ .container .top-content label[for="hotel-check3"],
+#hotel-check4:checked ~ .container .top-content label[for="hotel-check4"],
+#hotel-check5:checked ~ .container .top-content label[for="hotel-check5"] {
+  background: var(--secondary-color);
+  color: white;
+}
+
+/* ////////////////////////////////////// */
 
 /* flavor section */
 
