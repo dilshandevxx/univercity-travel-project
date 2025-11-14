@@ -296,6 +296,17 @@
   color: #666;
 }
 
+.places h1 {
+  margin-top: 10px;
+}
+
+.places-paragraph {
+  margin-left: 150px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-size: 20px;
+}
+
 /* ////////////////////////card new add////////////////////// */
 
 /* City Filter Card Styling (Left Column) */
@@ -381,6 +392,11 @@
   transition: all 0.3s ease;
   border: 2px solid transparent; /* Base border */
 }
+.hotel-listings {
+  display: flex;
+  justify-content: space-around; /* Evenly spaces cards horizontally */
+  flex-wrap: wrap;
+}
 
 .hotel-card.active {
   /* Highlight the selected card with a border color like the image */
@@ -447,11 +463,171 @@
   background-color: var(--secondary-color);
   border-color: var(--secondary-color);
 }
+/* ////////////////////hotel card hover////////////////////// */
+.hotel-section {
+  /* background: url("../assets/HomeAssets/Hotel-background.jpeg") center/cover
+    no-repeat; */
+  padding: 60px 50px;
+  color: #fff;
+  position: relative;
+  margin-bottom: 100px;
+}
+.hotel-content h2 {
+  color: black;
+  font-weight: bold;
+  margin-left: 30px;
+}
+.hotel-content p {
+  margin-left: 50px;
+  color: #222222;
+  font-weight: bold;
+}
+
+.hotel-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(250, 224, 224, 0.45);
+  backdrop-filter: blur(6px);
+}
+
+.hotel-content {
+  position: relative;
+  margin-bottom: 35px;
+  z-index: 2;
+  text-align: left;
+}
+
+/* Card Layout */
+.hotel-card-group {
+  display: flex;
+  gap: 35px;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  z-index: 2;
+  flex-wrap: wrap;
+  height: 300px;
+}
+
+/* Base card size SAME for all */
+.hotel-card {
+  width: 310px;
+  height: 220px;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: height 0.4s ease, transform 0.4s ease;
+}
+
+.hotel-card img {
+  width: 100%;
+  height: 70%;
+  object-fit: cover;
+  transition: height 0.4s ease;
+}
+
+/* Text Overlay */
+.overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30%;
+  padding: 12px;
+  background: linear-gradient(to top, rgba(218, 224, 229, 0.95), transparent);
+  transition: height 0.4s ease, opacity 0.4s;
+  overflow: hidden;
+}
+
+.overlay p,
+.overlay .rating,
+.overlay .review-btn {
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.4s ease;
+}
+
+/* Hover Behavior: Grow card + reveal details */
+.hotel-card:hover {
+  height: 300px;
+  transform: translateY(-5px);
+}
+
+.hotel-card:hover img {
+  height: 50%;
+}
+
+.hotel-card:hover .overlay {
+  height: 68%;
+}
+
+/* Visible on hover */
+.hotel-card:hover .overlay p,
+.hotel-card:hover .rating,
+.hotel-card:hover .review-btn {
+  opacity: 1;
+  pointer-events: auto;
+  margin-top: 6px;
+}
+
+/* See More button stays centered & moves down as layout shifts */
+/* .see-more {
+  margin: 45px auto 0;
+  display: block;
+  padding: 10px 26px;
+  border-radius: 25px;
+  border: none;
+  font-size: 14px;
+  font-weight: bold;
+  background: #003a76;
+  color: #fff;
+  position: relative;
+  z-index: 3;
+  transition: 0.3s ease;
+}
+
+.see-more:hover {
+  background: #0059cc;
+  transform: translateY(5px);
+} */
+
+/* Content text */
+.tag {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.overlay h3 {
+  margin: 2px 0;
+  font-size: 15px;
+}
+
+.rating {
+  font-size: 14px;
+}
+
+.review-btn {
+  background: #fff;
+  color: #d4d9e0;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.review-btn:hover {
+  background: #0059cc;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 89, 204, 0.4);
+}
+
+/* ////////////////////hotel card hover////////////////////// */
+/* ////////////////////////card new add////////////////////// */
 
 /* ------------------------------------------- */
 /* --- Removed complex overlay styles --- */
-/* The old .city-info-overlay is no longer needed */
-/* ------------------------------------------- */
 
 /* Savor the Flavors Section */
 .savor-flavors h2 {
@@ -467,10 +643,145 @@
   color: white;
 }
 
-/* ////////////////////////card new add////////////////////// */
+/* flavor section */
+.flavor .hotel-card {
+  width: 100%; /* Take full width of its column */
+  max-width: 300px;
+}
+.hotel-filter-section {
+  padding: 60px 0;
+  background: #f8f9fa;
+}
+
+.hotel-filter-section input[type="radio"] {
+  display: none;
+}
+
+.hotel-filter-section .top-content {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.hotel-filter-section .top-content label {
+  display: inline-block;
+  margin: 0 15px;
+  padding: 10px 20px;
+  background: #ddd;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.hotel-filter-section .top-content label:hover {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.hotel-filter-section .hotel-card-group {
+  display: flex;
+  gap: 35px;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  height: 300px;
+}
+
+.hotel-filter-section .hotel-card {
+  display: none;
+  width: 310px;
+  height: 220px;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: height 0.4s ease, transform 0.4s ease;
+}
+
+.hotel-filter-section .hotel-card img {
+  width: 100%;
+  height: 70%;
+  object-fit: cover;
+  transition: height 0.4s ease;
+}
+
+.hotel-filter-section .overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30%;
+  padding: 12px;
+  background: linear-gradient(to top, rgba(161, 167, 172, 0.95), transparent);
+  transition: height 0.4s ease, opacity 0.4s;
+  overflow: hidden;
+}
+
+.hotel-filter-section .overlay p,
+.hotel-filter-section .rating,
+.hotel-filter-section .review-btn {
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.4s ease;
+}
+
+.hotel-filter-section .hotel-card:hover {
+  height: 300px;
+  transform: translateY(-5px);
+}
+
+.hotel-filter-section .hotel-card:hover img {
+  height: 50%;
+}
+
+.hotel-filter-section .hotel-card:hover .overlay {
+  height: 68%;
+}
+
+.hotel-filter-section .hotel-card:hover .overlay p,
+.hotel-filter-section .hotel-card:hover .rating,
+.hotel-filter-section .hotel-card:hover .review-btn {
+  opacity: 1;
+  pointer-events: auto;
+  margin-top: 6px;
+}
+
+/* Show cards based on checked radio */
+#hotel-check1:checked ~ .container .hotel-card.all {
+  display: block;
+}
+
+#hotel-check2:checked ~ .container .hotel-card.colombo {
+  display: block;
+}
+
+#hotel-check3:checked ~ .container .hotel-card.negombo {
+  display: block;
+}
+
+#hotel-check4:checked ~ .container .hotel-card.galle {
+  display: block;
+}
+
+#hotel-check5:checked ~ .container .hotel-card.kandy {
+  display: block;
+}
+
+/* Highlight active label */
+#hotel-check1:checked ~ .container .top-content label[for="hotel-check1"],
+#hotel-check2:checked ~ .container .top-content label[for="hotel-check2"],
+#hotel-check3:checked ~ .container .top-content label[for="hotel-check3"],
+#hotel-check4:checked ~ .container .top-content label[for="hotel-check4"],
+#hotel-check5:checked ~ .container .top-content label[for="hotel-check5"] {
+  background: var(--secondary-color);
+  color: white;
+}
+
+/* ////////////////////////////////////// */
+
+/* flavor section */
 
 /* Footer */
 .footer {
+  margin-top: 350px;
   background: #3d3d4e;
   color: white;
   padding: 60px 0 20px;
