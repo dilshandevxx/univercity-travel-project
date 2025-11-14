@@ -180,6 +180,8 @@ function renderHotels(hotels) {
   }
 
   hotels.forEach((hotel) => {
+    console.log(`${hotel.name}: website =`, hotel.website); // Add this line
+
     const hotelHtml = `
             <div class="col-md-4 hotel-card">
               <img src="${
