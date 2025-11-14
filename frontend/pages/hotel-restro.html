@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hotels and Restuatant</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/hotel-restro.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="icon" type="image/png" href="../assets/images/PG-new.png">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="../assets/HomeAssets/Logo.png" alt="Logo" class="navbar-logo" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+              >
+                Destinations
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#byCity">By City</a></li>
+                <li>
+                  <a class="dropdown-item" href="#byCategory">By Category</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Hotels & Restaurants</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Find a Guide</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Blog/Stories</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About us</a>
+            </li>
+          </ul>
+        </div>
+        <div class="d-flex align-items-center gap-3">
+          <div class="search-box">
+            <input type="text" class="form-control" placeholder="Search" />
+            <i class="fa-solid fa-magnifying-glass" href="#"></i>
+          </div>
+          <div class="user-section">
+            <i class="fas fa-user"></i>
+            <span>User Name</span>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>
+          Hotels &<br />
+          Resturants
+        </h1>
+        <p>
+          "Rest Your Head in Paradise - Find your Perfect Stay Amidst Sri Lankan
+          Hospitality"
+        </p>
+        <div class="search-box-middle">
+          <input type="text" class="form-control" placeholder="Search hotels" />
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+      </div>
+    </section>
+    <section class="places">
+      <div class="container-fluid">
+      <h1>Discover Your Perfect Stay</h1>
+      <div class="places-paragraph">
+        <p>
+          Looking for a hotel? We make it easy.Choose your favorite Sri Lankan
+          city or landscape,and we'll show you the best palces to stay.<br />
+          Read real reviews, see prices,and book your room in just a few
+          clicks.Your jouney is waiting .
+        </p>
+      </div>
+
+      <!-- <figure class="top-figure">
+        <img
+          src="/univercity-travel-project/frontend/assets/images/4.jpeg"
+          alt=""
+        />
+      </figure> -->
+
+      <!-- ////////////////////new add///////////////////////////////////////////////////////// -->
+
+
+         <div class="row city-selection-container">
+        <div class="col-lg-4 d-flex flex-column align-items-center">
+
+            <div class="card city-card" data-city="Colombo">
+            <div class="row g-0 align-items-center">
+              <div class="col-md-5">
+                <img
+                  src="/univercity-travel-project/frontend/assets/images/4.jpeg"
+                  class="img-fluid rounded-start"
+                  alt="Colombo"
+                />
+              </div>
+              <div class="col-md-7">
+                <div class="card-body">
+                  <p class="card-text-colombo">Colombo</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card city-card active" data-city="Kandy">
+            <div class="row g-0 align-items-center">
+              <div class="col-md-5">
+                <img
+                  src="/univercity-travel-project/frontend/assets/images/5.jpeg"
+                  class="img-fluid rounded-start"
+                  alt="Kandy"
+                />
+              </div>
+              <div class="col-md-7">
+                <div class="card-body">
+                  <p class="card-text-kandy">Kandy</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card city-card" data-city="Galle">
+            <div class="row g-0 align-items-center">
+              <div class="col-md-5">
+                <img
+                  src="/univercity-travel-project/frontend/assets/images/6.jpeg"
+                  class="img-fluid rounded-start"
+                  alt="Galle"
+                />
+              </div>
+              <div class="col-md-7">
+                <div class="card-body">
+                  <p class="card-text">Galle</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card city-card" data-city="Nuwara Eliya">
+            <div class="row g-0 align-items-center">
+              <div class="col-md-5">
+                <img
+                  src="/univercity-travel-project/frontend/assets/images/7.jpeg"
+                  class="img-fluid rounded-start"
+                  alt="Nuwara Eliya"
+                />
+              </div>
+              <div class="col-md-7">
+                <div class="card-body">
+                  <p class="card-text">Nuwara Eliya</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card city-card" data-city="Negombo">
+            <div class="row g-0 align-items-center">
+              <div class="col-md-5">
+                <img
+                  src="/univercity-travel-project/frontend/assets/images/8.jpeg"
+                  class="img-fluid rounded-start"
+                  alt="Negombo"
+                />
+              </div>
+              <div class="col-md-7">
+                <div class="card-body">
+                  <p class="card-text">Negombo</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card city-card" data-city="Sigiriya">
+            <div class="row g-0 align-items-center">
+              <div class="col-md-5">
+                <img
+                  src="/univercity-travel-project/frontend/assets/images/9.jpeg"
+                  class="img-fluid rounded-start"
+                  alt="Sigiriya"
+                />
+              </div>
+              <div class="col-md-7">
+                <div class="card-body">
+                  <p class="card-text">Sigiriya</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-8 city-details-view">
+          <h2 id="city-title" class="mb-4">Colombo</h2>
+
+          <p id="city-description" class="mb-5">
+            Colombo is the commercial capital of Sri Lanka, offering a blend of
+            modern high-rises and colonial architecture. It serves as the main
+            gateway to the country.
+          </p>
+
+          <div class="row hotel-listings g-4">
+            <div class="col-md-4 hotel-card">
+              <img
+                src="/univercity-travel-project/frontend/assets/images/10.jpg"
+                class="img-fluid rounded-3 mb-3"
+                alt="Shangri-La Colombo"
+              />
+              <h5 class="hotel-name">Shangri-La Colombo</h5>
+              <p class="hotel-description">
+                Shangri-La
+              </p>
+              <div class="rating text-warning">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i>
+              </div>
+            </div>
+
+            <div class="col-md-4 hotel-card">
+              <img
+                src="/univercity-travel-project/frontend/assets/images/11.jpg"
+                class="img-fluid rounded-3 mb-3"
+                alt="Cinnamon Grand Colombo"
+              />
+              <h5 class="hotel-name">Cinnamon Grand Colombo</h5>
+              <p class="hotel-description">
+                Cinnamon Grand Colombo is a luxury 5-star hotel in the heart of
+                the city, popular with tourists and business centers.
+              </p>
+              <div class="rating text-warning">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i>
+              </div>
+            </div>
+
+            <div class="col-md-4 hotel-card">
+              <img
+                src="/univercity-travel-project/frontend/assets/images/2.jpg"
+                class="img-fluid rounded-3 mb-3"
+                alt="Hilton Colombo Hotel"
+              />
+              <h5 class="hotel-name">Hilton Colombo Hotel</h5>
+              <p class="hotel-description">
+                Experience world-class hospitality at Hilton Colombo, a landmark
+                5-star hotel in the heart of the city, perfect for business
+                travelers.
+              </p>
+              <div class="rating text-warning">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star-half-alt"></i>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-primary mt-5 px-5 py-2">See more</button>
+        </div>
+      </div>
+      </div>
+    </section>          
+
+
+
+      <!-- ////////////////////new add end///////////////////////////////////////////////////////// -->
+
+      <!-- card -->
+      
+
+      <!-- card -->
+    </section>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="footer-logo">
+              <img src="/univercity-travel-project/frontend/assets/images/Footer-Logo-1.png" alt="Logo" height="200px" class="footer-logo">
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mb-4">
+            <h5>Quick Links</h5>
+            <ul class="footer-links">
+              <li><a href="#hero">Home</a></li>
+              <li><a href="#destinations">Destinations</a></li>
+              <li><a href="#hotels">Hotels & Restaurant</a></li>
+              <li><a href="#guider">Find a guide</a></li>
+              <li><a href="#blog">Blog / Stories</a></li>
+              <li><a href="#about">Contacts</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mb-4">
+            <h5>Contacts</h5>
+            <ul class="footer-contacts">
+              <li>
+                <i class="fas fa-map-marker-alt"></i> 1234 Sample Street<br />Austin
+                Texas 78704
+              </li>
+              <li><i class="fas fa-phone"></i> 512.333.2222</li>
+              <li><i class="fas fa-envelope"></i> sampleemail@gmail.com</li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mb-4">
+            <h5>Social Media</h5>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-pinterest"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 All Rights Reserved</p>
+        </div>
+      </div>
+    </footer>
+
+     <script src="/univercity-travel-project/frontend/js/hotel-restro.js"></script>
+  </body>
+</html>
+   
