@@ -486,7 +486,151 @@
 /* ////////////////////////card new add////////////////////// */
 
 /* flavor section */
+.flavor .hotel-card {
+  width: 100%; /* Take full width of its column */
+  max-width: 300px;
+}
+/* //////////////////////////////////////// */
+/* Photo Gallery */
+input {
+  display: none;
+}
+.container {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.container h2 {
+  font-weight: normal;
+  position: relative;
+  margin: 40px 0px;
+}
+.top-content {
+  background-color: rgb(173, 173, 173);
+  width: 60%;
+  margin: 0 auto 20px auto;
+  min-height: 60px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: s;
+  flex-wrap: wrap;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px rgb(80, 80, 80);
+}
 
+label {
+  display: inline-block;
+  height: 60px;
+  margin: 0 10px;
+  line-height: 60px;
+  font-size: 18px;
+  font-weight: 450;
+  color: rgb(50, 50, 50);
+  cursor: pointer;
+  transition: color 0.5s;
+  white-space: nowrap;
+}
+
+label:hover {
+  color: #003a76;
+}
+.photo-gallery {
+  width: 90%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 20px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.pic {
+  position: relative;
+  height: 230px;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+  cursor: pointer;
+}
+/*
+.pic::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  border-radius: 10px;
+  height: 0;
+  background-color: #787878;
+  transition: 0.3s;
+}
+.pic:hover::after {
+  height: 100%;
+  opacity: 1;
+}
+.pic:hover::before {
+  margin-top: 0;
+  opacity: 1;
+}*/
+.pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pic:hover img {
+  transform: scale(1.05);
+}
+
+/* Filtering Logic */
+#check1:checked ~ .container .photo-gallery .pic {
+  display: block;
+}
+
+#check2:checked ~ .container .photo-gallery .pic {
+  display: none;
+}
+
+#check2:checked ~ .container .photo-gallery .place {
+  display: block;
+}
+
+#check3:checked ~ .container .photo-gallery .pic {
+  display: none;
+}
+
+#check3:checked ~ .container .photo-gallery .nature {
+  display: block;
+}
+
+#check4:checked ~ .container .photo-gallery .pic {
+  display: none;
+}
+
+#check4:checked ~ .container .photo-gallery .culture {
+  display: block;
+}
+
+#check5:checked ~ .container .photo-gallery .pic {
+  display: none;
+}
+
+#check5:checked ~ .container .photo-gallery .food {
+  display: block;
+}
+
+/* Active label styling */
+#check1:checked ~ .container .top-content label[for="check1"],
+#check2:checked ~ .container .top-content label[for="check2"],
+#check3:checked ~ .container .top-content label[for="check3"],
+#check4:checked ~ .container .top-content label[for="check4"],
+#check5:checked ~ .container .top-content label[for="check5"] {
+  color: #003a76;
+  font-weight: 600;
+}
+/* ////////////////////////////////////// */
 .hotel-section {
   /* background: url("../assets/HomeAssets/Hotel-background.jpeg") center/cover
     no-repeat; */
@@ -650,6 +794,7 @@
 
 /* Footer */
 .footer {
+  margin-top: 350px;
   background: #3d3d4e;
   color: white;
   padding: 60px 0 20px;
