@@ -963,12 +963,13 @@
     font-size: 1rem; /* Smaller text */
   }
   .hotel-filter-section .hotel-card-group {
-    flex-direction: column; /* Stack vertically */
+    display: flex;
+    flex-direction: column; /* Force vertical stacking */
     align-items: center;
-    gap: 20px; /* Reduce gap */
+    gap: 20px; /* Space between cards */
   }
   .hotel-filter-section .hotel-card {
-    width: 90%; /* Full width in column */
+    width: 100%; /* Full width for each card */
     max-width: 350px; /* Limit max */
     height: 200px; /* Shorter height */
   }
@@ -976,7 +977,7 @@
     height: 60%; /* Adjust proportion */
   }
   .footer {
-    margin-top: 150px; /* Reduce margin */
+    margin-top: 50px; /* Reduce to allow footer to move down with content */
   }
 }
 
@@ -1025,7 +1026,7 @@
     height: 150px; /* Smaller logo */
   }
   .footer {
-    margin-top: 100px; /* Reduce margin */
+    margin-top: 30px; /* Further reduce for better flow */
   }
 }
 
@@ -1046,6 +1047,38 @@
     width: 150px; /* As existing */
   }
   .footer {
-    margin-top: 50px; /* Minimal */
+    margin-top: 20px; /* Minimal to prevent overlap */
+  }
+}
+/* /////////////////////// */
+
+@media (max-width: 992px) {
+  .hotel-filter-section .hotel-card-group {
+    display: flex !important;
+    flex-direction: column !important; /* Force vertical stacking */
+    align-items: center;
+    gap: 15px; /* Space between stacked cards */
+  }
+  .hotel-filter-section .hotel-card {
+    width: 100% !important; /* Full width for each card */
+    max-width: 400px; /* Reasonable max to prevent too wide */
+  }
+  .footer {
+    margin-top: 40px !important; /* Reduce margin to push footer down with content */
+  }
+}
+
+@media (max-width: 768px) {
+  .hotel-filter-section .hotel-card-group {
+    gap: 10px; /* Tighter spacing */
+  }
+  .footer {
+    margin-top: 25px !important; /* Further reduce */
+  }
+}
+
+@media (max-width: 576px) {
+  .footer {
+    margin-top: 15px !important; /* Minimal to avoid overlap */
   }
 }
