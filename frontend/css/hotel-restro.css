@@ -299,6 +299,7 @@
 
 .places h1 {
   margin-top: 40px;
+  margin-left: 420px;
 }
 
 .places-paragraph {
@@ -777,9 +778,10 @@
 
 .flavor h1 {
   margin-top: 30px;
+  margin-left: 50px;
 }
 .flavor .discription {
-  margin-left: 150px;
+  margin-left: 350px;
   margin-top: 30px;
   margin-bottom: 15px;
   font-size: 20px;
