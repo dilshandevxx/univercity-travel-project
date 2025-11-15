@@ -1,16 +1,12 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const path = require("path");
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "../", "frontend")));
 
 app.get("/", (req, res) => {
-  res.sendFile(
-    path.join(__dirname, "../", "frontend", "pages", "start-page.html")
-  );
+  res.send("Backend server running ");
 });
 
 const PORT = 5000;

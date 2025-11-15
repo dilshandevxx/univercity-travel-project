@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Photo Gallery - Sri Lanka Travel</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/photo-gallery.css" />
+    <link rel="icon" type="image/png" href="../assets/images/PG-new.png" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img
+            src="../assets/HomeAssets/Logo.png"
+            alt="Logo"
+            class="navbar-logo"
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="home.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="destination.html">Destinations</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="hotel-restro.html"
+                >Hotels & Restaurants</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Find a Guide</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="blog-story.html">Blog/Stories</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="photo-gallery.html"
+                >Photo Gallery</a
+              >
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#">About us</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-overlay">
+        <div class="container">
+          <div class="hero-content">
+            <h1 class="hero-title">Sri Lanka Photo Gallery</h1>
+            <p class="hero-subtitle">
+              Explore the breathtaking beauty of Sri Lanka through our curated
+              collection
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filter Buttons -->
+    <section class="filter-section">
+      <div class="container">
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="nature">Nature</button>
+          <button class="filter-btn" data-filter="culture">Culture</button>
+          <button class="filter-btn" data-filter="destinations">
+            Destinations
+          </button>
+          <button class="filter-btn" data-filter="food">Food</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Photo Gallery -->
+    <section class="gallery-section">
+      <div class="container-fluid">
+        <div class="gallery-grid">
+          <!-- Nature Photos -->
+          <div class="gallery-item nature">
+            <img
+              src="../assets/HomeAssets/PhotoGallery/Nature-1.jpg"
+              alt="Sri Lankan Nature"
+            />
+            <div class="gallery-overlay">
+              <div class="gallery-info">
+                <h3>Adam's Peak</h3>
+                <p>Sacred mountain shrouded in mist</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-item nature">
+            <img
+              src="../assets/HomeAssets/PhotoGallery/Nature-2.jpg"
+              alt="Sri Lankan Nature"
+            />
+            <div class="gallery-overlay">
+              <div class="gallery-info">
+                <h3>Yala National Park</h3>
+                <p>Wildlife sanctuary and leopard territory</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-item nature">
+            <img
+              src="../assets/HomeAssets/PhotoGallery/Nature-3.avif"
+              alt="Sri Lankan Nature"
+            />
+            <div class="gallery-overlay">
+              <div class="gallery-info">
+                <h3>Mirissa Beach</h3>
+                <p>Golden sands and turquoise waters</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Culture Photos -->
+          <div class="gallery-item culture">
+            <img
+              src="../assets/HomeAssets/PhotoGallery/Culture-1.jpg"
+              alt="Sri Lankan Culture"
+            />
+            <div class="gallery-overlay">
+              <div class="gallery-info">
+                <h3>Temple of the Tooth</h3>
+                <p>Sacred Buddhist temple in Kandy</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-item culture">
+            <img
+              src="../assets/HomeAssets/PhotoGallery/Culture-2.jpg"
+              alt="Sri Lankan Culture"
+            />
+            <div class="gallery-overlay">
+              <div class="gallery-info">
+                <h3>Traditional Dance</h3>
+                <p>Kandyan cultural performance</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-item culture">
+            <img
+              src="../assets/HomeAssets/PhotoGallery/Culture-3.jpg"
+              alt="Sri Lankan Culture"
+            />
+            <div class="gallery-overlay">
+              <div class="gallery-info">
+                <h3>Tea Plantation</h3>
+                <p>Workers in the misty hills</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Destination Photos -->
+          <div class="gallery-item destinations">
+            <img
+              src="../assets/HomeAssets/PhotoGallery/Destination-1.jpg"
+              alt="Sri Lankan Destinations"
+            />
+            <div class="gallery-overlay">
+              <div class="gallery-info">
+                <h3>Sigiriya Rock</h3>
+                <p>Ancient fortress in the sky</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-item destinations">
+            <img
+              src="../assets/HomeAssets/PhotoGallery/Destination-2.jpg"
+              alt="Sri Lankan Destinations"
+            />
+            <div class="gallery-overlay">
+              <div class="gallery-info">
+                <h3>Galle Fort</h3>
+                <p>Dutch colonial architecture</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-item destinations">
+            <img
+              src="../assets/HomeAssets/PhotoGallery/Destination-3.jpg"
+              alt="Sri Lankan Destinations"
+            />
+            <div class="gallery-overlay">
+              <div class="gallery-info">
+                <h3>Nine Arches Bridge</h3>
+                <p>Iconic railway bridge in Ella</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Food Photos -->
+          <div class="gallery-item food">
+            <img
+              src="../assets/HomeAssets/PhotoGallery/Food-1.jpg"
+              alt="Sri Lankan Food"
+            />
+            <div class="gallery-overlay">
+              <div class="gallery-info">
+                <h3>Traditional Curry</h3>
+                <p>Authentic Sri Lankan flavors</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-item food">
+            <img
+              src="../assets/HomeAssets/PhotoGallery/Food-2.jpg"
+              alt="Sri Lankan Food"
+            />
+            <div class="gallery-overlay">
+              <div class="gallery-info">
+                <h3>Fresh Seafood</h3>
+                <p>Coastal delicacies</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-item food">
+            <img
+              src="../assets/HomeAssets/PhotoGallery/Food-3.jpg"
+              alt="Sri Lankan Food"
+            />
+            <div class="gallery-overlay">
+              <div class="gallery-info">
+                <h3>Tropical Fruits</h3>
+                <p>Nature's sweet bounty</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="footer-logo">
+              <img
+                src="../assets/images/Footer-Logo-1.png"
+                alt="Logo"
+                height="200px"
+              />
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-4">
+            <h5>Quick Links</h5>
+            <ul class="footer-links">
+              <li><a href="home.html">Home</a></li>
+              <li><a href="destination.html">Destinations</a></li>
+              <li><a href="hotel-restro.html">Hotels & Restaurant</a></li>
+              <li><a href="#">Find a guide</a></li>
+              <li><a href="blog-story.html">Blog / Stories</a></li>
+              <li><a href="photo-gallery.html">Photo Gallery</a></li>
+              <li><a href="#">Contacts</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-4">
+            <h5>Contacts</h5>
+            <ul class="footer-contacts">
+              <li><i class="fas fa-map-marker-alt"></i> Sri Lanka</li>
+              <li><i class="fas fa-phone"></i> +94 11 123 4567</li>
+              <li><i class="fas fa-envelope"></i> info@srilankatravel.com</li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-4">
+            <h5>Social Media</h5>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 Sri Lanka Travel. All Rights Reserved</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Modal for full-size images -->
+    <div class="modal fade" id="imageModal" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalTitle"></h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body text-center">
+            <img id="modalImage" src="" alt="" class="img-fluid" />
+            <p id="modalDescription" class="mt-3"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/photo-gallery.js"></script>
+  </body>
+</html>
