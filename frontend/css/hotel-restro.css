@@ -627,7 +627,6 @@
 /* ////////////////////////card new add////////////////////// */
 
 /* ------------------------------------------- */
-/* --- Removed complex overlay styles --- */
 
 /* Savor the Flavors Section */
 .savor-flavors h2 {
@@ -773,6 +772,16 @@
 #hotel-check5:checked ~ .container .top-content label[for="hotel-check5"] {
   background: var(--secondary-color);
   color: white;
+}
+
+.flavor h1 {
+  margin-top: 30px;
+}
+.flavor .discription {
+  margin-left: 150px;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  font-size: 20px;
 }
 
 /* ////////////////////////////////////// */
