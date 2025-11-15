@@ -299,7 +299,6 @@
 
 .places h1 {
   margin-top: 40px;
-  margin-left: 420px;
 }
 
 .places-paragraph {
@@ -778,10 +777,9 @@
 
 .flavor h1 {
   margin-top: 30px;
-  margin-left: 50px;
 }
 .flavor .discription {
-  margin-left: 350px;
+  margin-left: 150px;
   margin-top: 30px;
   margin-bottom: 15px;
   font-size: 20px;
@@ -923,162 +921,4 @@
 .footer .col-lg-3,
 .footer .col-md-6 {
   margin-bottom: 30px;
-}
-
-/* ///////////////Responsive////////////// */
-@media (max-width: 992px) {
-  .hero-content {
-    width: 90%; /* Use percentage for responsiveness */
-    margin: 0 auto; /* Center it */
-    padding: 30px 20px; /* Add padding */
-    top: 100px; /* Adjust position */
-  }
-  .hero-content h1 {
-    font-size: 50px; /* Smaller font */
-  }
-  .hero-content p {
-    margin-left: 0; /* Remove negative margin */
-    font-size: 20px; /* Smaller font */
-    text-align: center; /* Center text */
-  }
-  .search-box-middle input {
-    width: 100%; /* Full width */
-    max-width: 400px; /* Limit max */
-  }
-  .search-box-middle i {
-    right: 10px; /* Adjust icon */
-  }
-  .city-selection-container .col-lg-4 {
-    margin-bottom: 20px; /* Space for stacking */
-  }
-  .city-card {
-    max-width: 100%; /* Full width */
-    height: auto; /* Auto height */
-    margin-bottom: 15px;
-  }
-  .city-card img {
-    height: 80px; /* Smaller image */
-  }
-  .city-card .card-text {
-    font-size: 1rem; /* Smaller text */
-  }
-  .hotel-filter-section .hotel-card-group {
-    display: flex;
-    flex-direction: column; /* Force vertical stacking */
-    align-items: center;
-    gap: 20px; /* Space between cards */
-  }
-  .hotel-filter-section .hotel-card {
-    width: 100%; /* Full width for each card */
-    max-width: 350px; /* Limit max */
-    height: 200px; /* Shorter height */
-  }
-  .hotel-filter-section .hotel-card img {
-    height: 60%; /* Adjust proportion */
-  }
-  .footer {
-    margin-top: 50px; /* Reduce to allow footer to move down with content */
-  }
-}
-
-@media (max-width: 768px) {
-  .hero-content h1 {
-    font-size: 40px;
-  }
-  .hero-content p {
-    font-size: 18px;
-  }
-  .city-details-view {
-    padding-left: 0; /* Remove padding */
-  }
-  .city-details-view h2 {
-    font-size: 1.5rem; /* Smaller title */
-  }
-  .city-details-view #city-description {
-    font-size: 0.9rem; /* Smaller desc */
-  }
-  .hotel-filter-section .hotel-card {
-    height: 180px; /* Shorter */
-  }
-  .hotel-filter-section .hotel-card img {
-    height: 55%;
-  }
-  .hotel-filter-section .overlay h3 {
-    font-size: 14px; /* Smaller title */
-  }
-  .hotel-filter-section .overlay p {
-    font-size: 12px; /* Smaller desc */
-  }
-  .hotel-filter-section .top-content label {
-    padding: 8px 15px; /* Smaller labels */
-    font-size: 14px;
-  }
-  .search-box input {
-    width: 200px; /* Larger on tablet */
-  }
-  .user-section span {
-    display: none; /* Hide text */
-  }
-  .footer .col-lg-3 {
-    text-align: center; /* Center content */
-  }
-  .footer-logo img {
-    height: 150px; /* Smaller logo */
-  }
-  .footer {
-    margin-top: 30px; /* Further reduce for better flow */
-  }
-}
-
-@media (max-width: 576px) {
-  .hero-content h1 {
-    font-size: 35px;
-  }
-  .hero-content p {
-    font-size: 16px;
-  }
-  .hotel-filter-section .hotel-card {
-    height: 160px; /* Shortest */
-  }
-  .hotel-filter-section .hotel-card img {
-    height: 50%;
-  }
-  .search-box input {
-    width: 150px; /* As existing */
-  }
-  .footer {
-    margin-top: 20px; /* Minimal to prevent overlap */
-  }
-}
-/* /////////////////////// */
-
-@media (max-width: 992px) {
-  .hotel-filter-section .hotel-card-group {
-    display: flex !important;
-    flex-direction: column !important; /* Force vertical stacking */
-    align-items: center;
-    gap: 15px; /* Space between stacked cards */
-  }
-  .hotel-filter-section .hotel-card {
-    width: 100% !important; /* Full width for each card */
-    max-width: 400px; /* Reasonable max to prevent too wide */
-  }
-  .footer {
-    margin-top: 40px !important; /* Reduce margin to push footer down with content */
-  }
-}
-
-@media (max-width: 768px) {
-  .hotel-filter-section .hotel-card-group {
-    gap: 10px; /* Tighter spacing */
-  }
-  .footer {
-    margin-top: 25px !important; /* Further reduce */
-  }
-}
-
-@media (max-width: 576px) {
-  .footer {
-    margin-top: 15px !important; /* Minimal to avoid overlap */
-  }
 }
