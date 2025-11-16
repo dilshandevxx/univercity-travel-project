@@ -26,7 +26,12 @@ section {
 }
 
 /* Or target specific sections */
-#home, #destinations, #hotels, #guider, #blog, #about {
+#home,
+#destinations,
+#hotels,
+#guider,
+#blog,
+#about {
   scroll-margin-top: 130px;
 }
 /* Navbar Styles */
@@ -666,11 +671,11 @@ section {
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
-.blog-button{
+.blog-button {
   margin-top: 75px;
 }
 .img-fluid {
-  height:fit-content;
+  height: fit-content;
   border-radius: 50%;
 }
 @media (max-width: 768px) {
@@ -985,7 +990,7 @@ label:hover {
 
 .about-us-content h3 {
   font-size: 2rem;
-  
+
   color: #2c5530;
   margin-bottom: 20px;
   line-height: 1.3;
@@ -998,7 +1003,6 @@ label:hover {
   margin-bottom: 20px;
 }
 .contact-us-content {
-  
   margin-left: 350px;
   margin-right: 350px;
   background: #f8f9fa;
@@ -1130,9 +1134,9 @@ label:hover {
   justify-content: center;
 }
 .col-lg-3 h5 {
-    text-align: left;
-    padding-left: 0;
-    margin-left: 0;
+  text-align: left;
+  padding-left: 0;
+  margin-left: 0;
 }
 .footer-links {
   list-style: none;
@@ -1221,8 +1225,8 @@ label:hover {
   opacity: 1;
   transform: translateX(0);
 }
-.footer-logo{
-  margin-left: -50px;  
+.footer-logo {
+  margin-left: -50px;
 }
 /* ==========================================
    RESPONSIVE STYLES FOR PEARLGUIDE WEBSITE
