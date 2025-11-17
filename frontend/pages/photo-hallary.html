@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PearlGuide</title>
+    <link rel="stylesheet" href="..\css\Photogallery.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!--------------Navigation bar---------------->
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="..\assets\PhotogalleryAssets\Logo.png" alt="Logo" class="navbar-logo" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+              >
+                Destinations
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#byCity">By City</a></li>
+                <li>
+                  <a class="dropdown-item" href="#byCategory">By Category</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Hotels & Restaurants</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Find a Guide</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Blog/Stories</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About us</a>
+            </li>
+          </ul>
+          <div class="d-flex align-items-center gap-3">
+            <div class="search-box">
+              <input type="text" class="form-control" placeholder="Search" />
+              <i class="fas fa-search"></i>
+            </div>
+            <div class="user-section">
+              <i class="fas fa-user"></i>
+              <span>User Name</span>
+              
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </nav>
+
+  
+    <!--  Hero Section  -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-text">
+      <h1>Photo Gallery</h1>
+      <p>Discover the breathtaking beauty of Sri Lanka</p>
+    </div>
+  </section>
+
+  <!--  Gallery Section  -->
+  <section class="gallery">
+    <h2 class="section-title">Explore Stunning Destinations</h2>
+    <div class="gallery-grid">
+      <div class="gallery-card">
+        <h3>Sigiriya</h3>
+        <img src="..\assets\PhotogalleryAssets\Sigiriya image.jpeg" alt="Sigiriya Rock Fortress">
+        <button class="view-btn">View</button>
+      </div>
+      <div class="gallery-card">
+        <h3>Ella</h3>
+        <img src="..\assets\PhotogalleryAssets\ella image.jpeg" alt="Ella Train">
+        <button class="view-btn">View</button>
+      </div>
+      <div class="gallery-card">
+        <h3>Kandy</h3>
+        <img src="..\assets\PhotogalleryAssets\Kandy image.jpeg" alt="Temple of the Tooth">
+        <button class="view-btn">View</button>
+      </div>
+      <div class="gallery-card">
+        <h3>Mirissa</h3>
+        <img src="..\assets\PhotogalleryAssets\mirissa image.jpeg" alt="Beach Sunset">
+        <button class="view-btn">View</button>
+      </div>
+      <div class="gallery-card">
+        <h3>Nuwara Eliya</h3>
+        <img src="..\assets\PhotogalleryAssets\Tea plantations image.jpeg" alt="Tea Plantations">
+        <button class="view-btn">View</button>
+      </div>
+      <div class="gallery-card">
+        <h3>Galle</h3>
+        <img src="..\assets\PhotogalleryAssets\galle fort image.jpeg" alt="Galle Fort">
+        <button class="view-btn">View</button>
+      </div>
+      <div class="gallery-card">
+        <h3>Polonnaruwa</h3>
+        <img src="..\assets\PhotogalleryAssets\polonnaruwa ruins image.jpeg" alt="Polonnaruwa Ruins">
+        <button class="view-btn">View</button>
+      </div>
+      <div class="gallery-card">
+        <h3>Knuckles Range</h3>
+        <img src="..\assets\PhotogalleryAssets\Knuckles Range image.jpeg" alt="Knuckles Range">
+        <button class="view-btn">View</button>
+      </div>
+    </div>
+  </section>
+        
+        
+        
+          
+    <!------------Blog section ------------>
+  <!-- ==== Image Upload Form Section ==== -->
+<section class="upload-section">
+    <div class="upload-container">
+        <h2>Upload New Image</h2>
+
+        <form action="upload.php" method="POST" enctype="multipart/form-data" class="upload-form">
+            <div class="input-field">
+                <label for="title">Image Title (optional)</label>
+                <input type="text" id="title" name="title" placeholder="Enter image title">
+            </div>
+
+            <div class="input-field">
+                <label for="image">Choose Image *</label>
+                <input type="file" id="image" name="image" accept="image/*" required>
+            </div>
+
+            <div class="input-field">
+                <label for="description">Description (optional)</label>
+                <textarea id="description" name="description" placeholder="Short description"></textarea>
+            </div>
+
+            <button type="submit" class="btn-upload">Upload Image</button>
+        </form>
+    </div>
+</section>
+  
+                   
+    
+         
+  
+  <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="footer-logo">
+              <img src="../assets/PhotogalleryAssets/Logo.png" alt="Logo" height="60px">
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mb-4">
+            <h5>Quick Links</h5>
+            <ul class="footer-links">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Destinations</a></li>
+              <li><a href="#">Hotels & Restaurant</a></li>
+              <li><a href="#">Find a guide</a></li>
+              <li><a href="#">Blog / Stories</a></li>
+              <li><a href="#">Contacts</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mb-4">
+            <h5>Contacts</h5>
+            <ul class="footer-contacts">
+              <li>
+                <i class="fas fa-map-marker-alt"></i> 1234 Sample Street<br />Austin
+                Texas 78704
+              </li>
+              <li><i class="fas fa-phone"></i> 512.333.2222</li>
+              <li><i class="fas fa-envelope"></i> sampleemail@gmail.com</li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mb-4">
+            <h5>Social Media</h5>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-pinterest"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 All Rights Reserved</p>
+        </div>
+      </div>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+  
+      
+    <script src="../js/Photogallery.js"></script>
+  </body>
+</html>
