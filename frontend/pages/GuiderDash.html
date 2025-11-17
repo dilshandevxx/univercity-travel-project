@@ -1,0 +1,1015 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guider Dashboard - Pearl Guide</title>
+    <link rel="stylesheet" href="../css/GuiderDash.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="brand">
+        <i class="fas fa-compass"></i>
+        <h4>Guider Dashboard</h4>
+        <h5>Pearl Guide</h5>
+      </div>
+      <nav class="nav flex-column mt-3">
+        <a class="nav-link active" href="#" onclick="showSection('dashboard')">
+          <i class="fas fa-home me-2"></i> Dashboard
+        </a>
+        <a class="nav-link" href="#" onclick="showSection('profile')">
+          <i class="fas fa-user me-2"></i> My Profile
+        </a>
+        <a class="nav-link" href="#" onclick="showSection('tours')">
+          <i class="fas fa-map-marked-alt me-2"></i> My Tours
+        </a>
+        <a class="nav-link" href="#" onclick="showSection('bookings')">
+          <i class="fas fa-calendar-check me-2"></i> Bookings
+        </a>
+        <a class="nav-link" href="#" onclick="showSection('settings')">
+          <i class="fas fa-cog me-2"></i> Settings
+        </a>
+        <a class="nav-link text-danger mt-3" href="#" onclick="logout()">
+          <i class="fas fa-sign-out-alt me-2"></i> Logout
+        </a>
+        <a class="nav-logo" href="#">
+          <img
+            src="../assets/GuiderDashboard/Footer-Logo-1.png"
+            height="100px"
+          />
+        </a>
+      </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Dashboard Section -->
+      <div id="dashboard-section">
+        <div
+          class="welcome-header d-flex align-items-center justify-content-between"
+        >
+          <div class="d-flex align-items-center">
+            <img
+              src="../assets/GuiderDashboard/nuwan.png"
+              alt="Profile"
+              class="profile-img me-3"
+            />
+            <div>
+              <h3 class="mb-1">Hi, Nuwan Perera👋</h3>
+              <p class="mb-0 opacity-75">Welcome back to your dashboard</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="row mb-4">
+          <div class="col-md-3 mb-3">
+            <div class="stat-card primary" onclick="showSection('bookings')">
+              <div class="icon">
+                <i class="fas fa-calendar-check"></i>
+              </div>
+              <h3 class="mb-0">8</h3>
+              <p class="text-muted mb-0">Upcoming Bookings</p>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <div class="stat-card info" onclick="showSection('tours')">
+              <div class="icon">
+                <i class="fas fa-map-marked-alt"></i>
+              </div>
+              <h3 class="mb-0">12</h3>
+              <p class="text-muted mb-0">Total Tours</p>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <div class="stat-card danger">
+              <div class="icon">
+                <i class="fas fa-star"></i>
+              </div>
+              <h3 class="mb-0">4.8</h3>
+              <p class="text-muted mb-0">Average Rating</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Shortcut Buttons -->
+        <h5 class="mb-3">Quick Actions</h5>
+        <div class="row mb-4">
+          <div class="col-md-4 mb-3">
+            <a
+              href="#"
+              class="shortcut-btn"
+              onclick="showAddTourForm(); return false;"
+            >
+              <i class="fas fa-plus-circle text-success"></i>
+              <div class="fw-bold">Add New Tour</div>
+            </a>
+          </div>
+          <div class="col-md-4 mb-3">
+            <a
+              href="#"
+              class="shortcut-btn"
+              onclick="showSection('bookings'); return false;"
+            >
+              <i class="fas fa-calendar-alt text-primary"></i>
+              <div class="fw-bold">View Bookings</div>
+            </a>
+          </div>
+          <div class="col-md-4 mb-3">
+            <a
+              href="#"
+              class="shortcut-btn"
+              onclick="showSection('profile'); return false;"
+            >
+              <i class="fas fa-edit text-warning"></i>
+              <div class="fw-bold">Edit Profile</div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <h5 class="mb-3">Recent Activity</h5>
+        <div class="content-card">
+          <div class="alert-item info">
+            <i class="fas fa-calendar-check me-2"></i>
+            <strong>New Booking:</strong> Dhammika Perera booked "Sigiriya Rock
+            Tour" for Nov 15
+            <small class="text-muted float-end">2 hours ago</small>
+          </div>
+          <div class="alert-item success">
+            <i class="fas fa-star me-2"></i>
+            <strong>New Review:</strong> Dayani Fernando left a 5-star review
+            <small class="text-muted float-end">1 day ago</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- My Profile Section -->
+      <div id="profile-section" style="display: none">
+        <h2 class="mb-4">My Profile</h2>
+
+        <div class="content-card">
+          <div class="row">
+            <div class="col-md-3 text-center mb-3">
+              <img
+                src="./Assets/nuwan.png"
+                alt="Profile"
+                class="rounded-circle mb-3"
+                style="width: 150px; height: 150px; object-fit: cover"
+              />
+              <button class="btn btn-sm btn-outline-primary">
+                Change Photo
+              </button>
+            </div>
+            <div class="col-md-9">
+              <h4>
+                Personal Details
+                <span class="badge badge-verified">✓ Verified</span>
+              </h4>
+              <hr />
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <label class="form-label fw-bold">Full Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="Kasun Perera"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label fw-bold">Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    value="kasun.perera@email.com"
+                  />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <label class="form-label fw-bold">Phone</label>
+                  <input
+                    type="tel"
+                    class="form-control"
+                    value="+94 77 123 4567"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label fw-bold">Location</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="Colombo, Sri Lanka"
+                  />
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label fw-bold">About Me</label>
+                <textarea class="form-control" rows="4">
+Experienced tour guide with 8+ years of experience. Passionate about showcasing Sri Lanka's rich culture and natural beauty. Specialized in cultural heritage sites and wildlife tours.</textarea
+                >
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <label class="form-label fw-bold">Languages</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="English, Sinhala, Tamil"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label fw-bold">Areas Covered</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="Colombo, Kandy, Sigiriya, Galle"
+                  />
+                </div>
+              </div>
+              <button class="btn btn-primary" onclick="saveProfile()">
+                Save Changes
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-card mt-4">
+          <h5 class="mb-3">Availability Calendar</h5>
+          <p class="text-muted">Click on days to toggle availability</p>
+          <div class="availability-calendar">
+            <div
+              class="calendar-day available"
+              onclick="toggleAvailability(this)"
+            >
+              <strong>Mon</strong><br />13
+            </div>
+            <div
+              class="calendar-day available"
+              onclick="toggleAvailability(this)"
+            >
+              <strong>Tue</strong><br />14
+            </div>
+            <div
+              class="calendar-day unavailable"
+              onclick="toggleAvailability(this)"
+            >
+              <strong>Wed</strong><br />15
+            </div>
+            <div
+              class="calendar-day available"
+              onclick="toggleAvailability(this)"
+            >
+              <strong>Thu</strong><br />16
+            </div>
+            <div
+              class="calendar-day available"
+              onclick="toggleAvailability(this)"
+            >
+              <strong>Fri</strong><br />17
+            </div>
+            <div
+              class="calendar-day unavailable"
+              onclick="toggleAvailability(this)"
+            >
+              <strong>Sat</strong><br />18
+            </div>
+            <div
+              class="calendar-day available"
+              onclick="toggleAvailability(this)"
+            >
+              <strong>Sun</strong><br />19
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- My Tours Section -->
+      <div id="tours-section" style="display: none">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h2>My Tours</h2>
+          <button class="btn btn-success" onclick="showAddTourForm()">
+            <i class="fas fa-plus me-2"></i>Add New Tour
+          </button>
+        </div>
+
+        <div class="tour-card">
+          <div class="row align-items-center">
+            <div class="col-md-2">
+              <img
+                src="https://via.placeholder.com/120"
+                alt="Tour"
+                class="tour-img"
+              />
+            </div>
+            <div class="col-md-7">
+              <h5 class="mb-1">Sigiriya Rock & Dambulla Cave Temple</h5>
+              <p class="text-muted mb-2">
+                <i class="fas fa-map-marker-alt me-2"></i>Sigiriya, Central
+                Province
+              </p>
+              <p class="mb-2">
+                Full day tour covering the iconic Sigiriya Rock Fortress and
+                ancient Dambulla Cave Temple with lunch included.
+              </p>
+              <div>
+                <span class="badge bg-info me-2">8 hours</span>
+                <span class="badge bg-success">$120 per person</span>
+              </div>
+            </div>
+            <div class="col-md-3 text-end">
+              <button
+                class="btn btn-sm btn-primary mb-2 w-100"
+                onclick="editTour()"
+              >
+                <i class="fas fa-edit me-1"></i>Edit
+              </button>
+              <button class="btn btn-sm btn-info mb-2 w-100">
+                <i class="fas fa-eye me-1"></i>View
+              </button>
+              <button
+                class="btn btn-sm btn-danger w-100"
+                onclick="deleteTour(this)"
+              >
+                <i class="fas fa-trash me-1"></i>Delete
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="tour-card">
+          <div class="row align-items-center">
+            <div class="col-md-2">
+              <img
+                src="https://via.placeholder.com/120"
+                alt="Tour"
+                class="tour-img"
+              />
+            </div>
+            <div class="col-md-7">
+              <h5 class="mb-1">Galle Fort & Southern Coast Explorer</h5>
+              <p class="text-muted mb-2">
+                <i class="fas fa-map-marker-alt me-2"></i>Galle, Southern
+                Province
+              </p>
+              <p class="mb-2">
+                Explore the historic Galle Fort, beautiful beaches, and coastal
+                villages with traditional lunch.
+              </p>
+              <div>
+                <span class="badge bg-info me-2">6 hours</span>
+                <span class="badge bg-success">$95 per person</span>
+              </div>
+            </div>
+            <div class="col-md-3 text-end">
+              <button
+                class="btn btn-sm btn-primary mb-2 w-100"
+                onclick="editTour()"
+              >
+                <i class="fas fa-edit me-1"></i>Edit
+              </button>
+              <button class="btn btn-sm btn-info mb-2 w-100">
+                <i class="fas fa-eye me-1"></i>View
+              </button>
+              <button
+                class="btn btn-sm btn-danger w-100"
+                onclick="deleteTour(this)"
+              >
+                <i class="fas fa-trash me-1"></i>Delete
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="tour-card">
+          <div class="row align-items-center">
+            <div class="col-md-2">
+              <img
+                src="https://via.placeholder.com/120"
+                alt="Tour"
+                class="tour-img"
+              />
+            </div>
+            <div class="col-md-7">
+              <h5 class="mb-1">Kandy Cultural Triangle Experience</h5>
+              <p class="text-muted mb-2">
+                <i class="fas fa-map-marker-alt me-2"></i>Kandy, Central
+                Province
+              </p>
+              <p class="mb-2">
+                Visit Temple of the Tooth, Botanical Gardens, and experience
+                traditional Kandyan dance.
+              </p>
+              <div>
+                <span class="badge bg-info me-2">5 hours</span>
+                <span class="badge bg-success">$85 per person</span>
+              </div>
+            </div>
+            <div class="col-md-3 text-end">
+              <button
+                class="btn btn-sm btn-primary mb-2 w-100"
+                onclick="editTour()"
+              >
+                <i class="fas fa-edit me-1"></i>Edit
+              </button>
+              <button class="btn btn-sm btn-info mb-2 w-100">
+                <i class="fas fa-eye me-1"></i>View
+              </button>
+              <button
+                class="btn btn-sm btn-danger w-100"
+                onclick="deleteTour(this)"
+              >
+                <i class="fas fa-trash me-1"></i>Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add Tour Form -->
+      <div id="add-tour-section" style="display: none">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h2>Add New Tour</h2>
+          <button class="btn btn-secondary" onclick="showSection('tours')">
+            <i class="fas fa-arrow-left me-2"></i>Back to Tours
+          </button>
+        </div>
+
+        <div class="content-card">
+          <div class="mb-3">
+            <label class="form-label fw-bold">Tour Title</label>
+            <input
+              type="text"
+              class="form-control"
+              id="tour-title"
+              placeholder="e.g., Sigiriya Rock & Dambulla Cave Temple"
+            />
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-bold">Description</label>
+            <textarea
+              class="form-control"
+              id="tour-description"
+              rows="4"
+              placeholder="Describe your tour in detail..."
+            ></textarea>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label class="form-label fw-bold">Location</label>
+              <input
+                type="text"
+                class="form-control"
+                id="tour-location"
+                placeholder="e.g., Sigiriya, Central Province"
+              />
+            </div>
+            <div class="col-md-3">
+              <label class="form-label fw-bold">Duration (hours)</label>
+              <input
+                type="number"
+                class="form-control"
+                id="tour-duration"
+                placeholder="8"
+              />
+            </div>
+            <div class="col-md-3">
+              <label class="form-label fw-bold">Price (USD)</label>
+              <input
+                type="number"
+                class="form-control"
+                id="tour-price"
+                placeholder="120"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-bold">Upload Photos</label>
+            <input type="file" class="form-control" multiple accept="image/*" />
+            <small class="text-muted">You can upload multiple photos</small>
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-bold">What's Included</label>
+            <textarea
+              class="form-control"
+              id="tour-included"
+              rows="3"
+              placeholder="e.g., Transportation, Lunch, Entrance fees, Water bottles"
+            ></textarea>
+          </div>
+          <div>
+            <button class="btn btn-success" onclick="saveTour()">
+              <i class="fas fa-save me-2"></i>Save Tour
+            </button>
+            <button
+              class="btn btn-secondary ms-2"
+              onclick="showSection('tours')"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bookings Section -->
+      <div id="bookings-section" style="display: none">
+        <h2 class="mb-4">Bookings</h2>
+
+        <ul class="nav nav-tabs mb-4">
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              href="#"
+              onclick="showBookingTab('upcoming'); return false;"
+              >Upcoming Bookings</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="#"
+              onclick="showBookingTab('past'); return false;"
+              >Past Bookings</a
+            >
+          </li>
+        </ul>
+
+        <div id="upcoming-bookings">
+          <div class="booking-card">
+            <div class="row align-items-center">
+              <div class="col-md-8">
+                <h5 class="mb-2">Sigiriya Rock & Dambulla Cave Temple</h5>
+                <p class="text-muted mb-1">
+                  <i class="fas fa-user me-2"></i
+                  ><strong>Traveler:</strong> John Smith (2 persons)
+                </p>
+                <p class="text-muted mb-1">
+                  <i class="fas fa-calendar me-2"></i
+                  ><strong>Date:</strong> November 15, 2025
+                </p>
+                <p class="text-muted mb-0">
+                  <i class="fas fa-clock me-2"></i><strong>Time:</strong> 8:00
+                  AM
+                </p>
+              </div>
+              <div class="col-md-4 text-end">
+                <span class="badge badge-pending mb-3">Pending</span>
+                <div>
+                  <button
+                    class="btn btn-sm btn-success me-1"
+                    onclick="acceptBooking(this)"
+                  >
+                    <i class="fas fa-check me-1"></i>Accept
+                  </button>
+                  <button
+                    class="btn btn-sm btn-danger me-1"
+                    onclick="declineBooking(this)"
+                  >
+                    <i class="fas fa-times me-1"></i>Decline
+                  </button>
+                  <button
+                    class="btn btn-sm btn-primary"
+                    onclick="showSection('messages')"
+                  >
+                    <i class="fas fa-envelope me-1"></i>Message
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="booking-card">
+            <div class="row align-items-center">
+              <div class="col-md-8">
+                <h5 class="mb-2">Galle Fort & Southern Coast Explorer</h5>
+                <p class="text-muted mb-1">
+                  <i class="fas fa-user me-2"></i
+                  ><strong>Traveler:</strong> Emma Wilson (4 persons)
+                </p>
+                <p class="text-muted mb-1">
+                  <i class="fas fa-calendar me-2"></i
+                  ><strong>Date:</strong> November 18, 2025
+                </p>
+                <p class="text-muted mb-0">
+                  <i class="fas fa-clock me-2"></i><strong>Time:</strong> 9:00
+                  AM
+                </p>
+              </div>
+              <div class="col-md-4 text-end">
+                <span class="badge badge-confirmed mb-3">Confirmed</span>
+                <div>
+                  <button class="btn btn-sm btn-info me-1">
+                    <i class="fas fa-eye me-1"></i>View Details
+                  </button>
+                  <button
+                    class="btn btn-sm btn-primary"
+                    onclick="showSection('messages')"
+                  >
+                    <i class="fas fa-envelope me-1"></i>Message
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="booking-card">
+            <div class="row align-items-center">
+              <div class="col-md-8">
+                <h5 class="mb-2">Kandy Cultural Triangle Experience</h5>
+                <p class="text-muted mb-1">
+                  <i class="fas fa-user me-2"></i
+                  ><strong>Traveler:</strong> Michael Brown (3 persons)
+                </p>
+                <p class="text-muted mb-1">
+                  <i class="fas fa-calendar me-2"></i
+                  ><strong>Date:</strong> November 20, 2025
+                </p>
+                <p class="text-muted mb-0">
+                  <i class="fas fa-clock me-2"></i><strong>Time:</strong> 7:30
+                  AM
+                </p>
+              </div>
+              <div class="col-md-4 text-end">
+                <span class="badge badge-confirmed mb-3">Confirmed</span>
+                <div>
+                  <button class="btn btn-sm btn-info me-1">
+                    <i class="fas fa-eye me-1"></i>View Details
+                  </button>
+                  <button
+                    class="btn btn-sm btn-primary"
+                    onclick="showSection('messages')"
+                  >
+                    <i class="fas fa-envelope me-1"></i>Message
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="past-bookings" style="display: none">
+          <div class="booking-card">
+            <div class="row align-items-center">
+              <div class="col-md-8">
+                <h5 class="mb-2">Yala National Park Safari</h5>
+                <p class="text-muted mb-1">
+                  <i class="fas fa-user me-2"></i
+                  ><strong>Traveler:</strong> Sarah Johnson (2 persons)
+                </p>
+                <p class="text-muted mb-1">
+                  <i class="fas fa-calendar me-2"></i
+                  ><strong>Date:</strong> October 28, 2025
+                </p>
+                <p class="text-muted mb-0">
+                  <i class="fas fa-star me-2 text-warning"></i
+                  ><strong>Rating:</strong> 5.0 ⭐⭐⭐⭐⭐
+                </p>
+              </div>
+              <div class="col-md-4 text-end">
+                <span class="badge badge-completed mb-3">Completed</span>
+                <div>
+                  <button class="btn btn-sm btn-info">
+                    <i class="fas fa-eye me-1"></i>View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="booking-card">
+            <div class="row align-items-center">
+              <div class="col-md-8">
+                <h5 class="mb-2">Colombo City Tour</h5>
+                <p class="text-muted mb-1">
+                  <i class="fas fa-user me-2"></i
+                  ><strong>Traveler:</strong> David Chen (5 persons)
+                </p>
+                <p class="text-muted mb-1">
+                  <i class="fas fa-calendar me-2"></i
+                  ><strong>Date:</strong> October 22, 2025
+                </p>
+                <p class="text-muted mb-0">
+                  <i class="fas fa-star me-2 text-warning"></i
+                  ><strong>Rating:</strong> 4.8 ⭐⭐⭐⭐
+                </p>
+              </div>
+              <div class="col-md-4 text-end">
+                <span class="badge badge-completed mb-3">Completed</span>
+                <div>
+                  <button class="btn btn-sm btn-info">
+                    <i class="fas fa-eye me-1"></i>View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="booking-card">
+            <div class="row align-items-center">
+              <div class="col-md-8">
+                <h5 class="mb-2">Ella Hiking Adventure</h5>
+                <p class="text-muted mb-1">
+                  <i class="fas fa-user me-2"></i
+                  ><strong>Traveler:</strong> Lisa Anderson (1 person)
+                </p>
+                <p class="text-muted mb-1">
+                  <i class="fas fa-calendar me-2"></i
+                  ><strong>Date:</strong> October 10, 2025
+                </p>
+                <p class="text-muted mb-0">
+                  <i class="fas fa-times-circle me-2 text-danger"></i
+                  ><strong>Status:</strong> Cancelled by traveler
+                </p>
+              </div>
+              <div class="col-md-4 text-end">
+                <span class="badge badge-cancelled mb-3">Cancelled</span>
+                <div>
+                  <button class="btn btn-sm btn-info">
+                    <i class="fas fa-eye me-1"></i>View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Messages Section 
+      <div id="messages-section" style="display: none">
+        <h2 class="mb-4">Messages</h2>
+
+        <div class="chat-container">
+          <div class="chat-list">
+            <div class="p-3 border-bottom">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Search messages..."
+              />
+            </div>
+            <div class="message-card unread" onclick="selectChat('John Smith')">
+              <div class="d-flex align-items-center">
+                <img
+                  src="https://via.placeholder.com/40"
+                  class="rounded-circle me-2"
+                  alt="User"
+                />
+                <div class="flex-grow-1">
+                  <strong>John Smith</strong>
+                  <p class="mb-0 text-muted small">
+                    What time should we start the tour?
+                  </p>
+                </div>
+                <span class="badge bg-primary">2</span>
+              </div>
+              <small class="text-muted">10 min ago</small>
+            </div>
+            <div class="message-card" onclick="selectChat('Emma Wilson')">
+              <div class="d-flex align-items-center">
+                <img
+                  src="https://via.placeholder.com/40"
+                  class="rounded-circle me-2"
+                  alt="User"
+                />
+                <div class="flex-grow-1">
+                  <strong>Emma Wilson</strong>
+                  <p class="mb-0 text-muted small">Thank you for confirming!</p>
+                </div>
+              </div>
+              <small class="text-muted">2 hours ago</small>
+            </div>
+            <div
+              class="message-card unread"
+              onclick="selectChat('Michael Brown')"
+            >
+              <div class="d-flex align-items-center">
+                <img
+                  src="https://via.placeholder.com/40"
+                  class="rounded-circle me-2"
+                  alt="User"
+                />
+                <div class="flex-grow-1">
+                  <strong>Michael Brown</strong>
+                  <p class="mb-0 text-muted small">
+                    Can we add one more person?
+                  </p>
+                </div>
+                <span class="badge bg-primary">1</span>
+              </div>
+              <small class="text-muted">3 hours ago</small>
+            </div>
+            <div class="message-card" onclick="selectChat('Sarah Johnson')">
+              <div class="d-flex align-items-center">
+                <img
+                  src="https://via.placeholder.com/40"
+                  class="rounded-circle me-2"
+                  alt="User"
+                />
+                <div class="flex-grow-1">
+                  <strong>Sarah Johnson</strong>
+                  <p class="mb-0 text-muted small">The tour was amazing!</p>
+                </div>
+              </div>
+              <small class="text-muted">1 day ago</small>
+            </div>
+          </div>
+
+          <div class="chat-window">
+            <div class="chat-header">
+              <div class="d-flex align-items-center">
+                <img
+                  src="https://via.placeholder.com/40"
+                  class="rounded-circle me-2"
+                  alt="User"
+                />
+                <div>
+                  <strong id="chat-name">John Smith</strong>
+                  <p class="mb-0 text-muted small">Active now</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="chat-messages" id="chat-messages">
+              <div class="message-bubble received">
+                Hi Kasun! I'm excited about the Sigiriya tour.
+                <div class="small text-muted mt-1">9:30 AM</div>
+              </div>
+              <div class="message-bubble sent">
+                Hello John! I'm excited too. It's going to be a great
+                experience!
+                <div class="small mt-1" style="opacity: 0.8">9:32 AM</div>
+              </div>
+              <div class="message-bubble received">
+                What time should we start the tour?
+                <div class="small text-muted mt-1">9:45 AM</div>
+              </div>
+            </div>
+
+            <div class="chat-input-area">
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="message-input"
+                  placeholder="Type your message..."
+                  onkeypress="if(event.key==='Enter') sendMessage()"
+                />
+                <button class="btn btn-primary" onclick="sendMessage()">
+                  <i class="fas fa-paper-plane"></i> Send
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- Settings Section -->
+      <div id="settings-section" style="display: none">
+        <h2 class="mb-4">Settings</h2>
+
+        <div class="content-card">
+          <h5 class="mb-3">Account Settings</h5>
+          <hr />
+          <div class="mb-4">
+            <h6>Change Password</h6>
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label class="form-label">Current Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  placeholder="Enter current password"
+                />
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label class="form-label">New Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  placeholder="Enter new password"
+                />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Confirm New Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  placeholder="Confirm new password"
+                />
+              </div>
+            </div>
+            <button class="btn btn-primary" onclick="changePassword()">
+              Update Password
+            </button>
+          </div>
+
+          <hr />
+
+          <div class="mb-4">
+            <h6>Notification Preferences</h6>
+            <div class="form-check mb-2">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="notif1"
+                checked
+              />
+              <label class="form-check-label" for="notif1">
+                Email notifications for new bookings
+              </label>
+            </div>
+            <div class="form-check mb-2">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="notif2"
+                checked
+              />
+              <label class="form-check-label" for="notif2">
+                Email notifications for new messages
+              </label>
+            </div>
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" id="notif3" />
+              <label class="form-check-label" for="notif3">
+                SMS notifications for urgent updates
+              </label>
+            </div>
+            <div class="form-check mb-3">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="notif4"
+                checked
+              />
+              <label class="form-check-label" for="notif4">
+                Weekly summary emails
+              </label>
+            </div>
+            <button class="btn btn-primary" onclick="saveNotifications()">
+              Save Preferences
+            </button>
+          </div>
+
+          <hr />
+
+          <div class="mb-4">
+            <h6>Language & Region</h6>
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label class="form-label">Language</label>
+                <select class="form-select">
+                  <option selected>English</option>
+                  <option>Sinhala</option>
+                  <option>Tamil</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Currency</label>
+                <select class="form-select">
+                  <option>USD ($)</option>
+                  <option selected>LKR (Rs)</option>
+                  <option>EUR (€)</option>
+                  <option>GBP (£)</option>
+                </select>
+              </div>
+            </div>
+            <button class="btn btn-primary">Save Changes</button>
+          </div>
+
+          <hr />
+
+          <div>
+            <h6 class="text-danger">Danger Zone</h6>
+            <p class="text-muted">
+              These actions are permanent and cannot be undone.
+            </p>
+            <button
+              class="btn btn-outline-warning me-2"
+              onclick="deactivateAccount()"
+            >
+              <i class="fas fa-pause-circle me-1"></i>Deactivate Account
+            </button>
+            <button class="btn btn-outline-danger" onclick="deleteAccount()">
+              <i class="fas fa-trash me-1"></i>Delete Account
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../js/GuiderDash.js"></script>
+  </body>
+</html>
