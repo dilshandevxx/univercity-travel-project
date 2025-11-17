@@ -1,11 +1,32 @@
+// ========================================
+// NEW JAVASCRIPT FUNCTIONS ADDED
+// ========================================
+
+// NEW FUNCTION: Show profile detail view when "Book me" is clicked from card
+function showProfile() {
+  document.getElementById("cardView").style.display = "none"; // Hide the cards view
+  document.getElementById("profileView").style.display = "block"; // Show the profile detail view
+  window.scrollTo(0, 0); // Scroll to top of page
+}
+
+// NEW FUNCTION: Go back to cards view when "Back" button is clicked
+function showCards() {
+  document.getElementById("profileView").style.display = "none"; // Hide the profile detail view
+  document.getElementById("cardView").style.display = "block"; // Show the cards view
+  window.scrollTo(0, 0); // Scroll to top of page
+}
+
+// Function to open booking popup (same as before)
 function bookNow() {
   document.getElementById("bookingPopup").classList.add("active");
 }
 
+// Function to open contact popup (same as before)
 function contactMe() {
   document.getElementById("contactPopup").classList.add("active");
 }
 
+// Function to close popups (same as before)
 function closePopup(popupId) {
   document.getElementById(popupId).classList.remove("active");
 }
@@ -51,50 +72,4 @@ document.getElementById("bookingForm").addEventListener("submit", (e) => {
     document.getElementById("bookingSuccess").classList.remove("show");
     closePopup("bookingPopup");
   }, 3000);
-});
-
-// Handle contact form submission
-document.getElementById("contactForm").addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  const formData = {
-    name: document.getElementById("contactName").value,
-    email: document.getElementById("contactEmail").value,
-    phone: document.getElementById("contactPhone").value,
-    subject: document.getElementById("contactSubject").value,
-    message: document.getElementById("contactMessage").value,
-  };
-
-  console.log("Contact Data:", formData);
-
-  document.getElementById("contactSuccess").classList.add("show");
-  document.getElementById("contactForm").reset();
-
-  setTimeout(() => {
-    document.getElementById("contactSuccess").classList.remove("show");
-    closePopup("contactPopup");
-  }, 3000);
-});
-
-// Add smooth scroll behavior
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute("href"));
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth" });
-    }
-  });
-});
-
-// Add entrance animations
-window.addEventListener("load", () => {
-  const profileCard = document.querySelector(".profile-card");
-  if (profileCard) {
-    profileCard.style.opacity = "0";
-    setTimeout(() => {
-      profileCard.style.transition = "opacity 0.6s ease";
-      profileCard.style.opacity = "1";
-    }, 100);
-  }
 });

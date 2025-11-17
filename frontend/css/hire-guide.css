@@ -21,6 +21,29 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
+/* /////////////////////// */
+.navbar .search-box input {
+  width: 200px;
+}
+
+@media (max-width: 1200px) {
+  .navbar .search-box input {
+    width: 150px;
+  }
+}
+
+.navbar .user-section span {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .navbar .user-section span {
+    display: inline;
+  }
+}
+
+/* /////////////////////// */
+
 /* WITH THIS */
 .navbar-brand {
   display: flex;
@@ -156,91 +179,39 @@
 .user-section:hover {
   color: var(--secondary-color);
 }
-/* ///////////head///////// */
-.main-des {
-  margin: 0 auto;
-  background: white;
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  margin-top: 50px;
-  max-width: 800px;
-}
-.welcome-title {
-  margin: 0 auto;
-  font-size: 36px;
-  font-weight: 700;
-  color: #333;
-  margin-bottom: 20px;
-  text-align: center;
-}
 
-/* //////////guiders////////////////// */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: #f5f5f5;
-  min-height: 100vh;
+/* Card View Styles */
+#cardView {
   padding: 40px 20px;
-  margin-top: 30px;
+  margin-top: 80px;
 }
 
-.container {
+.card-container {
   max-width: 1400px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 360px 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
   gap: 40px;
-  align-items: start;
 }
 
 .profile-card {
+  max-width: 500px;
+  margin: 20px auto;
   background: white;
   border-radius: 16px;
-  padding: 90px;
+  padding: 30px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  margin-top: 20px;
-}
-.profile-card {
-  padding: 15px; /* Reduced from 40px */
+  transition: transform 0.3s ease;
 }
 
-.profile-image {
-  width: 60px; /* Reduced from 80px */
-  height: 60px; /* Reduced from 80px */
-}
-
-.profile-name {
-  font-size: 24px; /* Reduced from 28px */
-}
-
-.profile-title {
-  font-size: 14px; /* Reduced from 16px */
-}
-
-.detail-item {
-  padding: 8px 0; /* Reduced from 10px 0 */
-  font-size: 13px; /* Reduced from 14px */
-}
-
-.btn {
-  padding: 12px 16px; /* Reduced from 14px 20px */
-  font-size: 14px; /* Reduced from 15px */
-}
-.hero-image {
-  /* Reduce height from 450px to 350px for a shorter image */
-  height: 350px;
+.profile-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
 }
 
 .profile-header {
   display: flex;
   gap: 15px;
-  margin-top: 30px;
   margin-bottom: 20px;
   align-items: flex-start;
 }
@@ -346,90 +317,6 @@ body {
   color: #333;
 }
 
-.hero-image {
-  width: 300px;
-  height: 450px;
-  border-radius: 12px;
-  overflow: hidden;
-  margin-bottom: 30px;
-  margin-left: 500px;
-}
-
-.hero-image img {
-  width: 300px;
-  height: 400px;
-  object-fit: cover;
-}
-
-/* /////////// */
-.content-section {
-  margin-top: 50px;
-  max-width: 800px;
-  max-height: 100px;
-}
-/* /////////// */
-
-.description {
-  color: #666;
-  font-size: 15px;
-  line-height: 1.7;
-  margin-bottom: 16px;
-}
-
-@media (max-width: 1024px) {
-  .container {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 768px) {
-  .content-section {
-    padding: 25px;
-  }
-
-  .welcome-title {
-    font-size: 28px;
-  }
-
-  .hero-image {
-    height: 300px;
-  }
-
-  .profile-header {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .profile-image {
-    width: 90px;
-    height: 90px;
-  }
-}
-/* //////////////////////////////////////////////////////////////////////////////////////// */
-
-/* Popup Overlay */
-* {
-  margin-top: 0;
-  padding-top: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: #f5f5f5;
-  padding: 20px;
-}
-
-.profile-card {
-  max-width: 500px;
-  margin: 20px auto;
-  background: white;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
 .action-buttons {
   display: flex;
   gap: 12px;
@@ -441,7 +328,7 @@ body {
   padding: 14px 20px;
   border: none;
   border-radius: 8px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -468,7 +355,91 @@ body {
   background: #fce4ec;
 }
 
-/* Popup Overlay */
+/* ========================================
+         NEW CSS: Profile Detail View Styles
+         Controls the detailed profile section
+         ======================================== */
+
+#profileView {
+  display: none; /* NEW: Hidden by default, shown via JavaScript */
+  padding: 40px 20px;
+  margin-top: 80px;
+}
+
+.main-des {
+  margin: 0 auto;
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 30px;
+  max-width: 1400px;
+}
+
+.welcome-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+}
+
+/* NEW CSS: Back button styling */
+.back-btn {
+  background: #4c9ab2;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background: #0d3252;
+  transform: translateY(-1px);
+}
+
+.detail-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.content-section {
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.description {
+  color: #666;
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.details dl {
+  margin-top: 30px;
+}
+
+.details dt {
+  font-weight: 600;
+  color: #333;
+}
+
+.details dd {
+  color: #666;
+  margin-bottom: 15px;
+}
+
+/* Popup Styles */
 .popup-overlay {
   display: none;
   position: fixed;
@@ -497,7 +468,6 @@ body {
   }
 }
 
-/* Popup Form */
 .popup-form {
   background: #fff;
   padding: 40px;
@@ -614,4 +584,29 @@ body {
   animation: fadeIn 0.3s ease;
 }
 
-/* /////////////////////////////////////////////////////////////////////////////////////////// */
+/* Hide/Show classes */
+.hidden {
+  display: none !important;
+}
+
+@media (max-width: 1024px) {
+  .detail-container {
+    grid-template-columns: 1fr;
+  }
+
+  .card-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .welcome-title {
+    font-size: 28px;
+  }
+}
