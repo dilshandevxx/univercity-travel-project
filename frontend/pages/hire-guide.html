@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guide Profiles</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/hire-guide.css" />
+  </head>
+  <body>
+    <!-- /////////////////////////nav bar/////////////////////// -->
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img
+            src="../assets/HomeAssets/Logo.png"
+            alt="Logo"
+            class="navbar-logo"
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+              >
+                Destinations
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#byCity">By City</a></li>
+                <li>
+                  <a class="dropdown-item" href="#byCategory">By Category</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Hotels & Restaurants</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Find a Guide</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Blog/Stories</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About us</a>
+            </li>
+          </ul>
+        </div>
+        <div class="d-flex align-items-center gap-3">
+          <div class="search-box">
+            <input type="text" class="form-control" placeholder="Search" />
+            <i class="fa-solid fa-magnifying-glass" href="#"></i>
+          </div>
+          <div class="user-section">
+            <i class="fas fa-user"></i>
+            <span>User Name</span>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- //////////////////////////nav bar//////////////////////// -->
+    <div class="container">
+      <div id="cardView">
+        <h2>🌍 Available Local Guides</h2>
+        <div class="card-container"></div>
+      </div>
+
+      <div id="profileView">
+        <div class="main-des">
+          <h2 class="welcome-title">Hi there! Nice to meet you</h2>
+        </div>
+        <div class="back-btn-container">
+          <button class="btn btn-secondary" onclick="showCards()">
+            ← Back to Guides
+          </button>
+        </div>
+        <div class="profile-card"></div>
+        <div class="content-section"></div>
+      </div>
+    </div>
+
+    <!-- Booking Popup -->
+    <div class="popup-overlay" id="bookingPopup">
+      <div class="popup-form">
+        <button class="close-btn" onclick="closePopup('bookingPopup')">
+          &times;
+        </button>
+        <h2>Book an Appointment</h2>
+
+        <form id="bookingForm">
+          <div class="form-group">
+            <label for="bookName">Full Name *</label>
+            <input type="text" id="bookName" name="name" required />
+          </div>
+
+          <div class="form-group">
+            <label for="bookEmail">Email Address *</label>
+            <input type="email" id="bookEmail" name="email" required />
+          </div>
+
+          <div class="form-group">
+            <label for="bookPhone">Phone Number *</label>
+            <input type="tel" id="bookPhone" name="phone" required />
+          </div>
+
+          <div class="form-group">
+            <label for="bookDate">Preferred Date *</label>
+            <input type="date" id="bookDate" name="date" required />
+          </div>
+
+          <div class="form-group">
+            <label for="bookTime">Preferred Time *</label>
+            <input type="time" id="bookTime" name="time" required />
+          </div>
+
+          <div class="form-group">
+            <label for="bookService">Service Type *</label>
+            <select id="bookService" name="service" required>
+              <option value="">Select a service</option>
+              <option value="consultation">Guider</option>
+              <option value="meeting">Driver</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="bookMessage">Additional Notes</label>
+            <textarea id="bookMessage" name="message"></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">Submit Booking</button>
+
+          <div class="success-message" id="bookingSuccess">
+            Booking submitted successfully! We'll contact you soon.
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Contact Popup -->
+    <div class="popup-overlay" id="contactPopup">
+      <div class="popup-form">
+        <button class="close-btn" onclick="closePopup('contactPopup')">
+          &times;
+        </button>
+        <h2>Contact Me</h2>
+
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="contactPhone">Phone Number</label>
+            <input
+              type="tel"
+              id="contactPhone"
+              name="phone"
+              value="+94 771248963"
+              readonly
+            />
+          </div>
+
+          <button
+            type="button"
+            class="submit-btn"
+            onclick="window.location.href='tel:+94771248963'"
+          >
+            Call 📞
+          </button>
+
+          <div class="success-message" id="contactSuccess">
+            Message sent successfully! I'll get back to you soon.
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="footer-logo">
+              <img
+                src="/univercity-travel-project/frontend/assets/images/Footer-Logo-1.png"
+                alt="Logo"
+                height="200px"
+                class="footer-logo"
+              />
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mb-4">
+            <h5>Quick Links</h5>
+            <ul class="footer-links">
+              <li><a href="#hero">Home</a></li>
+              <li><a href="#destinations">Destinations</a></li>
+              <li><a href="#hotels">Hotels & Restaurant</a></li>
+              <li><a href="#guider">Find a guide</a></li>
+              <li><a href="#blog">Blog / Stories</a></li>
+              <li><a href="#about">Contacts</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mb-4">
+            <h5>Contacts</h5>
+            <ul class="footer-contacts">
+              <li>
+                <i class="fas fa-map-marker-alt"></i> 1234 Sample Street<br />Austin
+                Texas 78704
+              </li>
+              <li><i class="fas fa-phone"></i> 512.333.2222</li>
+              <li><i class="fas fa-envelope"></i> sampleemail@gmail.com</li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mb-4">
+            <h5>Social Media</h5>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-pinterest"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 All Rights Reserved</p>
+        </div>
+      </div>
+    </footer>
+    <script src="../js/hire-guide.js"></script>
+  </body>
+</html>

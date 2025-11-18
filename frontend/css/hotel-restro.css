@@ -235,7 +235,8 @@
 .hero {
   margin-top: 80px;
   height: 620px;
-  background-image: url("/univercity-travel-project/frontend/assets/images/3.jpg");
+  background-image: url(../assets/images/3.jpg);
+  /* background-image: url("/univercity-travel-project/frontend/assets/images/3.jpg"); */
   background-position: center;
   background-size: cover;
   text-align: center;
@@ -297,7 +298,7 @@
 }
 
 .places h1 {
-  margin-top: 10px;
+  margin-top: 40px;
 }
 
 .places-paragraph {
@@ -627,7 +628,6 @@
 /* ////////////////////////card new add////////////////////// */
 
 /* ------------------------------------------- */
-/* --- Removed complex overlay styles --- */
 
 /* Savor the Flavors Section */
 .savor-flavors h2 {
@@ -710,7 +710,7 @@
   width: 100%;
   height: 30%;
   padding: 12px;
-  background: linear-gradient(to top, rgba(161, 167, 172, 0.95), transparent);
+  background: linear-gradient(to top, rgba(227, 239, 249, 0.95), transparent);
   transition: height 0.4s ease, opacity 0.4s;
   overflow: hidden;
 }
@@ -773,6 +773,16 @@
 #hotel-check5:checked ~ .container .top-content label[for="hotel-check5"] {
   background: var(--secondary-color);
   color: white;
+}
+
+.flavor h1 {
+  margin-top: 30px;
+}
+.flavor .discription {
+  margin-left: 150px;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  font-size: 20px;
 }
 
 /* ////////////////////////////////////// */
