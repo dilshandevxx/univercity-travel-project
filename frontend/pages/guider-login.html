@@ -1,4 +1,4 @@
-!<!doctype html>
+!<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -75,5 +75,45 @@
         </div>
       </div>
     </div>
+    <script>
+      // Guider login - call backend and redirect to Guider Dashboard
+      document.addEventListener("DOMContentLoaded", function () {
+        const emailInput = document.getElementById("email");
+        const passwordInput = document.getElementById("password");
+        const btn = document.querySelector(".btn.btn-primary.w-100");
+
+        if (!emailInput || !passwordInput || !btn) return;
+
+        btn.addEventListener("click", async function (e) {
+          e.preventDefault();
+          const email = emailInput.value.trim();
+          const password = passwordInput.value;
+
+          if (!email || !password) {
+            alert("Please enter email and password");
+            return;
+          }
+
+          try {
+            const res = await fetch("/api/auth/login", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                emailOrUsername: email,
+                password,
+              }),
+            });
+            const data = await res.json();
+            if (!res.ok || !data.success)
+              throw new Error(data.message || "Login failed");
+            if (data.token) localStorage.setItem("token", data.token);
+            // Ensure guider lands on GuiderDash, backend already returns it for guider role
+            window.location.href = data.redirect || "/pages/GuiderDash.html";
+          } catch (err) {
+            alert(err.message || "An error occurred");
+          }
+        });
+      });
+    </script>
   </body>
 </html>

@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -224,7 +224,7 @@
       </form>
       <div class="register-link">
         Already have an account?
-        <a href="./guider-login.html">login</a>
+        <a href="/pages/guider-login.html">login</a>
       </div>
     </div>
 
@@ -237,6 +237,56 @@
         document.getElementById("step2").style.display = "none";
         document.getElementById("step1").style.display = "block";
       }
+
+      // Handle Guider registration submit -> backend -> redirect to GuiderDash
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector("form");
+        if (!form) return;
+
+        form.addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          const fullName = document.getElementById("fullname")?.value?.trim();
+          const email = document.getElementById("email")?.value?.trim();
+          const password = document.getElementById("password")?.value || "";
+          const confirm =
+            document.getElementById("confirm-password")?.value || "";
+          const phone = document.getElementById("phone")?.value?.trim() || null;
+
+          if (!fullName || !email || !password || !confirm) {
+            alert("Please fill required fields");
+            return;
+          }
+          if (password !== confirm) {
+            alert("Passwords do not match");
+            return;
+          }
+
+          const username = email.split("@")[0];
+
+          try {
+            const res = await fetch("/api/auth/signup", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                username,
+                email,
+                password,
+                full_name: fullName,
+                phone,
+                user_type: "guider",
+              }),
+            });
+            const data = await res.json();
+            if (!res.ok || !data.success)
+              throw new Error(data.message || "Registration failed");
+            if (data.token) localStorage.setItem("token", data.token);
+            window.location.href = data.redirect || "/pages/GuiderDash.html";
+          } catch (err) {
+            alert(err.message || "An error occurred");
+          }
+        });
+      });
     </script>
   </body>
 </html>
