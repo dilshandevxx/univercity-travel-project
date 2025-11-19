@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wanderlust - Find a Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* --- CSS VARIABLES (Matching Profile Page) --- */
+      :root {
+        --primary: #0ea5e9;
+        --primary-dark: #0284c7;
+        --accent: #f59e0b;
+        --dark: #0f172a;
+        --text: #334155;
+        --text-light: #64748b;
+        --bg: #f8fafc;
+        --card-bg: #ffffff;
+        --radius: 16px;
+        --shadow: 0 4px 20px rgba(148, 163, 184, 0.15);
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        background-color: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Outfit", sans-serif;
+        color: var(--dark);
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      button {
+        cursor: pointer;
+        border: none;
+        font-family: inherit;
+      }
+
+      /* --- NAV BAR --- */
+      .navbar {
+        background: var(--card-bg);
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+      .nav-links a {
+        font-weight: 500;
+        color: var(--text-light);
+        transition: var(--transition);
+      }
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: var(--primary);
+      }
+
+      /* --- HERO SECTION --- */
+      .hero {
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        padding: 4rem 1.5rem;
+        color: white;
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .hero h1 {
+        color: white;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+      .hero p {
+        color: #94a3b8;
+        max-width: 600px;
+        margin: 0 auto 2rem;
+      }
+
+      /* SEARCH BAR */
+      .search-container {
+        background: white;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 10px;
+        border-radius: 50px;
+        display: flex;
+        gap: 10px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      .search-input-group {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        padding: 0 1.5rem;
+        border-right: 1px solid #e2e8f0;
+      }
+
+      .search-input-group:last-child {
+        border-right: none;
+      }
+
+      .search-input-group input {
+        border: none;
+        outline: none;
+        width: 100%;
+        padding: 10px;
+        font-size: 1rem;
+        color: var(--dark);
+      }
+
+      .search-btn {
+        background: var(--primary);
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+      }
+
+      .search-btn:hover {
+        background: var(--primary-dark);
+        transform: scale(1.05);
+      }
+
+      /* --- MAIN CONTENT --- */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem 4rem;
+      }
+
+      .layout-grid {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 2rem;
+        align-items: start;
+      }
+
+      /* --- FILTERS SIDEBAR --- */
+      .filters {
+        background: var(--card-bg);
+        padding: 1.5rem;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        position: sticky;
+        top: 100px;
+      }
+
+      .filter-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #e2e8f0;
+      }
+
+      .filter-group {
+        margin-bottom: 1.5rem;
+      }
+      .filter-title {
+        font-size: 0.95rem;
+        font-weight: 600;
+        margin-bottom: 0.8rem;
+        display: block;
+      }
+
+      .checkbox-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .checkbox-label {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+        color: var(--text-light);
+        cursor: pointer;
+      }
+
+      .checkbox-label input {
+        accent-color: var(--primary);
+      }
+
+      .range-slider {
+        width: 100%;
+        margin-top: 0.5rem;
+        accent-color: var(--primary);
+      }
+      .price-display {
+        font-size: 0.85rem;
+        color: var(--text-light);
+        display: flex;
+        justify-content: space-between;
+        margin-top: 5px;
+      }
+
+      /* --- GUIDES GRID --- */
+      .results-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .guides-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+      }
+
+      /* --- GUIDE CARD --- */
+      .guide-card {
+        background: var(--card-bg);
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        border: 1px solid transparent;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .guide-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--primary);
+      }
+
+      .guide-header {
+        position: relative;
+        height: 120px;
+        background: #e0f2fe;
+      }
+
+      .guide-avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 4px solid white;
+        object-fit: cover;
+        position: absolute;
+        bottom: -40px;
+        left: 20px;
+        background: white;
+      }
+
+      .guide-rating {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: white;
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-weight: 700;
+        font-size: 0.85rem;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+
+      .star {
+        color: var(--accent);
+      }
+
+      .guide-body {
+        padding: 3rem 1.5rem 1.5rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .guide-name {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 0.2rem;
+      }
+      .guide-location {
+        font-size: 0.9rem;
+        color: var(--text-light);
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        margin-bottom: 1rem;
+      }
+
+      .guide-bio {
+        font-size: 0.9rem;
+        color: var(--text-light);
+        margin-bottom: 1rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .tags {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin-bottom: 1.5rem;
+      }
+      .tag {
+        background: #f1f5f9;
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-size: 0.75rem;
+        color: var(--text-light);
+      }
+
+      .guide-footer {
+        margin-top: auto;
+        padding-top: 1rem;
+        border-top: 1px solid #f1f5f9;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .price {
+        font-weight: 700;
+        color: var(--dark);
+        font-size: 1.1rem;
+      }
+      .price span {
+        font-size: 0.8rem;
+        color: var(--text-light);
+        font-weight: 400;
+      }
+
+      .btn-sm {
+        padding: 8px 16px;
+        background: var(--primary);
+        color: white;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        transition: var(--transition);
+      }
+      .btn-sm:hover {
+        background: var(--primary-dark);
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 768px) {
+        .layout-grid {
+          grid-template-columns: 1fr;
+        }
+        .filters {
+          display: none; /* Hidden on mobile for simplicity in this demo */
+        }
+        .search-container {
+          flex-direction: column;
+          border-radius: 16px;
+          gap: 0;
+        }
+        .search-input-group {
+          border-right: none;
+          border-bottom: 1px solid #e2e8f0;
+          padding: 1rem;
+        }
+        .search-btn {
+          width: 100%;
+          border-radius: 0 0 16px 16px;
+          height: 40px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+          ></path>
+        </svg>
+        Trekker
+      </div>
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#" class="active">Find a Guide</a>
+        <a href="travel_profile.html">Profile</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <h1>Find Your Local Expert</h1>
+      <p>
+        Connect with passionate locals who can show you the hidden gems of the
+        city.
+      </p>
+
+      <div class="search-container">
+        <div class="search-input-group">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#94A3B8"
+            stroke-width="2"
+          >
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <input
+            type="text"
+            id="locationInput"
+            placeholder="Where are you going?"
+          />
+        </div>
+        <div class="search-input-group">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#94A3B8"
+            stroke-width="2"
+          >
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          <input type="text" placeholder="Dates (Optional)" />
+        </div>
+        <button class="search-btn" onclick="filterGuides()">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+          >
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <main class="container">
+      <div class="layout-grid">
+        <!-- Filters Sidebar -->
+        <aside class="filters">
+          <div class="filter-header">
+            <h3>Filters</h3>
+            <button
+              style="color: var(--primary); font-size: 0.85rem"
+              onclick="resetFilters()"
+            >
+              Reset
+            </button>
+          </div>
+
+          <div class="filter-group">
+            <span class="filter-title">Price per Hour</span>
+            <input
+              type="range"
+              class="range-slider"
+              min="10"
+              max="200"
+              value="200"
+              id="priceRange"
+              oninput="updatePriceLabel(this.value); filterGuides()"
+            />
+            <div class="price-display">
+              <span>$10</span>
+              <span id="priceValue">Max: $200</span>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <span class="filter-title">Specialties</span>
+            <div class="checkbox-group">
+              <label class="checkbox-label"
+                ><input
+                  type="checkbox"
+                  value="History"
+                  onchange="filterGuides()"
+                />
+                History & Culture</label
+              >
+              <label class="checkbox-label"
+                ><input
+                  type="checkbox"
+                  value="Food"
+                  onchange="filterGuides()"
+                />
+                Food & Drink</label
+              >
+              <label class="checkbox-label"
+                ><input
+                  type="checkbox"
+                  value="Nature"
+                  onchange="filterGuides()"
+                />
+                Nature & Hiking</label
+              >
+              <label class="checkbox-label"
+                ><input
+                  type="checkbox"
+                  value="Nightlife"
+                  onchange="filterGuides()"
+                />
+                Nightlife</label
+              >
+              <label class="checkbox-label"
+                ><input
+                  type="checkbox"
+                  value="Photography"
+                  onchange="filterGuides()"
+                />
+                Photography</label
+              >
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <span class="filter-title">Languages</span>
+            <div class="checkbox-group">
+              <label class="checkbox-label"
+                ><input
+                  type="checkbox"
+                  value="English"
+                  onchange="filterGuides()"
+                />
+                English</label
+              >
+              <label class="checkbox-label"
+                ><input
+                  type="checkbox"
+                  value="Spanish"
+                  onchange="filterGuides()"
+                />
+                Spanish</label
+              >
+              <label class="checkbox-label"
+                ><input
+                  type="checkbox"
+                  value="Japanese"
+                  onchange="filterGuides()"
+                />
+                Japanese</label
+              >
+              <label class="checkbox-label"
+                ><input
+                  type="checkbox"
+                  value="French"
+                  onchange="filterGuides()"
+                />
+                French</label
+              >
+            </div>
+          </div>
+        </aside>
+
+        <!-- Results Area -->
+        <section>
+          <div class="results-header">
+            <h2 id="resultsCount">Showing 6 Guides</h2>
+            <select
+              style="
+                padding: 8px;
+                border: 1px solid #e2e8f0;
+                border-radius: 6px;
+                color: var(--text);
+              "
+            >
+              <option>Recommended</option>
+              <option>Price: Low to High</option>
+              <option>Highest Rated</option>
+            </select>
+          </div>
+
+          <div class="guides-grid" id="guidesGrid">
+            <!-- Cards will be injected here by JS -->
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script>
+      // --- MOCK DATA ---
+      const guides = [
+        {
+          id: 1,
+          name: "Sarah Chen",
+          location: "Kyoto, Japan",
+          rating: 4.9,
+          reviews: 124,
+          price: 45,
+          image:
+            "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+          tags: ["History", "English", "Japanese"],
+          bio: "Professional historian specializing in Kyoto's ancient temples and tea ceremonies. Let's explore the hidden alleys of Gion together.",
+        },
+        {
+          id: 2,
+          name: "Marco Ross",
+          location: "Rome, Italy",
+          rating: 4.8,
+          reviews: 89,
+          price: 60,
+          image:
+            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+          tags: ["Food", "Nightlife", "Italian", "English"],
+          bio: "Culinary expert and chef. I'll take you to the best trattorias that tourists never find. Prepare to eat!",
+        },
+        {
+          id: 3,
+          name: "Elena Gomez",
+          location: "Barcelona, Spain",
+          rating: 5.0,
+          reviews: 210,
+          price: 55,
+          image:
+            "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+          tags: ["Architecture", "Spanish", "French"],
+          bio: "Gaudi enthusiast and local architect. Discover the secrets behind Sagrada Familia and Park Guell.",
+        },
+        {
+          id: 4,
+          name: "David Kim",
+          location: "Seoul, South Korea",
+          rating: 4.7,
+          reviews: 56,
+          price: 35,
+          image:
+            "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+          tags: ["Nightlife", "Shopping", "Korean", "English"],
+          bio: "Your insider for Gangnam style nightlife and the best street food markets in Seoul.",
+        },
+        {
+          id: 5,
+          name: "Amara Okafor",
+          location: "Cape Town, SA",
+          rating: 4.9,
+          reviews: 142,
+          price: 50,
+          image:
+            "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+          tags: ["Nature", "Hiking", "English"],
+          bio: "Certified mountain guide. Join me for a sunrise hike up Table Mountain or a tour of the coast.",
+        },
+        {
+          id: 6,
+          name: "Jean-Luc Dubois",
+          location: "Paris, France",
+          rating: 4.6,
+          reviews: 78,
+          price: 70,
+          image:
+            "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+          tags: ["Photography", "Art", "French", "English"],
+          bio: "Photographer and art lover. I help you get the perfect Instagram shots while learning about Louvre history.",
+        },
+      ];
+
+      // --- INITIAL RENDER ---
+      const grid = document.getElementById("guidesGrid");
+      const countLabel = document.getElementById("resultsCount");
+
+      function renderGuides(data) {
+        grid.innerHTML = "";
+        countLabel.innerText = `Showing ${data.length} Guides`;
+
+        if (data.length === 0) {
+          grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 2rem; color: var(--text-light);">No guides found matching your criteria.</div>`;
+          return;
+        }
+
+        data.forEach((guide) => {
+          const card = document.createElement("div");
+          card.className = "guide-card";
+          card.innerHTML = `
+                    <div class="guide-header">
+                        <img src="${guide.image}" alt="${
+            guide.name
+          }" class="guide-avatar">
+                        <div class="guide-rating">
+                            <span class="star">★</span> ${
+                              guide.rating
+                            } <span style="color:#94A3B8; font-weight:400; font-size:0.75rem">(${
+            guide.reviews
+          })</span>
+                        </div>
+                    </div>
+                    <div class="guide-body">
+                        <h3 class="guide-name">${guide.name}</h3>
+                        <div class="guide-location">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            ${guide.location}
+                        </div>
+                        <p class="guide-bio">${guide.bio}</p>
+                        <div class="tags">
+                            ${guide.tags
+                              .map((tag) => `<span class="tag">${tag}</span>`)
+                              .join("")}
+                        </div>
+                        <div class="guide-footer">
+                            <div class="price">$${
+                              guide.price
+                            }<span>/hr</span></div>
+                            <button class="btn-sm" onclick="alert('Booking request sent to ${
+                              guide.name
+                            }!')">Choose</button>
+                        </div>
+                    </div>
+                `;
+          grid.appendChild(card);
+        });
+      }
+
+      // --- FILTER LOGIC ---
+      function updatePriceLabel(val) {
+        document.getElementById("priceValue").innerText = `Max: $${val}`;
+      }
+
+      function filterGuides() {
+        const locationQuery = document
+          .getElementById("locationInput")
+          .value.toLowerCase();
+        const maxPrice = document.getElementById("priceRange").value;
+
+        // Get all checked checkboxes
+        const checkedBoxes = Array.from(
+          document.querySelectorAll('input[type="checkbox"]:checked')
+        ).map((cb) => cb.value.toLowerCase());
+
+        const filtered = guides.filter((guide) => {
+          // 1. Location Filter
+          const matchesLocation = guide.location
+            .toLowerCase()
+            .includes(locationQuery);
+
+          // 2. Price Filter
+          const matchesPrice = guide.price <= maxPrice;
+
+          // 3. Tags/Checkboxes Filter (OR logic - if any tag matches)
+          // If no boxes checked, return true. If boxes checked, guide must have at least one.
+          const matchesTags =
+            checkedBoxes.length === 0 ||
+            guide.tags.some((tag) => checkedBoxes.includes(tag.toLowerCase()));
+
+          return matchesLocation && matchesPrice && matchesTags;
+        });
+
+        renderGuides(filtered);
+      }
+
+      function resetFilters() {
+        document.getElementById("locationInput").value = "";
+        document.getElementById("priceRange").value = 200;
+        updatePriceLabel(200);
+        document
+          .querySelectorAll('input[type="checkbox"]')
+          .forEach((cb) => (cb.checked = false));
+        renderGuides(guides);
+      }
+
+      // Initial Load
+      renderGuides(guides);
+    </script>
+  </body>
+</html>

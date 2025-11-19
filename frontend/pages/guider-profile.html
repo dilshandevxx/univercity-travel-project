@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wanderlust - User Profile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* --- CSS VARIABLES & RESET --- */
+      :root {
+        --primary: #0ea5e9; /* Ocean Blue */
+        --primary-dark: #0284c7;
+        --accent: #f59e0b; /* Sunset Orange */
+        --dark: #0f172a;
+        --text: #334155;
+        --text-light: #64748b;
+        --bg: #f8fafc;
+        --card-bg: #ffffff;
+        --radius: 16px;
+        --shadow: 0 4px 20px rgba(148, 163, 184, 0.15);
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        background-color: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Outfit", sans-serif;
+        color: var(--dark);
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      ul {
+        list-style: none;
+      }
+      button {
+        cursor: pointer;
+        border: none;
+        font-family: inherit;
+      }
+
+      /* --- NAV BAR --- */
+      .navbar {
+        background: var(--card-bg);
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        font-weight: 500;
+        color: var(--text-light);
+        transition: var(--transition);
+      }
+
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: var(--primary);
+      }
+
+      /* --- PROFILE HEADER (HERO) --- */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+      }
+
+      .cover-photo {
+        height: 300px;
+        width: 100%;
+        background-image: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.1),
+            rgba(0, 0, 0, 0.4)
+          ),
+          url("https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80");
+        background-size: cover;
+        background-position: center;
+        border-radius: 0 0 var(--radius) var(--radius);
+        position: relative;
+      }
+
+      .edit-cover {
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        transition: var(--transition);
+      }
+
+      .edit-cover:hover {
+        transform: translateY(-2px);
+      }
+
+      /* --- PROFILE INFO CARD --- */
+      .profile-section {
+        position: relative;
+        margin-top: -80px;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .profile-card {
+        background: var(--card-bg);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 2rem;
+        display: flex;
+        align-items: flex-end;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .avatar-container {
+        position: relative;
+        margin-top: -60px;
+      }
+
+      .avatar {
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        border: 5px solid var(--card-bg);
+        object-fit: cover;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .status-badge {
+        position: absolute;
+        bottom: 15px;
+        right: 10px;
+        background: #10b981;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 3px solid var(--card-bg);
+      }
+
+      .profile-info {
+        flex: 1;
+        margin-bottom: 0.5rem;
+      }
+
+      .user-meta {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .username {
+        font-size: 2rem;
+        font-weight: 700;
+      }
+
+      .verified {
+        color: var(--primary);
+        font-size: 1.2rem;
+      }
+
+      .role-tag {
+        background: #e0f2fe;
+        color: var(--primary-dark);
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+
+      .bio {
+        color: var(--text-light);
+        max-width: 600px;
+        margin-bottom: 1rem;
+      }
+
+      .location {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text-light);
+        font-size: 0.9rem;
+      }
+
+      .profile-actions {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .btn {
+        padding: 10px 24px;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: var(--transition);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .btn-primary {
+        background: var(--primary);
+        color: white;
+      }
+      .btn-primary:hover {
+        background: var(--primary-dark);
+        box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+      }
+
+      .btn-outline {
+        border: 2px solid #e2e8f0;
+        background: transparent;
+        color: var(--text);
+      }
+      .btn-outline:hover {
+        border-color: var(--text);
+      }
+
+      /* --- STATS BAR --- */
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+        margin-top: 1rem;
+        width: 100%;
+        border-top: 1px solid #e2e8f0;
+        padding-top: 1.5rem;
+      }
+
+      .stat-item {
+        text-align: center;
+      }
+
+      .stat-value {
+        display: block;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--dark);
+      }
+
+      .stat-label {
+        font-size: 0.85rem;
+        color: var(--text-light);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      /* --- MAIN GRID LAYOUT --- */
+      .content-layout {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        gap: 2rem;
+        margin-bottom: 4rem;
+      }
+
+      /* SIDEBAR */
+      .sidebar-card {
+        background: var(--card-bg);
+        padding: 1.5rem;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        margin-bottom: 1.5rem;
+      }
+
+      .card-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .skill-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .tag {
+        background: #f1f5f9;
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        color: var(--text);
+      }
+
+      .social-links {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+
+      .social-link {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        color: var(--text-light);
+        transition: var(--transition);
+      }
+      .social-link:hover {
+        color: var(--primary);
+        transform: translateX(5px);
+      }
+
+      /* TABS SYSTEM */
+      .tabs {
+        display: flex;
+        gap: 2rem;
+        border-bottom: 1px solid #e2e8f0;
+        margin-bottom: 2rem;
+      }
+
+      .tab-btn {
+        padding-bottom: 1rem;
+        font-weight: 600;
+        color: var(--text-light);
+        background: none;
+        position: relative;
+        font-size: 1rem;
+      }
+
+      .tab-btn.active {
+        color: var(--primary);
+      }
+
+      .tab-btn.active::after {
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: var(--primary);
+        border-radius: 3px 3px 0 0;
+      }
+
+      /* TAB CONTENT: TRIPS */
+      .trip-card {
+        background: var(--card-bg);
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        margin-bottom: 1.5rem;
+        display: flex;
+        transition: var(--transition);
+      }
+
+      .trip-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .trip-img {
+        width: 200px;
+        object-fit: cover;
+      }
+
+      .trip-content {
+        padding: 1.5rem;
+        flex: 1;
+      }
+
+      .trip-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+      }
+
+      .trip-date {
+        font-size: 0.85rem;
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      /* TAB CONTENT: PHOTOS (Grid) */
+      .photo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1rem;
+      }
+
+      .photo-item {
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        aspect-ratio: 1/1;
+        cursor: pointer;
+      }
+
+      .photo-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .photo-item:hover img {
+        transform: scale(1.1);
+      }
+
+      .photo-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+        padding: 1rem;
+        color: white;
+        opacity: 0;
+        transition: 0.3s;
+      }
+
+      .photo-item:hover .photo-overlay {
+        opacity: 1;
+      }
+
+      /* TAB CONTENT: BUCKET LIST */
+      .bucket-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .bucket-card {
+        background: var(--card-bg);
+        border-radius: var(--radius);
+        padding: 5px;
+        box-shadow: var(--shadow);
+        position: relative;
+      }
+
+      .bucket-img {
+        height: 140px;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 12px;
+        margin-bottom: 1rem;
+        filter: grayscale(20%);
+        transition: var(--transition);
+      }
+
+      .bucket-card:hover .bucket-img {
+        filter: grayscale(0%);
+      }
+
+      .bucket-info {
+        padding: 0 10px 10px;
+      }
+
+      .check-circle {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+      }
+
+      /* UTILITY - HIDE/SHOW TABS */
+      .tab-content {
+        display: none;
+        animation: fadeIn 0.4s ease;
+      }
+      .tab-content.active {
+        display: block;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 900px) {
+        .content-layout {
+          grid-template-columns: 1fr;
+        }
+        .profile-card {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+        .avatar-container {
+          margin-top: -80px;
+        }
+        .profile-section {
+          margin-top: -40px;
+        }
+        .trip-card {
+          flex-direction: column;
+        }
+        .trip-img {
+          width: 100%;
+          height: 200px;
+        }
+        .user-meta {
+          justify-content: center;
+        }
+        .location {
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+          ></path>
+        </svg>
+        Trekker
+      </div>
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Destinations</a>
+        <a href="#" class="active">Profile</a>
+      </div>
+    </nav>
+
+    <!-- Cover Photo -->
+    <header class="container">
+      <div class="cover-photo">
+        <button class="edit-cover">📷 Change Cover</button>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- Profile Summary -->
+      <section class="profile-section">
+        <div class="profile-card">
+          <div class="avatar-container">
+            <img
+              src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80"
+              alt="User Avatar"
+              class="avatar"
+            />
+            <div class="status-badge"></div>
+          </div>
+
+          <div class="profile-info">
+            <div class="user-meta">
+              <h1 class="username">Alex Walker</h1>
+              <span class="verified">✔</span>
+              <span class="role-tag">Global Nomad</span>
+            </div>
+            <p class="bio">
+              Capturing the world one frame at a time. 📸 Coffee addict,
+              mountain lover, and seeking the perfect sunset in every country.
+            </p>
+            <div class="location">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              Currently in: Kyoto, Japan
+            </div>
+          </div>
+
+          <div class="profile-actions">
+            <button class="btn btn-primary">Follow</button>
+            <button class="btn btn-outline">Message</button>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value">32</span>
+              <span class="stat-label">Countries</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">145</span>
+              <span class="stat-label">Cities</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">84k</span>
+              <span class="stat-label">Miles</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">12k</span>
+              <span class="stat-label">Followers</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Content Layout -->
+      <div class="content-layout">
+        <!-- Sidebar -->
+        <aside>
+          <div class="sidebar-card">
+            <h3 class="card-title">🌍 Travel Style</h3>
+            <div class="skill-tags">
+              <span class="tag">Backpacking</span>
+              <span class="tag">Photography</span>
+              <span class="tag">Solo Travel</span>
+              <span class="tag">Foodie</span>
+              <span class="tag">Hiking</span>
+            </div>
+          </div>
+
+          <div class="sidebar-card">
+            <h3 class="card-title">🔗 Connect</h3>
+            <div class="social-links">
+              <a href="#" class="social-link">
+                <span>📸 Instagram</span>
+              </a>
+              <a href="#" class="social-link">
+                <span>🐦 Twitter</span>
+              </a>
+              <a href="#" class="social-link">
+                <span>🎥 YouTube</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="sidebar-card">
+            <h3 class="card-title">🏆 Badges</h3>
+            <div style="display: flex; gap: 10px">
+              <div
+                style="
+                  font-size: 1.5rem;
+                  background: #fff7ed;
+                  padding: 10px;
+                  border-radius: 8px;
+                "
+                title="Asia Explorer"
+              >
+                ⛩️
+              </div>
+              <div
+                style="
+                  font-size: 1.5rem;
+                  background: #eff6ff;
+                  padding: 10px;
+                  border-radius: 8px;
+                "
+                title="Ocean Lover"
+              >
+                🌊
+              </div>
+              <div
+                style="
+                  font-size: 1.5rem;
+                  background: #f0fdf4;
+                  padding: 10px;
+                  border-radius: 8px;
+                "
+                title="Hiker"
+              >
+                🏔️
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Main Content -->
+        <section class="main-content">
+          <div class="tabs">
+            <button class="tab-btn active" onclick="openTab(event, 'trips')">
+              My Trips
+            </button>
+            <button class="tab-btn" onclick="openTab(event, 'photos')">
+              Gallery
+            </button>
+            <button class="tab-btn" onclick="openTab(event, 'bucket')">
+              Bucket List
+            </button>
+          </div>
+
+          <!-- Tab: Trips -->
+          <div id="trips" class="tab-content active">
+            <!-- Trip 1 -->
+            <div class="trip-card">
+              <img
+                src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                class="trip-img"
+                alt="Japan"
+              />
+              <div class="trip-content">
+                <div class="trip-header">
+                  <h3>Autumn in Kyoto</h3>
+                  <span class="trip-date">Nov 2023</span>
+                </div>
+                <p style="color: var(--text-light); margin-bottom: 1rem">
+                  Exploring the ancient temples and vibrant colors of
+                  Arashiyama. The food scene here is absolutely incredible.
+                </p>
+                <div class="skill-tags">
+                  <span class="tag">Cultural</span>
+                  <span class="tag">Nature</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Trip 2 -->
+            <div class="trip-card">
+              <img
+                src="https://images.unsplash.com/photo-1534234828563-025023f85f77?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                class="trip-img"
+                alt="Greece"
+              />
+              <div class="trip-content">
+                <div class="trip-header">
+                  <h3>Santorini Sunset</h3>
+                  <span class="trip-date">July 2023</span>
+                </div>
+                <p style="color: var(--text-light); margin-bottom: 1rem">
+                  Sailing around the Cyclades islands. The water is the bluest
+                  I've ever seen.
+                </p>
+                <div class="skill-tags">
+                  <span class="tag">Relaxation</span>
+                  <span class="tag">Beach</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab: Photos -->
+          <div id="photos" class="tab-content">
+            <div class="photo-grid">
+              <div class="photo-item">
+                <img
+                  src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                  alt="Swiss Alps"
+                />
+                <div class="photo-overlay">Switzerland</div>
+              </div>
+              <div class="photo-item">
+                <img
+                  src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                  alt="Venice"
+                />
+                <div class="photo-overlay">Venice</div>
+              </div>
+              <div class="photo-item">
+                <img
+                  src="https://images.unsplash.com/photo-1504214208698-ea1916a2195a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                  alt="Thailand"
+                />
+                <div class="photo-overlay">Phuket</div>
+              </div>
+              <div class="photo-item">
+                <img
+                  src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                  alt="Cinque Terre"
+                />
+                <div class="photo-overlay">Italy</div>
+              </div>
+              <div class="photo-item">
+                <img
+                  src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                  alt="Beach"
+                />
+                <div class="photo-overlay">Maldives</div>
+              </div>
+              <div class="photo-item">
+                <img
+                  src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                  alt="Mountain"
+                />
+                <div class="photo-overlay">Hiking</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab: Bucket List -->
+          <div id="bucket" class="tab-content">
+            <div class="bucket-list">
+              <div class="bucket-card">
+                <img
+                  src="https://images.unsplash.com/photo-1566371486490-560ded23b5e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                  class="bucket-img"
+                  alt="Iceland"
+                />
+                <div class="check-circle">○</div>
+                <div class="bucket-info">
+                  <h4>Iceland Roadtrip</h4>
+                  <p style="font-size: 0.8rem; color: var(--text-light)">
+                    Northern Lights
+                  </p>
+                </div>
+              </div>
+              <div class="bucket-card">
+                <img
+                  src="https://images.unsplash.com/photo-1545562083-a600704fa46e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                  class="bucket-img"
+                  alt="Petra"
+                />
+                <div class="check-circle">○</div>
+                <div class="bucket-info">
+                  <h4>Petra, Jordan</h4>
+                  <p style="font-size: 0.8rem; color: var(--text-light)">
+                    Ancient City
+                  </p>
+                </div>
+              </div>
+              <div class="bucket-card">
+                <img
+                  src="https://images.unsplash.com/photo-1526481280693-3bfa13680e2e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                  class="bucket-img"
+                  alt="Machu Picchu"
+                />
+                <div class="check-circle">○</div>
+                <div class="bucket-info">
+                  <h4>Machu Picchu</h4>
+                  <p style="font-size: 0.8rem; color: var(--text-light)">
+                    Peru Hike
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script>
+      // Simple Tab Switching Logic
+      function openTab(evt, tabName) {
+        // 1. Hide all tab content
+        var tabContents = document.getElementsByClassName("tab-content");
+        for (var i = 0; i < tabContents.length; i++) {
+          tabContents[i].classList.remove("active");
+        }
+
+        // 2. Remove 'active' class from all tab buttons
+        var tabLinks = document.getElementsByClassName("tab-btn");
+        for (var i = 0; i < tabLinks.length; i++) {
+          tabLinks[i].classList.remove("active");
+        }
+
+        // 3. Show the specific tab and add 'active' class to the clicked button
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+      }
+
+      // Simple interaction for Follow button
+      const followBtn = document.querySelector(".btn-primary");
+      followBtn.addEventListener("click", function () {
+        if (this.innerText === "Follow") {
+          this.innerText = "Following";
+          this.style.backgroundColor = "#10B981"; // Green
+        } else {
+          this.innerText = "Follow";
+          this.style.backgroundColor = "var(--primary)";
+        }
+      });
+    </script>
+  </body>
+</html>
