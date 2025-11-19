@@ -583,7 +583,13 @@ body {
   margin-top: 350px;
   background: #3d3d4e;
   color: white;
-  padding: 60px 0 20px;
+  /* padding: 60px 0 20px; */
+  /* ///////// */
+  padding: 60px 20px 20px;
+  margin-left: -100px;
+  margin-right: -20px;
+  margin-top: 100px;
+  margin-bottom: -100px;
 }
 
 .footer-logo h3 {
@@ -710,4 +716,172 @@ body {
 .footer .col-lg-3,
 .footer .col-md-6 {
   margin-bottom: 30px;
+}
+
+/*footer Responsive Design */
+
+/* Tablets and below (992px) */
+@media (max-width: 992px) {
+  .footer {
+    padding: 50px 15px 20px;
+    margin-left: -50px;
+    margin-right: -50px;
+    margin-top: 80px;
+  }
+
+  .footer-logo h3 {
+    font-size: 1.8rem;
+  }
+
+  .footer h5 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+  }
+
+  .col-lg-3 {
+    margin-bottom: 30px;
+  }
+
+  .col-lg-3 h5 {
+    text-align: center;
+  }
+
+  .footer-links,
+  .footer-contacts {
+    text-align: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+}
+
+/* Mobile devices (768px) */
+@media (max-width: 768px) {
+  .footer {
+    padding: 40px 15px 20px;
+    margin-left: -20px;
+    margin-right: -20px;
+    margin-top: 60px;
+  }
+
+  .footer-logo {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .footer-logo h3 {
+    font-size: 1.6rem;
+  }
+
+  .footer-logo p {
+    font-size: 0.85rem;
+  }
+
+  .footer h5 {
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  .col-lg-3 h5 {
+    text-align: center;
+  }
+
+  .footer-links,
+  .footer-contacts {
+    text-align: center;
+  }
+
+  .footer-contacts li {
+    justify-content: center;
+    text-align: left;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  .footer-bottom {
+    margin-top: 30px;
+    padding-top: 15px;
+  }
+
+  .footer-bottom p {
+    font-size: 0.85rem;
+  }
+
+  .animate-on-scroll {
+    transform: translateY(30px);
+  }
+
+  .animate {
+    transform: translateY(0);
+  }
+}
+
+/* Small mobile devices (576px) */
+@media (max-width: 576px) {
+  .footer {
+    padding: 30px 10px 15px;
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-top: 50px;
+  }
+
+  .footer-logo h3 {
+    font-size: 1.4rem;
+  }
+
+  .footer-logo p {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+  }
+
+  .footer h5 {
+    font-size: 0.95rem;
+  }
+
+  .footer-links li,
+  .footer-contacts li {
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+  }
+
+  .social-icons a {
+    width: 36px;
+    height: 36px;
+  }
+
+  .footer-bottom {
+    margin-top: 25px;
+  }
+
+  .footer-bottom p {
+    font-size: 0.8rem;
+    padding: 0 10px;
+  }
+}
+
+/* Extra small devices (400px) */
+@media (max-width: 400px) {
+  .footer {
+    padding: 25px 8px 15px;
+  }
+
+  .footer-logo h3 {
+    font-size: 1.3rem;
+  }
+
+  .social-icons {
+    gap: 10px;
+  }
+
+  .social-icons a {
+    width: 34px;
+    height: 34px;
+  }
 }
