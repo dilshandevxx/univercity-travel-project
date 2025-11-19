@@ -82,8 +82,8 @@
             </div>
             <div class="user-section">
               <i class="fas fa-user"></i>
-              <span>User Name</span>
-              
+              <span id="user-name">User Name</span>
+
             </div>
             
           </div>
@@ -568,8 +568,8 @@
                 <img src="../assets/HomeAssets/PhotoGallery/Culture-6.jpg">
           </div>          
         </div>        
-        <button class="see-more">Upload Photos</button>
-        <button class="see-more">Upload Photos</button>
+        <a href="photo-hallary.html" class="see-more">Upload Photos</a>
+        <a href="photo-hallary.html" class="see-more">Upload Photos</a>
       </div>
       
     </section>
@@ -696,8 +696,35 @@
     ></script>
 
     <script>
-       
-        
+      // Function to decode JWT token
+      function decodeJWT(token) {
+        try {
+          const payload = JSON.parse(atob(token.split('.')[1]));
+          return payload;
+        } catch (e) {
+          return null;
+        }
+      }
+
+      // Function to update username in navbar
+      function updateUsername() {
+        const token = localStorage.getItem('token');
+        const userNameSpan = document.getElementById('user-name');
+
+        if (token) {
+          const payload = decodeJWT(token);
+          if (payload && payload.username) {
+            userNameSpan.textContent = payload.username;
+          } else {
+            userNameSpan.textContent = 'Login';
+          }
+        } else {
+          userNameSpan.textContent = 'Login';
+        }
+      }
+
+      // Call updateUsername on page load
+      document.addEventListener('DOMContentLoaded', updateUsername);
 
       //Hotel section
       document.querySelectorAll(".hotel-card").forEach((card) => {
