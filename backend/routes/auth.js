@@ -7,11 +7,19 @@ const jwt = require("jsonwebtoken");
 const JWT_SECRET = process.env.JWT_SECRET || "dev_secret_change_me";
 const TOKEN_EXPIRES_IN = "7d";
 
+// function roleRedirect(userType) {
+//   // Map roles to frontend pages served statically by Express
+//   return userType === "guider" ? "/pages/home.html" : " /pages/GuiderDash.html";
+// }
+
 function roleRedirect(userType) {
-  // Map roles to frontend pages served statically by Express
-  return userType === "guider"
-    ? "/pages/GuiderDash.html"
-    : " /pages/GuiderDash.html";
+  // Check if the user is specifically a 'guider'
+  if (userType === "guider") {
+    return "/pages/GuiderDash.html";
+  }
+
+  // Everyone else (travelers) goes to home
+  return "/pages/home.html";
 }
 
 function issueToken(user) {
@@ -30,7 +38,7 @@ function normalizeUserType(raw) {
   if (!raw) return "traveler";
   const v = String(raw).trim().toLowerCase();
   // DB schema uses 'traveler' (US spelling)
-  if (v === "guider") return "guider";
+  if (v === "guider" || v === "guide") return "guider";
   return "traveler";
 }
 
