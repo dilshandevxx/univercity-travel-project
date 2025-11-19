@@ -9,7 +9,9 @@ const TOKEN_EXPIRES_IN = "7d";
 
 function roleRedirect(userType) {
   // Map roles to frontend pages served statically by Express
-  return userType === "guider" ? "/pages/GuiderDash.html" : "/pages/home.html";
+  return userType === "guider"
+    ? "/pages/GuiderDash.html"
+    : " /pages/GuiderDash.html";
 }
 
 function issueToken(user) {
