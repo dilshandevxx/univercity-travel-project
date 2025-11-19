@@ -10,6 +10,18 @@
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="../css/HomeStyle.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <!-- Add Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
 
     <style>
       /* --- CSS VARIABLES (Matching Profile Page) --- */
@@ -411,28 +423,76 @@
     </style>
   </head>
   <body>
-    <nav class="navbar">
-      <div class="logo">
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img
+            src="../assets/HomeAssets/Logo.png"
+            alt="Logo"
+            class="navbar-logo"
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
         >
-          <path
-            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
-          ></path>
-        </svg>
-        Trekker
-      </div>
-      <div class="nav-links">
-        <a href="#">Home</a>
-        <a href="#" class="active">Find a Guide</a>
-        <a href="travel_profile.html">Profile</a>
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="home.html">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link"
+                href="destination.html"
+                role="button"
+                data-bs-toggle="dropdown"
+              >
+                Destinations
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="destination.html#byCity"
+                    >By City</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="destination.html#byCategory"
+                    >By Category</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="hotel-restro.html"
+                >Hotels & Restaurants</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="guiders.html">Find a Guide</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="blog-story.html">Blog/Stories</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="home.html#about">About us</a>
+            </li>
+          </ul>
+          <div class="d-flex align-items-center gap-3">
+            <div class="search-box">
+              <input type="text" class="form-control" placeholder="Search" />
+              <i class="fas fa-search"></i>
+            </div>
+            <div class="user-section">
+              <i class="fas fa-user"></i>
+              <span>User Name</span>
+            </div>
+          </div>
+        </div>
       </div>
     </nav>
 
@@ -757,9 +817,7 @@
                             <div class="price">$${
                               guide.price
                             }<span>/hr</span></div>
-                            <button class="btn-sm" onclick="alert('Booking request sent to ${
-                              guide.name
-                            }!')">Choose</button>
+                            <a href="guider-profile.html"><button class="btn-sm">View Profile</button></a>
                         </div>
                     </div>
                 `;
@@ -817,5 +875,11 @@
       // Initial Load
       renderGuides(guides);
     </script>
+    <script src="../js/user.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
