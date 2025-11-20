@@ -312,7 +312,6 @@
 
 /* City Filter Card Styling (Left Column) */
 .city-card {
-  /* Use a consistent, smaller max-width to look like the image */
   width: 100%; /* Take full width of its column */
   max-width: 350px;
   height: 100px; /* Consistent height for all cards */
@@ -363,8 +362,7 @@
 }
 
 .city-card .card-body {
-  /* Make the card body white/light gray like in the image */
-  background-color: #f8f9fa; /* Light background for city name */
+  background-color: #f8f9fa;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -391,23 +389,21 @@
   margin-bottom: 20px;
   cursor: pointer;
   transition: all 0.3s ease;
-  border: 2px solid transparent; /* Base border */
+  border: 2px solid transparent;
 }
 .hotel-listings {
   display: flex;
-  justify-content: space-around; /* Evenly spaces cards horizontally */
+  justify-content: space-around;
   flex-wrap: wrap;
 }
 
 .hotel-card.active {
-  /* Highlight the selected card with a border color like the image */
   border: 2px solid var(--secondary-color);
-  box-shadow: 0 0 10px rgba(76, 154, 178, 0.5); /* Light glow */
+  box-shadow: 0 0 10px rgba(76, 154, 178, 0.5);
 }
 
-/* Hotel Details View Styling (Right Column) */
 .city-details-view {
-  padding-left: 30px; /* Add some space between the columns */
+  padding-left: 30px;
 }
 
 .city-details-view h2 {
@@ -424,7 +420,7 @@
 /* Hotel Card Styling */
 .hotel-card img {
   width: 100%;
-  height: 180px; /* Uniform image height */
+  height: 180px;
   object-fit: cover;
 }
 
@@ -440,11 +436,11 @@
 .hotel-description {
   font-size: 0.9rem;
   color: #6c757d;
-  min-height: 4.5em; /* Ensure uniform card height */
+  min-height: 4.5em;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 3; /* Limit description to 3 lines */
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
 
@@ -572,27 +568,6 @@
   margin-top: 6px;
 }
 
-/* See More button stays centered & moves down as layout shifts */
-/* .see-more {
-  margin: 45px auto 0;
-  display: block;
-  padding: 10px 26px;
-  border-radius: 25px;
-  border: none;
-  font-size: 14px;
-  font-weight: bold;
-  background: #003a76;
-  color: #fff;
-  position: relative;
-  z-index: 3;
-  transition: 0.3s ease;
-}
-
-.see-more:hover {
-  background: #0059cc;
-  transform: translateY(5px);
-} */
-
 /* Content text */
 .tag {
   font-size: 12px;
@@ -645,7 +620,7 @@
 
 /* flavor section */
 .flavor .hotel-card {
-  width: 100%; /* Take full width of its column */
+  width: 100%;
   max-width: 300px;
 }
 .hotel-filter-section {
@@ -931,19 +906,18 @@
     top: 80px;
   }
   .hero-content h1 {
-    font-size: 50px; /* Scale down title */
+    font-size: 50px;
   }
   .hero-content p {
-    font-size: 20px; /* Scale down subtitle */
-    margin-left: 0; /* Remove fixed margin */
-    white-space: normal; /* Allow wrapping */
+    font-size: 20px;
+    margin-left: 0;
   }
   .search-box-middle input {
-    width: 100%; /* Full width on mobile */
-    max-width: 400px; /* Cap for readability */
+    width: 100%;
+    max-width: 400px;
   }
   .search-box-middle i {
-    right: 10px; /* Adjust icon position */
+    right: 10px;
   }
 }
 
@@ -955,15 +929,15 @@
     font-size: 18px;
   }
   .hero {
-    height: 500px; /* Reduce height on small screens */
+    height: 500px;
   }
 }
 
 /* Places Section Responsiveness */
 @media (max-width: 768px) {
   .places-paragraph {
-    margin-left: 0; /* Remove fixed margin */
-    text-align: center; /* Center text */
+    margin-left: 0;
+    text-align: center;
     font-size: 18px;
   }
   .places h1 {
@@ -980,30 +954,30 @@
 /* City Selection and Details Responsiveness */
 @media (max-width: 992px) {
   .city-selection-container {
-    flex-direction: column; /* Stack columns vertically */
+    flex-direction: column;
     align-items: center;
   }
   .city-details-view {
-    padding-left: 0; /* Remove left padding */
+    padding-left: 0;
     text-align: center;
   }
   .city-details-view #city-description {
-    max-width: 100%; /* Full width */
+    max-width: 100%;
   }
   .hotel-listings {
-    flex-direction: column; /* Stack hotel cards */
+    flex-direction: column;
     align-items: center;
   }
   .hotel-card {
-    width: 100%; /* Full width cards */
+    width: 100%;
     max-width: 300px;
   }
 }
 
 @media (max-width: 576px) {
   .city-card {
-    max-width: 100%; /* Full width on small screens */
-    height: auto; /* Allow height to adjust */
+    max-width: 100%;
+    height: auto;
   }
   .city-card img {
     height: 80px; /* Smaller image height */
@@ -1016,17 +990,17 @@
 /* Flavor Section (Hotel Filter) Responsiveness */
 @media (max-width: 768px) {
   .hotel-filter-section .top-content label {
-    display: block; /* Stack labels vertically */
+    display: block;
     margin: 5px 0;
     width: 100%;
   }
   .hotel-card-group {
-    height: auto; /* Allow dynamic height */
-    flex-direction: column; /* Stack cards */
+    height: auto;
+    flex-direction: column;
     align-items: center;
   }
   .hotel-filter-section .hotel-card {
-    width: 100%; /* Full width */
+    width: 100%;
     max-width: 300px;
     margin-bottom: 20px;
   }
@@ -1034,7 +1008,7 @@
 
 @media (max-width: 576px) {
   .flavor .discription {
-    margin-left: 0; /* Remove fixed margin */
+    margin-left: 0;
     text-align: center;
   }
   .flavor h1 {
@@ -1046,10 +1020,10 @@
 @media (max-width: 768px) {
   .footer .col-lg-3,
   .footer .col-md-6 {
-    text-align: center; /* Center content */
+    text-align: center;
   }
   .social-icons {
-    justify-content: center; /* Center social icons */
+    justify-content: center;
   }
   .footer-logo {
     margin-left: 0; /* Remove negative margin */
