@@ -1,6 +1,9 @@
-- [x] Update frontend/pages/home.html to add JavaScript for checking login status and updating the username in the navbar.
-- [x] Add function to decode JWT token and extract username.
-- [x] Update the span in .user-section with the username if token exists and is valid.
-- [x] If no token or invalid, set to "Login" for better UX.
-- [x] Test by logging in and navigating to home.html.
-- [x] Test logout scenario.
+# TODO: Implement Profile Image Display in Guider Dashboard
+
+## Tasks
+
+- [ ] Update guider-signup.html to store user data in localStorage after signup
+- [ ] Update guider-register.html to store user data in localStorage after signup
+- [ ] Modify GuiderDash.js: rename updateGuiderName to updateGuiderInfo and add profile image update
+- [ ] Update GuiderDash.html profile section image path if needed
+- [ ] Test dashboard after signup to verify image displays correctly
