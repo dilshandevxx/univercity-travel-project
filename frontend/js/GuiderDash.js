@@ -191,7 +191,28 @@ function deleteAccount() {
 
 function logout() {
   if (confirm("Are you sure you want to logout?")) {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
     alert("Logged out successfully!");
     // In a real application, this would redirect to login page
   }
 }
+
+// Function to update guider name in dashboard
+function updateGuiderName() {
+  const userData = localStorage.getItem("user");
+  if (userData) {
+    try {
+      const user = JSON.parse(userData);
+      const nameElement = document.querySelector("#dashboard-section h3");
+      if (nameElement && user.full_name) {
+        nameElement.textContent = `Hi, ${user.full_name}👋`;
+      }
+    } catch (e) {
+      console.error("Error parsing user data:", e);
+    }
+  }
+}
+
+// Call updateGuiderName on page load
+document.addEventListener("DOMContentLoaded", updateGuiderName);
