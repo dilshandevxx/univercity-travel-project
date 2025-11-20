@@ -252,6 +252,16 @@
           const confirm =
             document.getElementById("confirm-password")?.value || "";
           const phone = document.getElementById("phone")?.value?.trim() || null;
+          const dob = document.getElementById("dob")?.value || null;
+          const gender = document.getElementById("gender")?.value || null;
+          const experience =
+            document.getElementById("experience")?.value || null;
+          const languages =
+            document.getElementById("languages")?.value?.trim() || null;
+          const specialization =
+            document.getElementById("specialization")?.value?.trim() || null;
+          const photo = document.getElementById("photo")?.files[0] || null;
+          const idproof = document.getElementById("idproof")?.files[0] || null;
 
           if (!fullName || !email || !password || !confirm) {
             alert("Please fill required fields");
@@ -261,21 +271,33 @@
             alert("Passwords do not match");
             return;
           }
+          if (!photo) {
+            alert("Profile picture is required");
+            return;
+          }
 
           const username = email.split("@")[0];
+
+          // Use FormData to include files
+          const formData = new FormData();
+          formData.append("username", username);
+          formData.append("email", email);
+          formData.append("password", password);
+          formData.append("full_name", fullName);
+          if (phone) formData.append("phone", phone);
+          formData.append("user_type", "guider");
+          if (dob) formData.append("dob", dob);
+          if (gender) formData.append("gender", gender);
+          if (experience) formData.append("experience", experience);
+          if (languages) formData.append("languages", languages);
+          if (specialization) formData.append("specialization", specialization);
+          if (photo) formData.append("photo", photo);
+          if (idproof) formData.append("idproof", idproof);
 
           try {
             const res = await fetch("/api/auth/signup", {
               method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                username,
-                email,
-                password,
-                full_name: fullName,
-                phone,
-                user_type: "guider",
-              }),
+              body: formData, // No Content-Type header for FormData
             });
             const data = await res.json();
             if (!res.ok || !data.success)

@@ -83,138 +83,173 @@ function pickIdentifier(body) {
 }
 
 // POST /api/auth/signup
-// Body: FormData with { username, email, password, full_name, phone?, user_type, dob?, gender?, experience?, languages?, specialization?, photo?, idproof? }
-router.post(
-  "/signup",
-  upload.fields([
-    { name: "photo", maxCount: 1 },
-    { name: "idproof", maxCount: 1 },
-  ]),
-  async (req, res) => {
-    try {
-      const {
-        username,
-        email,
-        password,
-        full_name,
-        phone = null,
-        user_type,
-        dob,
-        gender,
-        experience,
-        languages,
-        specialization,
-      } = req.body;
+// Body: JSON for travelers, FormData for guiders with { username, email, password, full_name, phone?, user_type, dob?, gender?, experience?, languages?, specialization?, photo?, idproof? }
+router.post("/signup", async (req, res) => {
+  console.log("Signup request received");
+  console.log("Content-Type:", req.headers["content-type"]);
 
-      const normalizedType = normalizeUserType(user_type);
+  // Check if it's FormData (multipart/form-data) or JSON
+  const isFormData =
+    req.headers["content-type"] &&
+    req.headers["content-type"].startsWith("multipart/form-data");
 
-      if (!username || !email || !password || !full_name) {
+  if (isFormData) {
+    // Use multer for FormData
+    upload.fields([
+      { name: "photo", maxCount: 1 },
+      { name: "idproof", maxCount: 1 },
+    ])(req, res, async (err) => {
+      if (err) {
+        console.error("Multer error:", err);
         return res.status(400).json({
           success: false,
-          message: "username, email, full_name and password are required",
+          message: "File upload error",
         });
       }
+      await handleSignup(req, res);
+    });
+  } else {
+    // Handle JSON directly
+    await handleSignup(req, res);
+  }
+});
 
-      // For guiders, require profile photo
-      if (normalizedType === "guider" && !req.files.photo) {
-        return res.status(400).json({
-          success: false,
-          message: "Profile picture is required for guiders",
-        });
-      }
+async function handleSignup(req, res) {
+  console.log("Signup request received");
+  try {
+    const {
+      username,
+      email,
+      password,
+      full_name,
+      phone = null,
+      user_type,
+      dob,
+      gender,
+      experience,
+      languages,
+      specialization,
+    } = req.body;
 
-      const conn = db.promise();
+    console.log("Body:", { username, email, full_name, user_type });
 
-      // Check duplicates
-      const [existing] = await conn.query(
-        "SELECT user_id FROM users WHERE email = ? OR username = ? LIMIT 1",
-        [email, username]
-      );
-      if (existing.length > 0) {
-        return res.status(409).json({
-          success: false,
-          message: "Email or username already in use",
-        });
-      }
+    const normalizedType = normalizeUserType(user_type);
+    console.log("Normalized type:", normalizedType);
 
-      // Hash password
-      const password_hash = await bcrypt.hash(password, 10);
-
-      // Handle file uploads
-      let profileImagePath = null;
-      if (req.files.photo && req.files.photo[0]) {
-        profileImagePath = "/assets/uploads/" + req.files.photo[0].filename;
-      }
-
-      // Insert user
-      const [result] = await conn.execute(
-        "INSERT INTO users (username, email, password_hash, full_name, phone, user_type, profile_image) VALUES (?, ?, ?, ?, ?, ?, ?)",
-        [
-          username,
-          email,
-          password_hash,
-          full_name,
-          phone,
-          normalizedType,
-          profileImagePath,
-        ]
-      );
-
-      const user_id = result.insertId;
-
-      // If guider, create guider row with additional details
-      if (normalizedType === "guider") {
-        await conn.execute(
-          "INSERT INTO guiders (user_id, specialization, experience_years, languages, hourly_rate) VALUES (?, ?, ?, ?, ?)",
-          [
-            user_id,
-            specialization || null,
-            experience || 0,
-            languages || null,
-            0.0,
-          ]
-        );
-      }
-
-      const user = {
-        user_id,
-        username,
-        email,
-        user_type: normalizedType,
-        full_name,
-        phone,
-        profile_image: profileImagePath,
-      };
-
-      const token = issueToken({
-        user_id,
-        username,
-        user_type: normalizedType,
-      });
-
-      return res.status(201).json({
-        success: true,
-        message: "Signup successful",
-        redirect: roleRedirect(normalizedType),
-        token,
-        user: {
-          id: user_id,
-          username,
-          email,
-          role: normalizedType,
-          full_name,
-          profile_image: profileImagePath,
-        },
-      });
-    } catch (err) {
-      console.error("Signup error:", err);
-      return res.status(500).json({
+    if (!username || !email || !password || !full_name) {
+      return res.status(400).json({
         success: false,
-        message: "Internal server error",
+        message: "username, email, full_name and password are required",
       });
     }
+
+    // For guiders, require profile photo
+    if (normalizedType === "guider" && !req.files.photo) {
+      return res.status(400).json({
+        success: false,
+        message: "Profile picture is required for guiders",
+      });
+    }
+
+    console.log("Getting db connection");
+    const conn = await db;
+
+    console.log("Checking duplicates");
+    // Check duplicates
+    const [existing] = await conn.query(
+      "SELECT user_id FROM users WHERE email = ? OR username = ? LIMIT 1",
+      [email, username]
+    );
+    if (existing.length > 0) {
+      return res.status(409).json({
+        success: false,
+        message: "Email or username already in use",
+      });
+    }
+
+    console.log("Hashing password");
+    // Hash password
+    const password_hash = await bcrypt.hash(password, 10);
+
+    // Handle file uploads
+    let profileImagePath = null;
+    if (req.files && req.files.photo && req.files.photo[0]) {
+      profileImagePath = "/assets/uploads/" + req.files.photo[0].filename;
+    }
+
+    console.log("Inserting user");
+    // Insert user
+    const [result] = await conn.execute(
+      "INSERT INTO users (username, email, password_hash, full_name, phone, user_type, profile_image) VALUES (?, ?, ?, ?, ?, ?, ?)",
+      [
+        username,
+        email,
+        password_hash,
+        full_name,
+        phone,
+        normalizedType,
+        profileImagePath,
+      ]
+    );
+
+    const user_id = result.insertId;
+    console.log("User inserted, id:", user_id);
+
+    // If guider, create guider row with additional details
+    if (normalizedType === "guider") {
+      console.log("Inserting guider");
+      await conn.execute(
+        "INSERT INTO guiders (user_id, specialization, experience_years, languages, hourly_rate) VALUES (?, ?, ?, ?, ?)",
+        [
+          user_id,
+          specialization || null,
+          experience || 0,
+          languages || null,
+          0.0,
+        ]
+      );
+    }
+
+    const user = {
+      user_id,
+      username,
+      email,
+      user_type: normalizedType,
+      full_name,
+      phone,
+      profile_image: profileImagePath,
+    };
+
+    console.log("Issuing token");
+    const token = issueToken({
+      user_id,
+      username,
+      user_type: normalizedType,
+    });
+
+    console.log("Signup successful");
+    return res.status(201).json({
+      success: true,
+      message: "Signup successful",
+      redirect: roleRedirect(normalizedType),
+      token,
+      user: {
+        id: user_id,
+        username,
+        email,
+        role: normalizedType,
+        full_name,
+        profile_image: profileImagePath,
+      },
+    });
+  } catch (err) {
+    console.error("Signup error:", err);
+    return res.status(500).json({
+      success: false,
+      message: err.message || "Internal server error",
+    });
   }
-);
+}
 
 // POST /api/auth/login
 // Body: { emailOrUsername | email | username, password }
@@ -230,7 +265,7 @@ router.post("/login", async (req, res) => {
       });
     }
 
-    const conn = db.promise();
+    const conn = await db;
 
     const [rows] = await conn.query(
       "SELECT user_id, username, email, password_hash, user_type, full_name FROM users WHERE email = ? OR username = ? LIMIT 1",
