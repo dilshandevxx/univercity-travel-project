@@ -696,81 +696,8 @@
     </main>
 
     <script>
-      // --- MOCK DATA ---
-      const guides = [
-        {
-          id: 1,
-          name: "Sarah Chen",
-          location: "Kyoto, Japan",
-          rating: 4.9,
-          reviews: 124,
-          price: 45,
-          image:
-            "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
-          tags: ["History", "English", "Japanese"],
-          bio: "Professional historian specializing in Kyoto's ancient temples and tea ceremonies. Let's explore the hidden alleys of Gion together.",
-        },
-        {
-          id: 2,
-          name: "Marco Ross",
-          location: "Rome, Italy",
-          rating: 4.8,
-          reviews: 89,
-          price: 60,
-          image:
-            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
-          tags: ["Food", "Nightlife", "Italian", "English"],
-          bio: "Culinary expert and chef. I'll take you to the best trattorias that tourists never find. Prepare to eat!",
-        },
-        {
-          id: 3,
-          name: "Elena Gomez",
-          location: "Barcelona, Spain",
-          rating: 5.0,
-          reviews: 210,
-          price: 55,
-          image:
-            "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
-          tags: ["Architecture", "Spanish", "French"],
-          bio: "Gaudi enthusiast and local architect. Discover the secrets behind Sagrada Familia and Park Guell.",
-        },
-        {
-          id: 4,
-          name: "David Kim",
-          location: "Seoul, South Korea",
-          rating: 4.7,
-          reviews: 56,
-          price: 35,
-          image:
-            "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
-          tags: ["Nightlife", "Shopping", "Korean", "English"],
-          bio: "Your insider for Gangnam style nightlife and the best street food markets in Seoul.",
-        },
-        {
-          id: 5,
-          name: "Amara Okafor",
-          location: "Cape Town, SA",
-          rating: 4.9,
-          reviews: 142,
-          price: 50,
-          image:
-            "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
-          tags: ["Nature", "Hiking", "English"],
-          bio: "Certified mountain guide. Join me for a sunrise hike up Table Mountain or a tour of the coast.",
-        },
-        {
-          id: 6,
-          name: "Jean-Luc Dubois",
-          location: "Paris, France",
-          rating: 4.6,
-          reviews: 78,
-          price: 70,
-          image:
-            "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
-          tags: ["Photography", "Art", "French", "English"],
-          bio: "Photographer and art lover. I help you get the perfect Instagram shots while learning about Louvre history.",
-        },
-      ];
+      // --- GUIDES DATA ---
+      let guides = [];
 
       // --- INITIAL RENDER ---
       const grid = document.getElementById("guidesGrid");
@@ -872,8 +799,117 @@
         renderGuides(guides);
       }
 
+      // --- LOAD GUIDERS FROM API ---
+      async function loadGuiders() {
+        try {
+          const response = await fetch("/api/guiders");
+          const data = await response.json();
+          if (data.success) {
+            guides = data.guiders.map((g) => ({
+              id: g.guider_id,
+              name: g.full_name,
+              location: g.location || "Sri Lanka",
+              rating: parseFloat(g.rating) || 0,
+              reviews: g.total_reviews || 0,
+              price: parseFloat(g.hourly_rate) || 0,
+              image: g.profile_image || "https://via.placeholder.com/100",
+              tags: g.languages
+                ? g.languages.split(",").map((l) => l.trim())
+                : [g.specialization || "Guide"],
+              bio: g.bio || "Experienced local guide.",
+            }));
+            renderGuides(guides);
+          } else {
+            console.error("Failed to load guiders:", data.message);
+            loadMockData();
+          }
+        } catch (error) {
+          console.error("Error loading guiders:", error);
+          loadMockData();
+        }
+      }
+
+      // --- FALLBACK MOCK DATA ---
+      function loadMockData() {
+        guides = [
+          {
+            id: 1,
+            name: "Sarah Chen",
+            location: "Kyoto, Japan",
+            rating: 4.9,
+            reviews: 124,
+            price: 45,
+            image:
+              "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+            tags: ["History", "English", "Japanese"],
+            bio: "Professional historian specializing in Kyoto's ancient temples and tea ceremonies. Let's explore the hidden alleys of Gion together.",
+          },
+          {
+            id: 2,
+            name: "Marco Ross",
+            location: "Rome, Italy",
+            rating: 4.8,
+            reviews: 89,
+            price: 60,
+            image:
+              "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+            tags: ["Food", "Nightlife", "Italian", "English"],
+            bio: "Culinary expert and chef. I'll take you to the best trattorias that tourists never find. Prepare to eat!",
+          },
+          {
+            id: 3,
+            name: "Elena Gomez",
+            location: "Barcelona, Spain",
+            rating: 5.0,
+            reviews: 210,
+            price: 55,
+            image:
+              "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+            tags: ["Architecture", "Spanish", "French"],
+            bio: "Gaudi enthusiast and local architect. Discover the secrets behind Sagrada Familia and Park Guell.",
+          },
+          {
+            id: 4,
+            name: "David Kim",
+            location: "Seoul, South Korea",
+            rating: 4.7,
+            reviews: 56,
+            price: 35,
+            image:
+              "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+            tags: ["Nightlife", "Shopping", "Korean", "English"],
+            bio: "Your insider for Gangnam style nightlife and the best street food markets in Seoul.",
+          },
+          {
+            id: 5,
+            name: "Amara Okafor",
+            location: "Cape Town, SA",
+            rating: 4.9,
+            reviews: 142,
+            price: 50,
+            image:
+              "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+            tags: ["Nature", "Hiking", "English"],
+            bio: "Certified mountain guide. Join me for a sunrise hike up Table Mountain or a tour of the coast.",
+          },
+          {
+            id: 6,
+            name: "Jean-Luc Dubois",
+            location: "Paris, France",
+            rating: 4.6,
+            reviews: 78,
+            price: 70,
+            image:
+              "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+            tags: ["Photography", "Art", "French", "English"],
+            bio: "Photographer and art lover. I help you get the perfect Instagram shots while learning about Louvre history.",
+          },
+        ];
+        renderGuides(guides);
+      }
+
       // Initial Load
-      renderGuides(guides);
+      loadGuiders();
     </script>
     <script src="../js/user.js"></script>
     <script
