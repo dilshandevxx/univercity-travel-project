@@ -24,8 +24,9 @@ const storage = multer.diskStorage({
 
 const upload = multer({
   storage: storage,
-  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
+  limits: { fileSize: 10 * 1024 * 1024 }, // 10MB limit
   fileFilter: (req, file, cb) => {
+    console.log("File mimetype:", file.mimetype);
     if (file.mimetype.startsWith("image/")) {
       cb(null, true);
     } else {
@@ -103,7 +104,7 @@ router.post("/signup", async (req, res) => {
         console.error("Multer error:", err);
         return res.status(400).json({
           success: false,
-          message: "File upload error",
+          message: err.message || "File upload error",
         });
       }
       await handleSignup(req, res);
@@ -268,7 +269,7 @@ router.post("/login", async (req, res) => {
     const conn = await db;
 
     const [rows] = await conn.query(
-      "SELECT user_id, username, email, password_hash, user_type, full_name FROM users WHERE email = ? OR username = ? LIMIT 1",
+      "SELECT user_id, username, email, password_hash, user_type, full_name, profile_image FROM users WHERE email = ? OR username = ? LIMIT 1",
       [identifier, identifier]
     );
 
@@ -301,6 +302,7 @@ router.post("/login", async (req, res) => {
         email: user.email,
         role: user.user_type,
         full_name: user.full_name,
+        profile_image: user.profile_image,
       },
     });
   } catch (err) {
