@@ -97,6 +97,8 @@
             if (!res.ok || !data.success)
               throw new Error(data.message || "Signup failed");
             if (data.token) localStorage.setItem("token", data.token);
+            if (data.user)
+              localStorage.setItem("user", JSON.stringify(data.user));
             window.location.href = data.redirect || "/pages/GuiderDash.html";
           } catch (err) {
             alert(err.message || "An error occurred");

@@ -235,7 +235,7 @@
 .hero {
   margin-top: 80px;
   height: 620px;
-  background-image: url("/univercity-travel-project/frontend/assets/images/3.jpg");
+  background-image: url("../assets/images/3.jpg");
   background-position: center;
   background-size: cover;
   text-align: center;
