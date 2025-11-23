@@ -3,42 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wanderlust - Find a Guide</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>Our Guiders - Pearl Guide</title>
+
+    <!-- Bootstrap CSS -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../css/HomeStyle.css" />
+
+    <!-- Font Awesome -->
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqIAvNWLzeN8tE5YBujZqJLB"
-      crossorigin="anonymous"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
-    <!-- Add Font Awesome -->
+
+    <!-- Google Fonts (Poppins) -->
     <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
 
     <style>
-      /* --- CSS VARIABLES (Matching Profile Page) --- */
-      :root {
-        --primary: #0ea5e9;
-        --primary-dark: #0284c7;
-        --accent: #f59e0b;
-        --dark: #0f172a;
-        --text: #334155;
-        --text-light: #64748b;
-        --bg: #f8fafc;
-        --card-bg: #ffffff;
-        --radius: 16px;
-        --shadow: 0 4px 20px rgba(148, 163, 184, 0.15);
-        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
+      /* --- GLOBAL STYLES (Matching your Register Page) --- */
       * {
         margin: 0;
         padding: 0;
@@ -46,876 +32,478 @@
       }
 
       body {
-        font-family: "Plus Jakarta Sans", sans-serif;
-        background-color: var(--bg);
-        color: var(--text);
-        line-height: 1.6;
+        font-family: "Poppins", Arial, sans-serif;
+        min-height: 100vh;
+        /* Using a placeholder image so you can see the effect immediately. 
+           Change this back to: url('../assets/GuiderLogin/Back\ image.jpg') */
+        background: url("https://images.unsplash.com/photo-1506929562872-bb421503ef21?q=80&w=2668&auto=format&fit=crop")
+          no-repeat center center/cover;
+        background-attachment: fixed; /* Keeps bg still while scrolling */
+        position: relative;
+        color: #fff;
       }
 
-      h1,
-      h2,
-      h3,
-      h4 {
-        font-family: "Outfit", sans-serif;
-        color: var(--dark);
-      }
-      a {
-        text-decoration: none;
-        color: inherit;
-      }
-      button {
-        cursor: pointer;
-        border: none;
-        font-family: inherit;
-      }
-
-      /* --- NAV BAR --- */
-      .navbar {
-        background: var(--card-bg);
-        padding: 1rem 2rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: sticky;
+      /* Dark overlay */
+      body::before {
+        content: "";
+        position: absolute;
         top: 0;
-        z-index: 100;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(
+          0,
+          0,
+          0,
+          0.5
+        ); /* Slightly darker for better readability */
+        z-index: 0;
+        pointer-events: none;
       }
 
-      .logo {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: var(--primary);
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
+      /* Wrapper to put content above the overlay */
+      .page-wrapper {
+        position: relative;
+        z-index: 1;
+        padding: 40px 20px;
       }
 
-      .nav-links {
-        display: flex;
-        gap: 2rem;
-      }
-      .nav-links a {
-        font-weight: 500;
-        color: var(--text-light);
-        transition: var(--transition);
-      }
-      .nav-links a:hover,
-      .nav-links a.active {
-        color: var(--primary);
-      }
-
-      /* --- HERO SECTION --- */
-      .hero {
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-        padding: 4rem 1.5rem;
-        color: white;
+      /* --- NAVBAR / HEADER --- */
+      .header-section {
         text-align: center;
-        margin-bottom: 2rem;
+        margin-bottom: 50px;
+        animation: fadeIn 0.8s ease;
       }
 
-      .hero h1 {
-        color: white;
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-      }
-      .hero p {
-        color: #94a3b8;
-        max-width: 600px;
-        margin: 0 auto 2rem;
+      .page-title {
+        font-weight: 700;
+        font-size: 3rem;
+        margin-bottom: 10px;
+        text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
       }
 
-      /* SEARCH BAR */
+      .page-subtitle {
+        font-size: 1.1rem;
+        opacity: 0.9;
+      }
+
+      /* --- SEARCH BAR (Glassmorphism) --- */
       .search-container {
-        background: white;
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 10px;
+        max-width: 700px;
+        margin: 0 auto 50px auto;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        padding: 15px;
         border-radius: 50px;
         display: flex;
         gap: 10px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
       }
 
-      .search-input-group {
+      .search-input {
         flex: 1;
-        display: flex;
-        align-items: center;
-        padding: 0 1.5rem;
-        border-right: 1px solid #e2e8f0;
-      }
-
-      .search-input-group:last-child {
-        border-right: none;
-      }
-
-      .search-input-group input {
+        background: transparent;
         border: none;
-        outline: none;
-        width: 100%;
-        padding: 10px;
+        color: #fff;
+        padding: 10px 20px;
         font-size: 1rem;
-        color: var(--dark);
+        outline: none;
+      }
+
+      .search-input::placeholder {
+        color: rgba(255, 255, 255, 0.7);
       }
 
       .search-btn {
-        background: var(--primary);
+        background: #002855;
         color: white;
+        border: none;
+        border-radius: 50px;
         width: 50px;
         height: 50px;
-        border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: var(--transition);
+        cursor: pointer;
+        transition: all 0.3s ease;
       }
 
       .search-btn:hover {
-        background: var(--primary-dark);
+        background: #086188;
         transform: scale(1.05);
       }
 
-      /* --- MAIN CONTENT --- */
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 1.5rem 4rem;
-      }
-
-      .layout-grid {
-        display: grid;
-        grid-template-columns: 280px 1fr;
-        gap: 2rem;
-        align-items: start;
-      }
-
-      /* --- FILTERS SIDEBAR --- */
-      .filters {
-        background: var(--card-bg);
-        padding: 1.5rem;
-        border-radius: var(--radius);
-        box-shadow: var(--shadow);
-        position: sticky;
-        top: 100px;
-      }
-
-      .filter-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 1.5rem;
-        padding-bottom: 1rem;
-        border-bottom: 1px solid #e2e8f0;
-      }
-
-      .filter-group {
-        margin-bottom: 1.5rem;
-      }
-      .filter-title {
-        font-size: 0.95rem;
-        font-weight: 600;
-        margin-bottom: 0.8rem;
-        display: block;
-      }
-
-      .checkbox-group {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-
-      .checkbox-label {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 0.9rem;
-        color: var(--text-light);
-        cursor: pointer;
-      }
-
-      .checkbox-label input {
-        accent-color: var(--primary);
-      }
-
-      .range-slider {
-        width: 100%;
-        margin-top: 0.5rem;
-        accent-color: var(--primary);
-      }
-      .price-display {
-        font-size: 0.85rem;
-        color: var(--text-light);
-        display: flex;
-        justify-content: space-between;
-        margin-top: 5px;
-      }
-
-      /* --- GUIDES GRID --- */
-      .results-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 1.5rem;
-      }
-
-      .guides-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 1.5rem;
-      }
-
-      /* --- GUIDE CARD --- */
+      /* --- GUIDE CARD STYLES --- */
       .guide-card {
-        background: var(--card-bg);
-        border-radius: var(--radius);
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
         overflow: hidden;
-        box-shadow: var(--shadow);
-        transition: var(--transition);
-        border: 1px solid transparent;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        height: 100%;
+        position: relative;
         display: flex;
         flex-direction: column;
       }
 
       .guide-card:hover {
-        transform: translateY(-5px);
-        border-color: var(--primary);
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        border-color: rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.2);
       }
 
-      .guide-header {
+      /* Image Area */
+      .card-img-wrapper {
+        width: 100%;
+        height: 250px;
         position: relative;
-        height: 120px;
-        background: #e0f2fe;
+        overflow: hidden;
       }
 
-      .guide-avatar {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        border: 4px solid white;
+      .card-img-wrapper img {
+        width: 100%;
+        height: 100%;
         object-fit: cover;
-        position: absolute;
-        bottom: -40px;
-        left: 20px;
-        background: white;
+        transition: transform 0.5s ease;
       }
 
-      .guide-rating {
+      .guide-card:hover .card-img-wrapper img {
+        transform: scale(1.1);
+      }
+
+      .rating-badge {
         position: absolute;
         top: 15px;
         right: 15px;
-        background: white;
-        padding: 4px 10px;
+        background: rgba(0, 0, 0, 0.7);
+        color: #f1c40f;
+        padding: 5px 12px;
         border-radius: 20px;
-        font-weight: 700;
-        font-size: 0.85rem;
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        font-weight: 600;
+        font-size: 0.9rem;
+        backdrop-filter: blur(4px);
       }
 
-      .star {
-        color: var(--accent);
-      }
-
-      .guide-body {
-        padding: 3rem 1.5rem 1.5rem;
+      /* Content Area */
+      .card-body {
+        padding: 25px;
         flex: 1;
         display: flex;
         flex-direction: column;
       }
 
       .guide-name {
-        font-size: 1.25rem;
-        font-weight: 700;
-        margin-bottom: 0.2rem;
-      }
-      .guide-location {
-        font-size: 0.9rem;
-        color: var(--text-light);
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        margin-bottom: 1rem;
-      }
-
-      .guide-bio {
-        font-size: 0.9rem;
-        color: var(--text-light);
-        margin-bottom: 1rem;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-      }
-
-      .tags {
-        display: flex;
-        gap: 0.5rem;
-        flex-wrap: wrap;
-        margin-bottom: 1.5rem;
-      }
-      .tag {
-        background: #f1f5f9;
-        padding: 4px 10px;
-        border-radius: 6px;
-        font-size: 0.75rem;
-        color: var(--text-light);
-      }
-
-      .guide-footer {
-        margin-top: auto;
-        padding-top: 1rem;
-        border-top: 1px solid #f1f5f9;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .price {
-        font-weight: 700;
-        color: var(--dark);
-        font-size: 1.1rem;
-      }
-      .price span {
-        font-size: 0.8rem;
-        color: var(--text-light);
-        font-weight: 400;
-      }
-
-      .btn-sm {
-        padding: 8px 16px;
-        background: var(--primary);
-        color: white;
-        border-radius: 8px;
-        font-size: 0.9rem;
+        font-size: 1.5rem;
         font-weight: 600;
-        transition: var(--transition);
-      }
-      .btn-sm:hover {
-        background: var(--primary-dark);
+        margin-bottom: 5px;
+        color: #fff;
       }
 
-      /* RESPONSIVE */
-      @media (max-width: 768px) {
-        .layout-grid {
-          grid-template-columns: 1fr;
+      .guide-specialization {
+        color: #086188; /* Accent color from your register page */
+        font-size: 0.95rem;
+        font-weight: 500;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        background: rgba(255, 255, 255, 0.9);
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 4px;
+        width: fit-content;
+      }
+
+      .info-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 8px;
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .info-row i {
+        color: #4facfe;
+        width: 20px;
+        text-align: center;
+      }
+
+      /* Tags for Languages */
+      .lang-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+      }
+
+      .lang-tag {
+        font-size: 0.75rem;
+        padding: 4px 10px;
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 12px;
+        color: #eee;
+      }
+
+      /* Button */
+      .view-profile-btn {
+        margin-top: auto; /* Pushes button to bottom */
+        background: #002855;
+        color: white;
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 10px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(8, 97, 136, 0.3);
+      }
+
+      .view-profile-btn:hover {
+        background: #086188;
+        transform: translateY(-2px);
+        color: white;
+      }
+
+      /* Animation */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
         }
-        .filters {
-          display: none; /* Hidden on mobile for simplicity in this demo */
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .page-title {
+          font-size: 2.2rem;
         }
         .search-container {
-          flex-direction: column;
-          border-radius: 16px;
-          gap: 0;
-        }
-        .search-input-group {
-          border-right: none;
-          border-bottom: 1px solid #e2e8f0;
-          padding: 1rem;
-        }
-        .search-btn {
-          width: 100%;
-          border-radius: 0 0 16px 16px;
-          height: 40px;
+          width: 90%;
         }
       }
     </style>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="#">
-          <img
-            src="../assets/HomeAssets/Logo.png"
-            alt="Logo"
-            class="navbar-logo"
-          />
-        </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav mx-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="home.html">Home</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link"
-                href="destination.html"
-                role="button"
-                data-bs-toggle="dropdown"
-              >
-                Destinations
-              </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a class="dropdown-item" href="destination.html#byCity"
-                    >By City</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="destination.html#byCategory"
-                    >By Category</a
-                  >
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="hotel-restro.html"
-                >Hotels & Restaurants</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="guiders.html">Find a Guide</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="blog-story.html">Blog/Stories</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="home.html#about">About us</a>
-            </li>
-          </ul>
-          <div class="d-flex align-items-center gap-3">
-            <div class="search-box">
-              <input type="text" class="form-control" placeholder="Search" />
-              <i class="fas fa-search"></i>
-            </div>
-            <div class="user-section">
-              <i class="fas fa-user"></i>
-              <span>User Name</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
+    <div class="page-wrapper container">
+      <!-- Header -->
+      <header class="header-section">
+        <h1 class="page-title">Meet Our Experts</h1>
+        <p class="page-subtitle">
+          Discover passionate local guides for your next adventure
+        </p>
+      </header>
 
-    <section class="hero">
-      <h1>Find Your Local Expert</h1>
-      <p>
-        Connect with passionate locals who can show you the hidden gems of the
-        city.
-      </p>
-
+      <!-- Search Filter -->
       <div class="search-container">
-        <div class="search-input-group">
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#94A3B8"
-            stroke-width="2"
-          >
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-            <circle cx="12" cy="10" r="3"></circle>
-          </svg>
-          <input
-            type="text"
-            id="locationInput"
-            placeholder="Where are you going?"
-          />
-        </div>
-        <div class="search-input-group">
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#94A3B8"
-            stroke-width="2"
-          >
-            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-            <line x1="16" y1="2" x2="16" y2="6"></line>
-            <line x1="8" y1="2" x2="8" y2="6"></line>
-            <line x1="3" y1="10" x2="21" y2="10"></line>
-          </svg>
-          <input type="text" placeholder="Dates (Optional)" />
-        </div>
-        <button class="search-btn" onclick="filterGuides()">
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="3"
-          >
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
+        <i
+          class="fas fa-search"
+          style="
+            align-self: center;
+            color: rgba(255, 255, 255, 0.7);
+            margin-left: 10px;
+          "
+        ></i>
+        <input
+          type="text"
+          id="searchInput"
+          class="search-input"
+          placeholder="Search by name, language, or specialization..."
+        />
+        <button class="search-btn" onclick="filterGuiders()">
+          <i class="fas fa-arrow-right"></i>
         </button>
       </div>
-    </section>
 
-    <main class="container">
-      <div class="layout-grid">
-        <!-- Filters Sidebar -->
-        <aside class="filters">
-          <div class="filter-header">
-            <h3>Filters</h3>
-            <button
-              style="color: var(--primary); font-size: 0.85rem"
-              onclick="resetFilters()"
-            >
-              Reset
-            </button>
-          </div>
-
-          <div class="filter-group">
-            <span class="filter-title">Price per Hour</span>
-            <input
-              type="range"
-              class="range-slider"
-              min="10"
-              max="200"
-              value="200"
-              id="priceRange"
-              oninput="updatePriceLabel(this.value); filterGuides()"
-            />
-            <div class="price-display">
-              <span>$10</span>
-              <span id="priceValue">Max: $200</span>
-            </div>
-          </div>
-
-          <div class="filter-group">
-            <span class="filter-title">Specialties</span>
-            <div class="checkbox-group">
-              <label class="checkbox-label"
-                ><input
-                  type="checkbox"
-                  value="History"
-                  onchange="filterGuides()"
-                />
-                History & Culture</label
-              >
-              <label class="checkbox-label"
-                ><input
-                  type="checkbox"
-                  value="Food"
-                  onchange="filterGuides()"
-                />
-                Food & Drink</label
-              >
-              <label class="checkbox-label"
-                ><input
-                  type="checkbox"
-                  value="Nature"
-                  onchange="filterGuides()"
-                />
-                Nature & Hiking</label
-              >
-              <label class="checkbox-label"
-                ><input
-                  type="checkbox"
-                  value="Nightlife"
-                  onchange="filterGuides()"
-                />
-                Nightlife</label
-              >
-              <label class="checkbox-label"
-                ><input
-                  type="checkbox"
-                  value="Photography"
-                  onchange="filterGuides()"
-                />
-                Photography</label
-              >
-            </div>
-          </div>
-
-          <div class="filter-group">
-            <span class="filter-title">Languages</span>
-            <div class="checkbox-group">
-              <label class="checkbox-label"
-                ><input
-                  type="checkbox"
-                  value="English"
-                  onchange="filterGuides()"
-                />
-                English</label
-              >
-              <label class="checkbox-label"
-                ><input
-                  type="checkbox"
-                  value="Spanish"
-                  onchange="filterGuides()"
-                />
-                Spanish</label
-              >
-              <label class="checkbox-label"
-                ><input
-                  type="checkbox"
-                  value="Japanese"
-                  onchange="filterGuides()"
-                />
-                Japanese</label
-              >
-              <label class="checkbox-label"
-                ><input
-                  type="checkbox"
-                  value="French"
-                  onchange="filterGuides()"
-                />
-                French</label
-              >
-            </div>
-          </div>
-        </aside>
-
-        <!-- Results Area -->
-        <section>
-          <div class="results-header">
-            <h2 id="resultsCount">Showing 6 Guides</h2>
-            <select
-              style="
-                padding: 8px;
-                border: 1px solid #e2e8f0;
-                border-radius: 6px;
-                color: var(--text);
-              "
-            >
-              <option>Recommended</option>
-              <option>Price: Low to High</option>
-              <option>Highest Rated</option>
-            </select>
-          </div>
-
-          <div class="guides-grid" id="guidesGrid">
-            <!-- Cards will be injected here by JS -->
-          </div>
-        </section>
+      <!-- Guiders Grid -->
+      <div class="row g-4" id="guidersGrid">
+        <!-- Javascript will inject cards here -->
       </div>
-    </main>
 
+      <!-- Empty State (Hidden by default) -->
+      <div
+        id="noResults"
+        style="display: none; text-align: center; margin-top: 50px"
+      >
+        <i
+          class="fas fa-sad-tear"
+          style="
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 15px;
+          "
+        ></i>
+        <h3>No guiders found</h3>
+        <p>Try adjusting your search criteria</p>
+      </div>
+    </div>
+
+    <!-- JavaScript -->
     <script>
-      // --- GUIDES DATA ---
-      let guides = [];
+      // 1. Mock Data (In a real app, you would fetch this from your API)
+      const guidersData = [
+        {
+          id: 1,
+          name: "Saman Perera",
+          img: "https://images.unsplash.com/photo-1540569014015-19a7be504e3a?q=80&w=2535&auto=format&fit=crop",
+          rating: 4.8,
+          experience: "5 Years",
+          specialization: "Historical Tours",
+          languages: ["English", "Sinhala"],
+          location: "Kandy, Sri Lanka",
+        },
+        {
+          id: 2,
+          name: "Sarah Jenkins",
+          img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=2592&auto=format&fit=crop",
+          rating: 5.0,
+          experience: "3 Years",
+          specialization: "Wildlife Safari",
+          languages: ["English", "German", "French"],
+          location: "Yala, Sri Lanka",
+        },
+        {
+          id: 3,
+          name: "Kumara Dissanaike",
+          img: "https://images.unsplash.com/photo-1552058544-f2b08422138a?q=80&w=2598&auto=format&fit=crop",
+          rating: 4.5,
+          experience: "8 Years",
+          specialization: "Hiking & Trekking",
+          languages: ["Sinhala", "Tamil", "English"],
+          location: "Ella, Sri Lanka",
+        },
+        {
+          id: 4,
+          name: "Ayesha Malik",
+          img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=2576&auto=format&fit=crop",
+          rating: 4.9,
+          experience: "4 Years",
+          specialization: "Cultural Food",
+          languages: ["English", "Arabic"],
+          location: "Colombo, Sri Lanka",
+        },
+        {
+          id: 5,
+          name: "John Doe",
+          img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=2574&auto=format&fit=crop",
+          rating: 4.2,
+          experience: "2 Years",
+          specialization: "City Walks",
+          languages: ["English", "Spanish"],
+          location: "Galle, Sri Lanka",
+        },
+      ];
 
-      // --- INITIAL RENDER ---
-      const grid = document.getElementById("guidesGrid");
-      const countLabel = document.getElementById("resultsCount");
+      // 2. Function to Render Cards
+      const gridContainer = document.getElementById("guidersGrid");
+      const noResults = document.getElementById("noResults");
 
-      function renderGuides(data) {
-        grid.innerHTML = "";
-        countLabel.innerText = `Showing ${data.length} Guides`;
+      function renderGuiders(data) {
+        gridContainer.innerHTML = ""; // Clear existing
 
         if (data.length === 0) {
-          grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 2rem; color: var(--text-light);">No guides found matching your criteria.</div>`;
+          noResults.style.display = "block";
           return;
+        } else {
+          noResults.style.display = "none";
         }
 
-        data.forEach((guide) => {
-          const card = document.createElement("div");
-          card.className = "guide-card";
-          card.innerHTML = `
-                    <div class="guide-header">
-                        <img src="${guide.image}" alt="${
-            guide.name
-          }" class="guide-avatar">
-                        <div class="guide-rating">
-                            <span class="star">★</span> ${
-                              guide.rating
-                            } <span style="color:#94A3B8; font-weight:400; font-size:0.75rem">(${
-            guide.reviews
-          })</span>
-                        </div>
-                    </div>
-                    <div class="guide-body">
-                        <h3 class="guide-name">${guide.name}</h3>
-                        <div class="guide-location">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                            ${guide.location}
-                        </div>
-                        <p class="guide-bio">${guide.bio}</p>
-                        <div class="tags">
-                            ${guide.tags
-                              .map((tag) => `<span class="tag">${tag}</span>`)
-                              .join("")}
-                        </div>
-                        <div class="guide-footer">
-                            <div class="price">$${
-                              guide.price
-                            }<span>/hr</span></div>
-                            <a href="guider-profile.html"><button class="btn-sm">View Profile</button></a>
-                        </div>
-                    </div>
-                `;
-          grid.appendChild(card);
+        data.forEach((guider) => {
+          // Generate Language Tags HTML
+          const langTags = guider.languages
+            .map((lang) => `<span class="lang-tag">${lang}</span>`)
+            .join("");
+
+          // Construct Card HTML
+          const cardHTML = `
+            <div class="col-12 col-md-6 col-lg-3">
+              <div class="guide-card">
+                <div class="card-img-wrapper">
+                  <img src="${guider.img}" alt="${guider.name}">
+                  <div class="rating-badge">
+                    <i class="fas fa-star"></i> ${guider.rating}
+                  </div>
+                </div>
+                <div class="card-body">
+                  <span class="guide-specialization">${guider.specialization}</span>
+                  <h3 class="guide-name">${guider.name}</h3>
+                  
+                  <div class="info-row">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>${guider.location}</span>
+                  </div>
+                  <div class="info-row">
+                    <i class="fas fa-briefcase"></i>
+                    <span>${guider.experience} Exp.</span>
+                  </div>
+
+                  <div class="lang-tags">
+                    ${langTags}
+                  </div>
+
+                  <a href="/pages/guider-profile.html?id=${guider.id}" class="view-profile-btn" onclick="goToProfile(event, ${guider.id})">
+                    View Profile <i class="fas fa-arrow-right ms-2"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          `;
+
+          gridContainer.insertAdjacentHTML("beforeend", cardHTML);
         });
       }
 
-      // --- FILTER LOGIC ---
-      function updatePriceLabel(val) {
-        document.getElementById("priceValue").innerText = `Max: $${val}`;
-      }
+      // 3. Initial Render
+      document.addEventListener("DOMContentLoaded", () => {
+        renderGuiders(guidersData);
+      });
 
-      function filterGuides() {
-        const locationQuery = document
-          .getElementById("locationInput")
-          .value.toLowerCase();
-        const maxPrice = document.getElementById("priceRange").value;
+      // 4. Search Functionality
+      const searchInput = document.getElementById("searchInput");
 
-        // Get all checked checkboxes
-        const checkedBoxes = Array.from(
-          document.querySelectorAll('input[type="checkbox"]:checked')
-        ).map((cb) => cb.value.toLowerCase());
+      searchInput.addEventListener("keyup", (e) => {
+        const term = e.target.value.toLowerCase();
 
-        const filtered = guides.filter((guide) => {
-          // 1. Location Filter
-          const matchesLocation = guide.location
-            .toLowerCase()
-            .includes(locationQuery);
-
-          // 2. Price Filter
-          const matchesPrice = guide.price <= maxPrice;
-
-          // 3. Tags/Checkboxes Filter (OR logic - if any tag matches)
-          // If no boxes checked, return true. If boxes checked, guide must have at least one.
-          const matchesTags =
-            checkedBoxes.length === 0 ||
-            guide.tags.some((tag) => checkedBoxes.includes(tag.toLowerCase()));
-
-          return matchesLocation && matchesPrice && matchesTags;
+        const filtered = guidersData.filter((guider) => {
+          return (
+            guider.name.toLowerCase().includes(term) ||
+            guider.specialization.toLowerCase().includes(term) ||
+            guider.languages.some((l) => l.toLowerCase().includes(term))
+          );
         });
 
-        renderGuides(filtered);
+        renderGuiders(filtered);
+      });
+
+      function filterGuiders() {
+        // Triggered by button click (optional duplicate logic of keyup)
+        searchInput.dispatchEvent(new Event("keyup"));
       }
 
-      function resetFilters() {
-        document.getElementById("locationInput").value = "";
-        document.getElementById("priceRange").value = 200;
-        updatePriceLabel(200);
-        document
-          .querySelectorAll('input[type="checkbox"]')
-          .forEach((cb) => (cb.checked = false));
-        renderGuides(guides);
-      }
+      // 5. Handle Click Logic
+      function goToProfile(event, id) {
+        // If you don't have the profile page ready yet, you can remove the href in the anchor tag
+        // and just use this alert to test the ID passing.
 
-      // --- LOAD GUIDERS FROM API ---
-      async function loadGuiders() {
-        try {
-          const response = await fetch("/api/guiders");
-          const data = await response.json();
-          if (data.success) {
-            guides = data.guiders.map((g) => ({
-              id: g.guider_id,
-              name: g.full_name,
-              location: g.location || "Sri Lanka",
-              rating: parseFloat(g.rating) || 0,
-              reviews: g.total_reviews || 0,
-              price: parseFloat(g.hourly_rate) || 0,
-              image: g.profile_image || "https://via.placeholder.com/100",
-              tags: g.languages
-                ? g.languages.split(",").map((l) => l.trim())
-                : [g.specialization || "Guide"],
-              bio: g.bio || "Experienced local guide.",
-            }));
-            renderGuides(guides);
-          } else {
-            console.error("Failed to load guiders:", data.message);
-            loadMockData();
-          }
-        } catch (error) {
-          console.error("Error loading guiders:", error);
-          loadMockData();
-        }
-      }
+        // event.preventDefault(); // Uncomment this line if you don't want to navigate yet
+        console.log("Navigating to profile of user ID:", id);
 
-      // --- FALLBACK MOCK DATA ---
-      function loadMockData() {
-        guides = [
-          {
-            id: 1,
-            name: "Sarah Chen",
-            location: "Kyoto, Japan",
-            rating: 4.9,
-            reviews: 124,
-            price: 45,
-            image:
-              "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
-            tags: ["History", "English", "Japanese"],
-            bio: "Professional historian specializing in Kyoto's ancient temples and tea ceremonies. Let's explore the hidden alleys of Gion together.",
-          },
-          {
-            id: 2,
-            name: "Marco Ross",
-            location: "Rome, Italy",
-            rating: 4.8,
-            reviews: 89,
-            price: 60,
-            image:
-              "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
-            tags: ["Food", "Nightlife", "Italian", "English"],
-            bio: "Culinary expert and chef. I'll take you to the best trattorias that tourists never find. Prepare to eat!",
-          },
-          {
-            id: 3,
-            name: "Elena Gomez",
-            location: "Barcelona, Spain",
-            rating: 5.0,
-            reviews: 210,
-            price: 55,
-            image:
-              "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
-            tags: ["Architecture", "Spanish", "French"],
-            bio: "Gaudi enthusiast and local architect. Discover the secrets behind Sagrada Familia and Park Guell.",
-          },
-          {
-            id: 4,
-            name: "David Kim",
-            location: "Seoul, South Korea",
-            rating: 4.7,
-            reviews: 56,
-            price: 35,
-            image:
-              "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
-            tags: ["Nightlife", "Shopping", "Korean", "English"],
-            bio: "Your insider for Gangnam style nightlife and the best street food markets in Seoul.",
-          },
-          {
-            id: 5,
-            name: "Amara Okafor",
-            location: "Cape Town, SA",
-            rating: 4.9,
-            reviews: 142,
-            price: 50,
-            image:
-              "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
-            tags: ["Nature", "Hiking", "English"],
-            bio: "Certified mountain guide. Join me for a sunrise hike up Table Mountain or a tour of the coast.",
-          },
-          {
-            id: 6,
-            name: "Jean-Luc Dubois",
-            location: "Paris, France",
-            rating: 4.6,
-            reviews: 78,
-            price: 70,
-            image:
-              "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
-            tags: ["Photography", "Art", "French", "English"],
-            bio: "Photographer and art lover. I help you get the perfect Instagram shots while learning about Louvre history.",
-          },
-        ];
-        renderGuides(guides);
+        // Here you would typically navigate:
+        // window.location.href = `guider-profile.html?id=${id}`;
       }
-
-      // Initial Load
-      loadGuiders();
     </script>
-    <script src="../js/user.js"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-      crossorigin="anonymous"
-    ></script>
   </body>
 </html>
