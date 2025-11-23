@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Our Guiders - Pearl Guide</title>
+    <title>Our Guiders - Pearl Guide Sri Lanka</title>
 
     <!-- Bootstrap CSS -->
     <link
@@ -17,14 +17,14 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
 
-    <!-- Google Fonts (Poppins) -->
+    <!-- Google Fonts (Poppins & Playfair Display) -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
 
     <style>
-      /* --- GLOBAL STYLES (Matching your Register Page) --- */
+      /* --- GLOBAL STYLES --- */
       * {
         margin: 0;
         padding: 0;
@@ -34,72 +34,120 @@
       body {
         font-family: "Poppins", Arial, sans-serif;
         min-height: 100vh;
-        /* Using a placeholder image so you can see the effect immediately. 
-           Change this back to: url('../assets/GuiderLogin/Back\ image.jpg') */
-        background: url("https://images.unsplash.com/photo-1506929562872-bb421503ef21?q=80&w=2668&auto=format&fit=crop")
-          no-repeat center center/cover;
-        background-attachment: fixed; /* Keeps bg still while scrolling */
-        position: relative;
         color: #fff;
+        position: relative;
+        overflow-x: hidden;
       }
 
-      /* Dark overlay */
-      body::before {
-        content: "";
-        position: absolute;
+      /* --- SRI LANKAN SCENIC BACKGROUND --- */
+      .bg-scenic {
+        position: fixed;
         top: 0;
         left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(
-          0,
-          0,
-          0,
-          0.5
-        ); /* Slightly darker for better readability */
-        z-index: 0;
-        pointer-events: none;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        /* Iconic Nine Arch Bridge / Ella / Tea Plantation vibe */
+        background: url("https://images.unsplash.com/photo-1584950064562-b9e3065b9347?q=80&w=2670&auto=format&fit=crop")
+          no-repeat center center/cover;
+        /* Alternative option (Sigiriya): https://images.unsplash.com/photo-1588258524675-55d6563e41bc?q=80&w=2574&auto=format&fit=crop */
       }
 
-      /* Wrapper to put content above the overlay */
+      /* Overlay to make text readable against lush greens */
+      .bg-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        /* Gradient from dark jungle green to black */
+        background: linear-gradient(
+          to bottom,
+          rgba(6, 78, 59, 0.4),
+          rgba(15, 23, 42, 0.85)
+        );
+        backdrop-filter: brightness(0.9);
+      }
+
+      /* Wrapper */
       .page-wrapper {
         position: relative;
         z-index: 1;
-        padding: 40px 20px;
+        padding: 60px 20px;
       }
 
       /* --- NAVBAR / HEADER --- */
       .header-section {
         text-align: center;
-        margin-bottom: 50px;
-        animation: fadeIn 0.8s ease;
+        margin-bottom: 60px;
+        animation: fadeIn 1s ease-out;
+      }
+
+      .ayubowan-text {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        color: #fbbf24; /* Ceylon Gold */
+        font-style: italic;
+        margin-bottom: 5px;
+        display: block;
+        letter-spacing: 2px;
       }
 
       .page-title {
+        font-family: "Playfair Display", serif;
         font-weight: 700;
-        font-size: 3rem;
-        margin-bottom: 10px;
-        text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        font-size: 4.5rem;
+        margin-bottom: 15px;
+        color: #fff;
+        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      }
+
+      .page-title i {
+        font-size: 2.5rem;
+        vertical-align: middle;
+        margin-right: 15px;
+        color: #22d3ee; /* Tropical Ocean Teal */
       }
 
       .page-subtitle {
-        font-size: 1.1rem;
-        opacity: 0.9;
+        font-size: 1.2rem;
+        color: rgba(255, 255, 255, 0.95);
+        font-weight: 300;
+        max-width: 600px;
+        margin: 0 auto;
+        letter-spacing: 0.5px;
       }
 
-      /* --- SEARCH BAR (Glassmorphism) --- */
+      /* --- SEARCH BAR (Tropical Glass) --- */
       .search-container {
-        max-width: 700px;
-        margin: 0 auto 50px auto;
-        background: rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        padding: 15px;
-        border-radius: 50px;
+        max-width: 750px;
+        margin: 0 auto 70px auto;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+        padding: 8px;
+        border-radius: 100px;
         display: flex;
-        gap: 10px;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        gap: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
+      }
+
+      .search-container:hover {
+        background: rgba(255, 255, 255, 0.15);
+        transform: translateY(-2px);
+      }
+
+      .search-icon-box {
+        width: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fbbf24; /* Gold Icon */
+        font-size: 1.3rem;
+        padding-left: 15px;
       }
 
       .search-input {
@@ -107,69 +155,88 @@
         background: transparent;
         border: none;
         color: #fff;
-        padding: 10px 20px;
-        font-size: 1rem;
+        padding: 15px 0;
+        font-size: 1.1rem;
         outline: none;
+        font-weight: 400;
       }
 
       .search-input::placeholder {
         color: rgba(255, 255, 255, 0.7);
+        font-style: italic;
       }
 
       .search-btn {
-        background: #002855;
-        color: white;
+        background: linear-gradient(
+          135deg,
+          #fbbf24,
+          #d97706
+        ); /* Gold Gradient */
+        color: #fff;
         border: none;
         border-radius: 50px;
-        width: 50px;
-        height: 50px;
+        width: 55px;
+        height: 55px;
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
         transition: all 0.3s ease;
+        margin: 3px;
+        box-shadow: 0 4px 15px rgba(251, 191, 36, 0.4);
       }
 
       .search-btn:hover {
-        background: #086188;
         transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(251, 191, 36, 0.6);
       }
 
       /* --- GUIDE CARD STYLES --- */
       .guide-card {
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 20px;
+        background: rgba(20, 30, 20, 0.6); /* Darker green tint */
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 24px;
         overflow: hidden;
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         height: 100%;
-        position: relative;
         display: flex;
         flex-direction: column;
+        position: relative;
       }
 
       .guide-card:hover {
         transform: translateY(-10px);
+        background: rgba(20, 30, 20, 0.8);
+        border-color: #fbbf24; /* Gold border on hover */
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        border-color: rgba(255, 255, 255, 0.3);
-        background: rgba(255, 255, 255, 0.2);
       }
 
       /* Image Area */
       .card-img-wrapper {
         width: 100%;
-        height: 250px;
+        height: 280px;
         position: relative;
         overflow: hidden;
+      }
+
+      /* Subtle gradient overlay on image bottom */
+      .card-img-wrapper::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 60%;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
       }
 
       .card-img-wrapper img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: transform 0.5s ease;
+        transition: transform 0.7s ease;
       }
 
       .guide-card:hover .card-img-wrapper img {
@@ -180,13 +247,15 @@
         position: absolute;
         top: 15px;
         right: 15px;
-        background: rgba(0, 0, 0, 0.7);
-        color: #f1c40f;
+        background: rgba(0, 0, 0, 0.6);
+        color: #fbbf24;
         padding: 5px 12px;
         border-radius: 20px;
         font-weight: 600;
         font-size: 0.9rem;
         backdrop-filter: blur(4px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        z-index: 2;
       }
 
       /* Content Area */
@@ -197,38 +266,36 @@
         flex-direction: column;
       }
 
-      .guide-name {
-        font-size: 1.5rem;
+      .guide-specialization {
+        color: #22d3ee; /* Teal */
+        font-size: 0.8rem;
         font-weight: 600;
-        margin-bottom: 5px;
-        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 8px;
+        display: inline-block;
       }
 
-      .guide-specialization {
-        color: #086188; /* Accent color from your register page */
-        font-size: 0.95rem;
-        font-weight: 500;
-        margin-bottom: 15px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        background: rgba(255, 255, 255, 0.9);
-        display: inline-block;
-        padding: 2px 8px;
-        border-radius: 4px;
-        width: fit-content;
+      .guide-name {
+        font-family: "Playfair Display", serif;
+        font-size: 1.7rem;
+        font-weight: 700;
+        margin-bottom: 12px;
+        color: #fff;
+        line-height: 1.2;
       }
 
       .info-row {
         display: flex;
         align-items: center;
-        gap: 10px;
-        margin-bottom: 8px;
-        font-size: 0.9rem;
-        color: rgba(255, 255, 255, 0.9);
+        gap: 12px;
+        margin-bottom: 10px;
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.85);
       }
 
       .info-row i {
-        color: #4facfe;
+        color: #fbbf24; /* Gold Icons */
         width: 20px;
         text-align: center;
       }
@@ -237,48 +304,57 @@
       .lang-tags {
         display: flex;
         flex-wrap: wrap;
-        gap: 5px;
-        margin-top: 10px;
-        margin-bottom: 20px;
+        gap: 8px;
+        margin-top: 15px;
+        margin-bottom: 25px;
       }
 
       .lang-tag {
         font-size: 0.75rem;
-        padding: 4px 10px;
-        background: rgba(255, 255, 255, 0.15);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 12px;
-        color: #eee;
+        padding: 5px 12px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 8px;
+        color: #e2e8f0;
+        transition: background 0.3s;
+      }
+
+      .guide-card:hover .lang-tag {
+        background: rgba(255, 255, 255, 0.2);
       }
 
       /* Button */
       .view-profile-btn {
-        margin-top: auto; /* Pushes button to bottom */
-        background: #002855;
-        color: white;
+        margin-top: auto;
+        background: transparent;
+        color: #fbbf24;
         width: 100%;
         padding: 12px;
-        border: none;
-        border-radius: 10px;
-        font-weight: 500;
+        border: 1px solid #fbbf24;
+        border-radius: 12px;
+        font-weight: 600;
         transition: all 0.3s ease;
         text-decoration: none;
-        display: inline-block;
-        text-align: center;
-        box-shadow: 0 4px 12px rgba(8, 97, 136, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        font-size: 0.95rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
       }
 
       .view-profile-btn:hover {
-        background: #086188;
-        transform: translateY(-2px);
-        color: white;
+        background: #fbbf24;
+        color: #000;
+        box-shadow: 0 5px 15px rgba(251, 191, 36, 0.3);
       }
 
       /* Animation */
       @keyframes fadeIn {
         from {
           opacity: 0;
-          transform: translateY(-20px);
+          transform: translateY(30px);
         }
         to {
           opacity: 1;
@@ -289,39 +365,52 @@
       /* Responsive adjustments */
       @media (max-width: 768px) {
         .page-title {
-          font-size: 2.2rem;
+          font-size: 3rem;
+        }
+        .ayubowan-text {
+          font-size: 1.2rem;
         }
         .search-container {
-          width: 90%;
+          width: 100%;
+          padding: 5px;
+          border-radius: 20px;
+          flex-wrap: wrap;
+        }
+        .search-btn {
+          width: 100%;
+          margin: 5px;
+          border-radius: 15px;
         }
       }
     </style>
   </head>
   <body>
+    <!-- Scenic Background -->
+    <div class="bg-scenic"></div>
+    <!-- Dark overlay for readability -->
+    <div class="bg-overlay"></div>
+
     <div class="page-wrapper container">
       <!-- Header -->
       <header class="header-section">
-        <h1 class="page-title">Meet Our Experts</h1>
+        <span class="ayubowan-text">Ayubowan</span>
+        <h1 class="page-title"><i class="fas fa-gem"></i> Pearl Guide</h1>
         <p class="page-subtitle">
-          Discover passionate local guides for your next adventure
+          Experience the warmth of Sri Lankan hospitality with our expert local
+          guides.
         </p>
       </header>
 
       <!-- Search Filter -->
       <div class="search-container">
-        <i
-          class="fas fa-search"
-          style="
-            align-self: center;
-            color: rgba(255, 255, 255, 0.7);
-            margin-left: 10px;
-          "
-        ></i>
+        <div class="search-icon-box">
+          <i class="fas fa-search"></i>
+        </div>
         <input
           type="text"
           id="searchInput"
           class="search-input"
-          placeholder="Search by name, language, or specialization..."
+          placeholder="Find your adventure (e.g., Kandy, Sigiriya, Safari...)"
         />
         <button class="search-btn" onclick="filterGuiders()">
           <i class="fas fa-arrow-right"></i>
@@ -333,27 +422,40 @@
         <!-- Javascript will inject cards here -->
       </div>
 
-      <!-- Empty State (Hidden by default) -->
+      <!-- Empty State -->
       <div
         id="noResults"
         style="display: none; text-align: center; margin-top: 50px"
       >
-        <i
-          class="fas fa-sad-tear"
+        <div
           style="
-            font-size: 3rem;
-            color: rgba(255, 255, 255, 0.5);
-            margin-bottom: 15px;
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin: 0 auto 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
           "
-        ></i>
-        <h3>No guiders found</h3>
-        <p>Try adjusting your search criteria</p>
+        >
+          <i
+            class="fas fa-compass"
+            style="font-size: 2.5rem; color: #fbbf24"
+          ></i>
+        </div>
+        <h3 style="color: #fff; font-family: 'Playfair Display', serif">
+          No journeys found
+        </h3>
+        <p style="color: rgba(255, 255, 255, 0.7)">
+          Try searching for another beautiful destination in Sri Lanka.
+        </p>
       </div>
     </div>
 
     <!-- JavaScript -->
     <script>
-      // 1. Mock Data (In a real app, you would fetch this from your API)
+      // 1. Mock Data
       const guidersData = [
         {
           id: 1,
@@ -361,9 +463,9 @@
           img: "https://images.unsplash.com/photo-1540569014015-19a7be504e3a?q=80&w=2535&auto=format&fit=crop",
           rating: 4.8,
           experience: "5 Years",
-          specialization: "Historical Tours",
+          specialization: "Ancient Cities",
           languages: ["English", "Sinhala"],
-          location: "Kandy, Sri Lanka",
+          location: "Kandy, Central Prov.",
         },
         {
           id: 2,
@@ -373,7 +475,7 @@
           experience: "3 Years",
           specialization: "Wildlife Safari",
           languages: ["English", "German", "French"],
-          location: "Yala, Sri Lanka",
+          location: "Yala National Park",
         },
         {
           id: 3,
@@ -381,9 +483,9 @@
           img: "https://images.unsplash.com/photo-1552058544-f2b08422138a?q=80&w=2598&auto=format&fit=crop",
           rating: 4.5,
           experience: "8 Years",
-          specialization: "Hiking & Trekking",
+          specialization: "Tea & Trekking",
           languages: ["Sinhala", "Tamil", "English"],
-          location: "Ella, Sri Lanka",
+          location: "Ella, Badulla",
         },
         {
           id: 4,
@@ -391,9 +493,9 @@
           img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=2576&auto=format&fit=crop",
           rating: 4.9,
           experience: "4 Years",
-          specialization: "Cultural Food",
+          specialization: "Colombo Food Walk",
           languages: ["English", "Arabic"],
-          location: "Colombo, Sri Lanka",
+          location: "Colombo Fort",
         },
         {
           id: 5,
@@ -401,9 +503,9 @@
           img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=2574&auto=format&fit=crop",
           rating: 4.2,
           experience: "2 Years",
-          specialization: "City Walks",
+          specialization: "Coastal History",
           languages: ["English", "Spanish"],
-          location: "Galle, Sri Lanka",
+          location: "Galle Fort",
         },
       ];
 
@@ -421,15 +523,18 @@
           noResults.style.display = "none";
         }
 
-        data.forEach((guider) => {
+        data.forEach((guider, index) => {
           // Generate Language Tags HTML
           const langTags = guider.languages
             .map((lang) => `<span class="lang-tag">${lang}</span>`)
             .join("");
 
+          // Staggered animation delay
+          const delay = index * 0.1;
+
           // Construct Card HTML
           const cardHTML = `
-            <div class="col-12 col-md-6 col-lg-3">
+            <div class="col-12 col-md-6 col-lg-3" style="animation: fadeIn 0.6s ease-out ${delay}s backwards;">
               <div class="guide-card">
                 <div class="card-img-wrapper">
                   <img src="${guider.img}" alt="${guider.name}">
@@ -446,8 +551,8 @@
                     <span>${guider.location}</span>
                   </div>
                   <div class="info-row">
-                    <i class="fas fa-briefcase"></i>
-                    <span>${guider.experience} Exp.</span>
+                    <i class="fas fa-hiking"></i>
+                    <span>${guider.experience} Experience</span>
                   </div>
 
                   <div class="lang-tags">
@@ -455,7 +560,7 @@
                   </div>
 
                   <a href="/pages/guider-profile.html?id=${guider.id}" class="view-profile-btn" onclick="goToProfile(event, ${guider.id})">
-                    View Profile <i class="fas fa-arrow-right ms-2"></i>
+                    View Profile
                   </a>
                 </div>
               </div>
@@ -481,6 +586,7 @@
           return (
             guider.name.toLowerCase().includes(term) ||
             guider.specialization.toLowerCase().includes(term) ||
+            guider.location.toLowerCase().includes(term) ||
             guider.languages.some((l) => l.toLowerCase().includes(term))
           );
         });
@@ -489,20 +595,14 @@
       });
 
       function filterGuiders() {
-        // Triggered by button click (optional duplicate logic of keyup)
         searchInput.dispatchEvent(new Event("keyup"));
       }
 
       // 5. Handle Click Logic
       function goToProfile(event, id) {
-        // If you don't have the profile page ready yet, you can remove the href in the anchor tag
-        // and just use this alert to test the ID passing.
-
-        // event.preventDefault(); // Uncomment this line if you don't want to navigate yet
+        // Remove or update this based on your routing
+        // event.preventDefault();
         console.log("Navigating to profile of user ID:", id);
-
-        // Here you would typically navigate:
-        // window.location.href = `guider-profile.html?id=${id}`;
       }
     </script>
   </body>
