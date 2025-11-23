@@ -1,9 +1,11 @@
-# TODO: Implement Profile Image Display in Guider Dashboard
+# TODO: Implement Photo Gallery Upload Functionality
 
 ## Tasks
 
-- [ ] Update guider-signup.html to store user data in localStorage after signup
-- [ ] Update guider-register.html to store user data in localStorage after signup
-- [ ] Modify GuiderDash.js: rename updateGuiderName to updateGuiderInfo and add profile image update
-- [ ] Update GuiderDash.html profile section image path if needed
-- [ ] Test dashboard after signup to verify image displays correctly
+- [ ] Create backend/models/gallery.js with database functions for photo uploads
+- [ ] Create backend/routes/gallery.js with POST /upload endpoint using multer
+- [ ] Update backend/server.js to include gallery routes
+- [ ] Modify frontend/pages/photo-hallary.html to change form action to /api/gallery/upload
+- [ ] Test the upload functionality
+- [ ] Verify uploaded images are saved and can be displayed
+- [ ] Add error handling for invalid files or database issues
