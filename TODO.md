@@ -1,9 +1,8 @@
-# TODO: Implement Profile Image Display in Guider Dashboard
-
-## Tasks
-
-- [ ] Update guider-signup.html to store user data in localStorage after signup
-- [ ] Update guider-register.html to store user data in localStorage after signup
-- [ ] Modify GuiderDash.js: rename updateGuiderName to updateGuiderInfo and add profile image update
-- [ ] Update GuiderDash.html profile section image path if needed
-- [ ] Test dashboard after signup to verify image displays correctly
+- [ ] Update CSS variables for white background and dark text
+- [ ] Change .bg-scenic background to white
+- [ ] Change .bg-overlay background to white
+- [ ] Change body color to black
+- [ ] Update glass-card backgrounds to light
+- [ ] Update text colors in sidebar-info, about-text, etc., to black
+- [ ] Update modal styles to light background
+- [ ] Update other elements like .info-list, .review-item, etc., to dark text

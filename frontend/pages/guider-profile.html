@@ -3,40 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wanderlust - User Profile</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>Guider Profile - Pearl Guide</title>
+
+    <!-- Bootstrap CSS -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../css/HomeStyle.css" />
+
+    <!-- Font Awesome -->
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqIAvNWLzeN8tE5YBujZqJLB"
-      crossorigin="anonymous"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
-    <!-- Add Font Awesome -->
+
+    <!-- Google Fonts (Poppins & Playfair Display) -->
     <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600&display=swap"
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
 
     <style>
-      /* --- CSS VARIABLES & RESET --- */
+      /* --- GLOBAL STYLES --- */
       :root {
-        --primary: #0ea5e9; /* Ocean Blue */
-        --primary-dark: #0284c7;
-        --accent: #f59e0b; /* Sunset Orange */
-        --dark: #0f172a;
-        --text: #334155;
-        --text-light: #64748b;
-        --bg: #f8fafc;
-        --card-bg: #ffffff;
-        --radius: 16px;
-        --shadow: 0 4px 20px rgba(148, 163, 184, 0.15);
-        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        --ceylon-gold: #fbbf24;
+        --tropical-teal: #0891b2; /* Darker teal for better contrast on white */
+        --text-dark: #1e293b;
+        --text-muted: #64748b;
       }
 
       * {
@@ -46,909 +39,700 @@
       }
 
       body {
-        font-family: "Plus Jakarta Sans", sans-serif;
-        background-color: var(--bg);
-        color: var(--text);
-        line-height: 1.6;
+        font-family: "Poppins", Arial, sans-serif;
+        min-height: 100vh;
+        color: var(--text-dark);
+        position: relative;
+        overflow-x: hidden;
+        background-color: #ffffff; /* Explicit White Body */
       }
 
-      h1,
-      h2,
-      h3,
-      h4 {
-        font-family: "Outfit", sans-serif;
-        color: var(--dark);
+      /* --- WHITE BACKGROUND SETUP --- */
+      .bg-scenic {
+        display: none; /* Removed for pure white background */
       }
 
-      a {
-        text-decoration: none;
-        color: inherit;
-      }
-      ul {
-        list-style: none;
-      }
-      button {
-        cursor: pointer;
-        border: none;
-        font-family: inherit;
+      .bg-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: #ffffff; /* Pure White Background */
       }
 
-      /* --- PROFILE HEADER (HERO) --- */
       .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 1.5rem;
-      }
-
-      .cover-photo {
-        height: 300px;
-        width: 100%;
-        background-image: linear-gradient(
-            to bottom,
-            rgba(0, 0, 0, 0.1),
-            rgba(0, 0, 0, 0.4)
-          ),
-          url("https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80");
-        background-size: cover;
-        background-position: center;
-        border-radius: 0 0 var(--radius) var(--radius);
         position: relative;
+        z-index: 2;
+        padding-top: 40px;
+        padding-bottom: 60px;
       }
 
-      .edit-cover {
-        position: absolute;
-        right: 20px;
-        bottom: 20px;
-        background: rgba(255, 255, 255, 0.9);
-        padding: 8px 16px;
-        border-radius: 20px;
-        font-size: 0.9rem;
-        font-weight: 600;
-        transition: var(--transition);
+      /* --- CARDS (Adapted for White BG) --- */
+      .glass-card {
+        background: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.08); /* Subtle border definition */
+        border-radius: 24px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06); /* Softer shadow for light mode */
+        padding: 30px;
+        margin-bottom: 25px;
+        animation: fadeIn 0.6s ease;
       }
 
-      .edit-cover:hover {
-        transform: translateY(-2px);
-      }
-
-      /* --- PROFILE INFO CARD --- */
-      .profile-section {
+      /* --- PROFILE SIDEBAR --- */
+      .profile-image-container {
         position: relative;
-        margin-top: -80px;
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-        margin-bottom: 3rem;
-      }
-
-      .profile-card {
-        background: var(--card-bg);
-        border-radius: var(--radius);
-        box-shadow: var(--shadow);
-        padding: 2rem;
-        display: flex;
-        align-items: flex-end;
-        gap: 2rem;
-        flex-wrap: wrap;
-      }
-
-      .avatar-container {
-        position: relative;
-        margin-top: -60px;
-      }
-
-      .avatar {
-        width: 160px;
-        height: 160px;
+        width: 180px;
+        height: 180px;
+        margin: 0 auto 20px auto;
         border-radius: 50%;
-        border: 5px solid var(--card-bg);
+        border: 3px solid var(--ceylon-gold);
+        padding: 5px;
+        box-shadow: 0 10px 25px rgba(251, 191, 36, 0.2);
+      }
+
+      .profile-image-container img {
+        width: 100%;
+        height: 100%;
         object-fit: cover;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      }
-
-      .status-badge {
-        position: absolute;
-        bottom: 15px;
-        right: 10px;
-        background: #10b981;
-        width: 20px;
-        height: 20px;
         border-radius: 50%;
-        border: 3px solid var(--card-bg);
       }
 
-      .profile-info {
-        flex: 1;
-        margin-bottom: 0.5rem;
-      }
-
-      .user-meta {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        margin-bottom: 0.5rem;
-      }
-
-      .username {
-        font-size: 2rem;
-        font-weight: 700;
-      }
-
-      .verified {
-        color: var(--primary);
-        font-size: 1.2rem;
-      }
-
-      .role-tag {
-        background: #e0f2fe;
-        color: var(--primary-dark);
-        padding: 4px 12px;
-        border-radius: 20px;
-        font-size: 0.85rem;
-        font-weight: 600;
-      }
-
-      .bio {
-        color: var(--text-light);
-        max-width: 600px;
-        margin-bottom: 1rem;
-      }
-
-      .location {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        color: var(--text-light);
-        font-size: 0.9rem;
-      }
-
-      .profile-actions {
-        display: flex;
-        gap: 1rem;
-        margin-bottom: 1rem;
-      }
-
-      .btn {
-        padding: 10px 24px;
-        border-radius: 8px;
-        font-weight: 600;
-        transition: var(--transition);
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-
-      .btn-primary {
-        background: var(--primary);
-        color: white;
-      }
-      .btn-primary:hover {
-        background: var(--primary-dark);
-        box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
-      }
-
-      .btn-outline {
-        border: 2px solid #e2e8f0;
-        background: transparent;
-        color: var(--text);
-      }
-      .btn-outline:hover {
-        border-color: var(--text);
-      }
-
-      /* --- STATS BAR --- */
-      .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1rem;
-        margin-top: 1rem;
-        width: 100%;
-        border-top: 1px solid #e2e8f0;
-        padding-top: 1.5rem;
-      }
-
-      .stat-item {
+      .sidebar-info {
         text-align: center;
       }
 
-      .stat-value {
-        display: block;
-        font-size: 1.5rem;
+      .sidebar-info h2 {
+        font-family: "Playfair Display", serif;
         font-weight: 700;
-        color: var(--dark);
+        font-size: 2rem;
+        margin-bottom: 5px;
+        color: #000;
       }
 
-      .stat-label {
-        font-size: 0.85rem;
-        color: var(--text-light);
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
+      .sidebar-info .location {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+        font-style: italic;
       }
 
-      /* --- MAIN GRID LAYOUT --- */
-      .content-layout {
-        display: grid;
-        grid-template-columns: 300px 1fr;
-        gap: 2rem;
-        margin-bottom: 4rem;
-      }
-
-      /* SIDEBAR */
-      .sidebar-card {
-        background: var(--card-bg);
-        padding: 1.5rem;
-        border-radius: var(--radius);
-        box-shadow: var(--shadow);
-        margin-bottom: 1.5rem;
-      }
-
-      .card-title {
-        font-size: 1.1rem;
-        font-weight: 600;
-        margin-bottom: 1rem;
-        display: flex;
+      .rating-box {
+        display: inline-flex;
         align-items: center;
-        gap: 0.5rem;
-      }
-
-      .skill-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-      }
-
-      .tag {
-        background: #f1f5f9;
-        padding: 6px 12px;
-        border-radius: 6px;
-        font-size: 0.85rem;
-        color: var(--text);
-      }
-
-      .social-links {
-        display: flex;
-        flex-direction: column;
-        gap: 0.8rem;
-      }
-
-      .social-link {
-        display: flex;
-        align-items: center;
-        gap: 0.8rem;
-        color: var(--text-light);
-        transition: var(--transition);
-      }
-      .social-link:hover {
-        color: var(--primary);
-        transform: translateX(5px);
-      }
-
-      /* TABS SYSTEM */
-      .tabs {
-        display: flex;
-        gap: 2rem;
-        border-bottom: 1px solid #e2e8f0;
-        margin-bottom: 2rem;
-      }
-
-      .tab-btn {
-        padding-bottom: 1rem;
+        background: #fffbeb; /* Very light yellow bg */
+        color: #d97706; /* Darker gold text */
+        padding: 6px 16px;
+        border-radius: 50px;
         font-weight: 600;
-        color: var(--text-light);
-        background: none;
-        position: relative;
-        font-size: 1rem;
+        margin-bottom: 25px;
+        border: 1px solid #fcd34d;
       }
 
-      .tab-btn.active {
-        color: var(--primary);
-      }
-
-      .tab-btn.active::after {
-        content: "";
-        position: absolute;
-        bottom: -1px;
-        left: 0;
+      .contact-actions .btn {
         width: 100%;
-        height: 3px;
-        background: var(--primary);
-        border-radius: 3px 3px 0 0;
+        margin-bottom: 12px;
+        border-radius: 12px;
+        padding: 14px;
+        font-weight: 600;
+        border: none;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 0.9rem;
       }
 
-      /* TAB CONTENT: TRIPS */
-      .trip-card {
-        background: var(--card-bg);
-        border-radius: var(--radius);
-        overflow: hidden;
-        box-shadow: var(--shadow);
-        margin-bottom: 1.5rem;
-        display: flex;
-        transition: var(--transition);
+      .btn-book {
+        background: linear-gradient(135deg, #fbbf24, #d97706);
+        color: white;
+        box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3);
       }
 
-      .trip-card:hover {
-        transform: translateY(-5px);
+      .btn-book:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(251, 191, 36, 0.4);
+        color: white;
       }
 
-      .trip-img {
-        width: 200px;
-        object-fit: cover;
+      .btn-message {
+        background: white;
+        color: var(--text-dark);
+        border: 1px solid #cbd5e1;
       }
 
-      .trip-content {
-        padding: 1.5rem;
-        flex: 1;
+      .btn-message:hover {
+        background: #f8fafc;
+        border-color: #94a3b8;
+        color: #000;
       }
 
-      .trip-header {
+      .info-list {
+        list-style: none;
+        text-align: left;
+        margin-top: 25px;
+        padding-top: 25px;
+        border-top: 1px solid #e2e8f0;
+      }
+
+      .info-list li {
         display: flex;
         justify-content: space-between;
-        margin-bottom: 0.5rem;
+        margin-bottom: 15px;
+        font-size: 0.95rem;
       }
 
-      .trip-date {
-        font-size: 0.85rem;
-        color: var(--accent);
+      .info-list span.label {
+        color: var(--text-muted);
+        font-weight: 400;
+      }
+
+      .info-list span.value {
         font-weight: 600;
+        color: var(--text-dark);
       }
 
-      /* TAB CONTENT: PHOTOS (Grid) */
-      .photo-grid {
+      /* --- MAIN CONTENT AREA --- */
+      .section-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin-bottom: 25px;
+        color: #000; /* Darker title for white bg */
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .section-title::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: #e2e8f0; /* Light gray line */
+      }
+
+      .about-text {
+        color: #334155;
+        line-height: 1.8;
+        margin-bottom: 35px;
+        font-weight: 300;
+        font-size: 1.05rem;
+      }
+
+      /* Specs Tags */
+      .specs-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 35px;
+      }
+
+      .spec-tag {
+        background: #ecfeff; /* Very light teal */
+        border: 1px solid #a5f3fc;
+        color: var(--tropical-teal);
+        padding: 8px 16px;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+
+      /* Reviews */
+      .review-item {
+        background: #f8fafc; /* Slight off-white for reviews */
+        border-radius: 16px;
+        padding: 20px;
+        margin-bottom: 15px;
+        border: 1px solid #e2e8f0;
+      }
+
+      .review-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+
+      .reviewer-name {
+        font-weight: 600;
+        color: var(--text-dark);
+        font-family: "Playfair Display", serif;
+      }
+
+      .review-stars {
+        color: #fbbf24;
+        font-size: 0.85rem;
+      }
+
+      .review-text {
+        font-size: 0.95rem;
+        font-style: italic;
+        color: #475569;
+        margin: 0;
+      }
+
+      /* Gallery Grid */
+      .gallery-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 1rem;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 15px;
+        margin-bottom: 35px;
       }
 
-      .photo-item {
-        position: relative;
+      .gallery-item {
+        height: 120px;
         border-radius: 12px;
         overflow: hidden;
-        aspect-ratio: 1/1;
         cursor: pointer;
+        position: relative;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
       }
 
-      .photo-item img {
+      .gallery-item img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         transition: transform 0.5s ease;
       }
 
-      .photo-item:hover img {
-        transform: scale(1.1);
+      .gallery-item:hover img {
+        transform: scale(1.15);
       }
 
-      .photo-overlay {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
-        padding: 1rem;
-        color: white;
-        opacity: 0;
-        transition: 0.3s;
-      }
-
-      .photo-item:hover .photo-overlay {
-        opacity: 1;
-      }
-
-      /* TAB CONTENT: BUCKET LIST */
-      .bucket-list {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-        gap: 1.5rem;
-      }
-
-      .bucket-card {
-        background: var(--card-bg);
-        border-radius: var(--radius);
-        padding: 5px;
-        box-shadow: var(--shadow);
-        position: relative;
-      }
-
-      .bucket-img {
-        height: 140px;
-        width: 100%;
-        object-fit: cover;
-        border-radius: 12px;
-        margin-bottom: 1rem;
-        filter: grayscale(20%);
-        transition: var(--transition);
-      }
-
-      .bucket-card:hover .bucket-img {
-        filter: grayscale(0%);
-      }
-
-      .bucket-info {
-        padding: 0 10px 10px;
-      }
-
-      .check-circle {
-        position: absolute;
-        top: 15px;
-        right: 15px;
-        background: rgba(0, 0, 0, 0.5);
-        color: white;
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        display: flex;
+      /* Back Button */
+      .back-link {
+        color: #475569;
+        text-decoration: none;
+        display: inline-flex;
         align-items: center;
-        justify-content: center;
-        font-size: 0.8rem;
+        margin-bottom: 30px;
+        font-weight: 500;
+        transition: all 0.3s;
+        padding: 8px 16px;
+        background: #f1f5f9;
+        border-radius: 50px;
       }
 
-      /* UTILITY - HIDE/SHOW TABS */
-      .tab-content {
-        display: none;
-        animation: fadeIn 0.4s ease;
+      .back-link:hover {
+        color: var(--ceylon-gold);
+        background: #fffbeb;
       }
-      .tab-content.active {
-        display: block;
+
+      /* --- MODAL STYLES (Switched to Light Mode) --- */
+      .modal-content {
+        background: #ffffff;
+        color: var(--text-dark);
+        border: none;
+        border-radius: 20px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+      }
+      .modal-header {
+        border-bottom: 1px solid #e2e8f0;
+      }
+      .modal-footer {
+        border-top: 1px solid #e2e8f0;
+      }
+      .modal-title {
+        font-family: "Playfair Display", serif;
+        color: #000;
+        font-weight: 700;
+      }
+      .btn-close {
+        /* Standard dark close button for light modal */
+        filter: none;
+      }
+
+      /* Light Mode Form Inputs */
+      .form-control,
+      .form-select {
+        background: #f8fafc;
+        border: 1px solid #cbd5e1;
+        color: var(--text-dark);
+        padding: 12px;
+      }
+      .form-control:focus,
+      .form-select:focus {
+        background: #ffffff;
+        color: var(--text-dark);
+        border-color: var(--ceylon-gold);
+        box-shadow: 0 0 0 0.25rem rgba(251, 191, 36, 0.25);
+      }
+      .form-label {
+        color: #475569;
+        font-weight: 500;
+        font-size: 0.9rem;
       }
 
       @keyframes fadeIn {
         from {
           opacity: 0;
-          transform: translateY(10px);
+          transform: translateY(20px);
         }
         to {
           opacity: 1;
           transform: translateY(0);
         }
       }
-
-      /* RESPONSIVE */
-      @media (max-width: 900px) {
-        .content-layout {
-          grid-template-columns: 1fr;
-        }
-        .profile-card {
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
-        }
-        .avatar-container {
-          margin-top: -80px;
-        }
-        .profile-section {
-          margin-top: -40px;
-        }
-        .trip-card {
-          flex-direction: column;
-        }
-        .trip-img {
-          width: 100%;
-          height: 200px;
-        }
-        .user-meta {
-          justify-content: center;
-        }
-        .location {
-          justify-content: center;
-        }
-      }
     </style>
   </head>
   <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="#">
-          <img
-            src="../assets/HomeAssets/Logo.png"
-            alt="Logo"
-            class="navbar-logo"
-          />
-        </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
+    <!-- White Background Overlay -->
+    <div class="bg-overlay"></div>
+
+    <div class="container">
+      <a href="guiders.html" class="back-link">
+        <i class="fas fa-arrow-left me-2"></i> Back to Guiders
+      </a>
+
+      <div class="row" id="profileContainer">
+        <!-- Content will be injected here by JS -->
+        <!-- Loading Spinner Fallback -->
+        <div
+          class="text-center mt-5"
+          style="
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+          "
         >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav mx-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="home.html">Home</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link"
-                href="destination.html"
-                role="button"
-                data-bs-toggle="dropdown"
-              >
-                Destinations
-              </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a class="dropdown-item" href="destination.html#byCity"
-                    >By City</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="destination.html#byCategory"
-                    >By Category</a
-                  >
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="hotel-restro.html"
-                >Hotels & Restaurants</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="guiders.html">Find a Guide</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="blog-story.html">Blog/Stories</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="home.html#about">About us</a>
-            </li>
-          </ul>
-          <div class="d-flex align-items-center gap-3">
-            <div class="search-box">
-              <input type="text" class="form-control" placeholder="Search" />
-              <i class="fas fa-search"></i>
-            </div>
-            <div class="user-section">
-              <i class="fas fa-user"></i>
-              <span>User Name</span>
-            </div>
+          <div
+            class="spinner-border text-warning"
+            role="status"
+            style="width: 3rem; height: 3rem"
+          ></div>
+          <p class="mt-3 text-muted">Preparing your guide's profile...</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div class="modal fade" id="bookingModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">
+              Request Booking with <span id="modalGuiderName"></span>
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="bookingForm">
+              <div class="mb-3">
+                <label class="form-label">Select Date</label>
+                <input type="date" class="form-control" required />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Number of Tourists</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  min="1"
+                  max="20"
+                  value="2"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Tour Type</label>
+                <select class="form-select">
+                  <option>Day Tour</option>
+                  <option>Multi-day Trip</option>
+                  <option>Custom Package</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Message (Optional)</label>
+                <textarea
+                  class="form-control"
+                  rows="3"
+                  placeholder="Tell us about your interests..."
+                ></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              style="
+                background-color: var(--ceylon-gold);
+                border: none;
+                color: black;
+                font-weight: 600;
+              "
+              onclick="confirmBooking()"
+            >
+              Confirm Request
+            </button>
           </div>
         </div>
       </div>
-    </nav>
+    </div>
 
-    <!-- Cover Photo -->
-    <header class="container">
-      <div class="cover-photo">
-        <button class="edit-cover">📷 Change Cover</button>
-      </div>
-    </header>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    <main class="container">
-      <!-- Profile Summary -->
-      <section class="profile-section">
-        <div class="profile-card">
-          <div class="avatar-container">
-            <img
-              src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80"
-              alt="User Avatar"
-              class="avatar"
-            />
-            <div class="status-badge"></div>
-          </div>
-
-          <div class="profile-info">
-            <div class="user-meta">
-              <h1 class="username">Alex Walker</h1>
-              <span class="verified">✔</span>
-              <span class="role-tag">Global Nomad</span>
-            </div>
-            <p class="bio">
-              Capturing the world one frame at a time. 📸 Coffee addict,
-              mountain lover, and seeking the perfect sunset in every country.
-            </p>
-            <div class="location">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                <circle cx="12" cy="10" r="3"></circle>
-              </svg>
-              Currently in: Kyoto, Japan
-            </div>
-          </div>
-
-          <div class="profile-actions">
-            <button class="btn btn-primary">Follow</button>
-            <button class="btn btn-outline">Message</button>
-          </div>
-
-          <div class="stats-grid">
-            <div class="stat-item">
-              <span class="stat-value">32</span>
-              <span class="stat-label">Countries</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-value">145</span>
-              <span class="stat-label">Cities</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-value">84k</span>
-              <span class="stat-label">Miles</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-value">12k</span>
-              <span class="stat-label">Followers</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Content Layout -->
-      <div class="content-layout">
-        <!-- Sidebar -->
-        <aside>
-          <div class="sidebar-card">
-            <h3 class="card-title">🌍 Travel Style</h3>
-            <div class="skill-tags">
-              <span class="tag">Backpacking</span>
-              <span class="tag">Photography</span>
-              <span class="tag">Solo Travel</span>
-              <span class="tag">Foodie</span>
-              <span class="tag">Hiking</span>
-            </div>
-          </div>
-
-          <div class="sidebar-card">
-            <h3 class="card-title">🔗 Connect</h3>
-            <div class="social-links">
-              <a href="#" class="social-link">
-                <span>📸 Instagram</span>
-              </a>
-              <a href="#" class="social-link">
-                <span>🐦 Twitter</span>
-              </a>
-              <a href="#" class="social-link">
-                <span>🎥 YouTube</span>
-              </a>
-            </div>
-          </div>
-
-          <div class="sidebar-card">
-            <h3 class="card-title">🏆 Badges</h3>
-            <div style="display: flex; gap: 10px">
-              <div
-                style="
-                  font-size: 1.5rem;
-                  background: #fff7ed;
-                  padding: 10px;
-                  border-radius: 8px;
-                "
-                title="Asia Explorer"
-              >
-                ⛩️
-              </div>
-              <div
-                style="
-                  font-size: 1.5rem;
-                  background: #eff6ff;
-                  padding: 10px;
-                  border-radius: 8px;
-                "
-                title="Ocean Lover"
-              >
-                🌊
-              </div>
-              <div
-                style="
-                  font-size: 1.5rem;
-                  background: #f0fdf4;
-                  padding: 10px;
-                  border-radius: 8px;
-                "
-                title="Hiker"
-              >
-                🏔️
-              </div>
-            </div>
-          </div>
-        </aside>
-
-        <!-- Main Content -->
-        <section class="main-content">
-          <div class="tabs">
-            <button class="tab-btn active" onclick="openTab(event, 'trips')">
-              My Trips
-            </button>
-            <button class="tab-btn" onclick="openTab(event, 'photos')">
-              Gallery
-            </button>
-            <button class="tab-btn" onclick="openTab(event, 'bucket')">
-              Bucket List
-            </button>
-          </div>
-
-          <!-- Tab: Trips -->
-          <div id="trips" class="tab-content active">
-            <!-- Trip 1 -->
-            <div class="trip-card">
-              <img
-                src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                class="trip-img"
-                alt="Japan"
-              />
-              <div class="trip-content">
-                <div class="trip-header">
-                  <h3>Autumn in Kyoto</h3>
-                  <span class="trip-date">Nov 2023</span>
-                </div>
-                <p style="color: var(--text-light); margin-bottom: 1rem">
-                  Exploring the ancient temples and vibrant colors of
-                  Arashiyama. The food scene here is absolutely incredible.
-                </p>
-                <div class="skill-tags">
-                  <span class="tag">Cultural</span>
-                  <span class="tag">Nature</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Trip 2 -->
-            <div class="trip-card">
-              <img
-                src="https://images.unsplash.com/photo-1534234828563-025023f85f77?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                class="trip-img"
-                alt="Greece"
-              />
-              <div class="trip-content">
-                <div class="trip-header">
-                  <h3>Santorini Sunset</h3>
-                  <span class="trip-date">July 2023</span>
-                </div>
-                <p style="color: var(--text-light); margin-bottom: 1rem">
-                  Sailing around the Cyclades islands. The water is the bluest
-                  I've ever seen.
-                </p>
-                <div class="skill-tags">
-                  <span class="tag">Relaxation</span>
-                  <span class="tag">Beach</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Tab: Photos -->
-          <div id="photos" class="tab-content">
-            <div class="photo-grid">
-              <div class="photo-item">
-                <img
-                  src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                  alt="Swiss Alps"
-                />
-                <div class="photo-overlay">Switzerland</div>
-              </div>
-              <div class="photo-item">
-                <img
-                  src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                  alt="Venice"
-                />
-                <div class="photo-overlay">Venice</div>
-              </div>
-              <div class="photo-item">
-                <img
-                  src="https://images.unsplash.com/photo-1504214208698-ea1916a2195a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                  alt="Thailand"
-                />
-                <div class="photo-overlay">Phuket</div>
-              </div>
-              <div class="photo-item">
-                <img
-                  src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                  alt="Cinque Terre"
-                />
-                <div class="photo-overlay">Italy</div>
-              </div>
-              <div class="photo-item">
-                <img
-                  src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                  alt="Beach"
-                />
-                <div class="photo-overlay">Maldives</div>
-              </div>
-              <div class="photo-item">
-                <img
-                  src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                  alt="Mountain"
-                />
-                <div class="photo-overlay">Hiking</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Tab: Bucket List -->
-          <div id="bucket" class="tab-content">
-            <div class="bucket-list">
-              <div class="bucket-card">
-                <img
-                  src="https://images.unsplash.com/photo-1566371486490-560ded23b5e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                  class="bucket-img"
-                  alt="Iceland"
-                />
-                <div class="check-circle">○</div>
-                <div class="bucket-info">
-                  <h4>Iceland Roadtrip</h4>
-                  <p style="font-size: 0.8rem; color: var(--text-light)">
-                    Northern Lights
-                  </p>
-                </div>
-              </div>
-              <div class="bucket-card">
-                <img
-                  src="https://images.unsplash.com/photo-1545562083-a600704fa46e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                  class="bucket-img"
-                  alt="Petra"
-                />
-                <div class="check-circle">○</div>
-                <div class="bucket-info">
-                  <h4>Petra, Jordan</h4>
-                  <p style="font-size: 0.8rem; color: var(--text-light)">
-                    Ancient City
-                  </p>
-                </div>
-              </div>
-              <div class="bucket-card">
-                <img
-                  src="https://images.unsplash.com/photo-1526481280693-3bfa13680e2e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                  class="bucket-img"
-                  alt="Machu Picchu"
-                />
-                <div class="check-circle">○</div>
-                <div class="bucket-info">
-                  <h4>Machu Picchu</h4>
-                  <p style="font-size: 0.8rem; color: var(--text-light)">
-                    Peru Hike
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-    </main>
-
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-      crossorigin="anonymous"
-    ></script>
     <script>
-      // Simple Tab Switching Logic
-      function openTab(evt, tabName) {
-        // 1. Hide all tab content
-        var tabContents = document.getElementsByClassName("tab-content");
-        for (var i = 0; i < tabContents.length; i++) {
-          tabContents[i].classList.remove("active");
+      // 1. Mock Database (Matches the IDs from the previous page)
+      const guidersDB = {
+        1: {
+          name: "Saman Perera",
+          img: "https://images.unsplash.com/photo-1540569014015-19a7be504e3a?q=80&w=2535&auto=format&fit=crop",
+          rating: 4.8,
+          reviewsCount: 42,
+          location: "Kandy, Sri Lanka",
+          role: "Senior Tour Guide",
+          experience: "5 Years",
+          languages: "English, Sinhala",
+          age: 34,
+          rate: "$40 / day",
+          about:
+            "Ayubowan! I am Saman, a certified national tourist guide based in the beautiful hill capital of Kandy. With over 5 years of experience, I specialize in historical temple tours and cultural immersion. I love sharing the hidden stories of the Kandyan Kingdom. I am also a licensed driver with a comfortable van for groups up to 6.",
+          specializations: [
+            "Historical Tours",
+            "Buddhist Culture",
+            "Photography",
+            "Driver Guide",
+          ],
+          reviews: [
+            {
+              user: "Alice M.",
+              text: "Saman was incredibly knowledgeable about the Temple of the Tooth. Highly recommended!",
+              stars: 5,
+            },
+            {
+              user: "David K.",
+              text: "Great driver and very polite. Made our trip to Sigiriya smooth.",
+              stars: 5,
+            },
+          ],
+          gallery: [
+            "https://images.unsplash.com/photo-1588259663784-0994f31c2c31?q=80&w=600&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1590053154884-282672322523?q=80&w=600&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1566296314736-6eaac1ca0cb9?q=80&w=600&auto=format&fit=crop",
+          ],
+        },
+        2: {
+          name: "Sarah Jenkins",
+          img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=2592&auto=format&fit=crop",
+          rating: 5.0,
+          reviewsCount: 28,
+          location: "Yala, Sri Lanka",
+          role: "Wildlife Specialist",
+          experience: "3 Years",
+          languages: "English, German, French",
+          age: 29,
+          rate: "$55 / day",
+          about:
+            "Hi there! I'm Sarah, your gateway to the wild side of Sri Lanka. My passion lies in wildlife conservation and safari adventures. Based near Yala National Park, I help travelers spot leopards, elephants, and rare birds while ensuring we respect nature. I speak fluent German and French to assist European travelers.",
+          specializations: [
+            "Wildlife Safari",
+            "Bird Watching",
+            "Eco Tourism",
+            "Photography",
+          ],
+          reviews: [
+            {
+              user: "Hans G.",
+              text: "Perfekt! Sarah speaks excellent German and found us a leopard!",
+              stars: 5,
+            },
+            {
+              user: "Chloe P.",
+              text: "An amazing safari experience.",
+              stars: 5,
+            },
+          ],
+          gallery: [
+            "https://images.unsplash.com/photo-1534177616072-ef7dc12044f9?q=80&w=600&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1563507850550-61f25b29b634?q=80&w=600&auto=format&fit=crop",
+          ],
+        },
+        3: {
+          name: "Kumara Dissanaike",
+          img: "https://images.unsplash.com/photo-1552058544-f2b08422138a?q=80&w=2598&auto=format&fit=crop",
+          rating: 4.5,
+          reviewsCount: 15,
+          location: "Ella, Sri Lanka",
+          role: "Trekking Guide",
+          experience: "8 Years",
+          languages: "Sinhala, Tamil, English",
+          age: 40,
+          rate: "$35 / day",
+          about:
+            "I have hiked every trail in Ella and Haputale. If you want to see the sunrise from Little Adam's Peak or walk the rails of the Nine Arch Bridge safely, I am your guide.",
+          specializations: ["Hiking", "Tea Plantations", "Nature Walks"],
+          reviews: [],
+          gallery: [
+            "https://images.unsplash.com/photo-1588258524675-55d6563e41bc?q=80&w=600&auto=format&fit=crop",
+          ],
+        },
+      };
+
+      // 2. Logic to Get ID from URL and Render
+      document.addEventListener("DOMContentLoaded", () => {
+        // Get 'id' parameter from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        let guiderId = urlParams.get("id");
+
+        // Fallback to ID 1 if no ID or invalid ID provided (for demo purposes)
+        if (!guiderId || !guidersDB[guiderId]) {
+          console.log("No valid ID found, defaulting to 1 for demo.");
+          guiderId = 1;
         }
 
-        // 2. Remove 'active' class from all tab buttons
-        var tabLinks = document.getElementsByClassName("tab-btn");
-        for (var i = 0; i < tabLinks.length; i++) {
-          tabLinks[i].classList.remove("active");
-        }
+        const data = guidersDB[guiderId];
+        renderProfile(data);
+      });
 
-        // 3. Show the specific tab and add 'active' class to the clicked button
-        document.getElementById(tabName).classList.add("active");
-        evt.currentTarget.classList.add("active");
+      function renderProfile(data) {
+        const container = document.getElementById("profileContainer");
+
+        // Generate Gallery HTML
+        const galleryHTML =
+          data.gallery && data.gallery.length > 0
+            ? data.gallery
+                .map(
+                  (img) => `
+            <div class="gallery-item">
+                <img src="${img}" alt="Gallery Image">
+            </div>
+        `
+                )
+                .join("")
+            : "<p class='text-muted'>No gallery images available.</p>";
+
+        // Generate Reviews HTML
+        const reviewsHTML =
+          data.reviews && data.reviews.length > 0
+            ? data.reviews
+                .map(
+                  (rev) => `
+            <div class="review-item">
+                <div class="review-header">
+                    <span class="reviewer-name">${rev.user}</span>
+                    <span class="review-stars">${'<i class="fas fa-star"></i>'.repeat(
+                      rev.stars
+                    )}</span>
+                </div>
+                <p class="review-text">"${rev.text}"</p>
+            </div>
+        `
+                )
+                .join("")
+            : "<p class='text-muted'>No reviews yet.</p>";
+
+        // Generate Specs HTML
+        const specsHTML = data.specializations
+          .map((spec) => `<span class="spec-tag">${spec}</span>`)
+          .join("");
+
+        const html = `
+          <!-- Left Column: Sidebar -->
+          <div class="col-lg-4">
+            <div class="glass-card sidebar-info">
+              <div class="profile-image-container">
+                <img src="${data.img}" alt="${data.name}">
+              </div>
+              
+              <h2>${data.name}</h2>
+              <p class="location"><i class="fas fa-map-marker-alt me-1"></i> ${data.location}</p>
+              
+              <div class="rating-box">
+                <i class="fas fa-star me-2"></i> ${data.rating} <span style="font-weight:400; margin-left:5px; color:rgba(0,0,0,0.5)">(${data.reviewsCount} Reviews)</span>
+              </div>
+
+              <div class="contact-actions">
+                <button class="btn btn-book" onclick="openBookingModal('${data.name}')">
+                    Book Adventure
+                </button>
+                <button class="btn btn-message">
+                    <i class="far fa-comment-alt me-2"></i> Message Guide
+                </button>
+              </div>
+
+              <ul class="info-list">
+                <li><span class="label">Experience</span> <span class="value">${data.experience}</span></li>
+                <li><span class="label">Age</span> <span class="value">${data.age} Years</span></li>
+                <li><span class="label">Daily Rate</span> <span class="value">${data.rate}</span></li>
+                <li><span class="label">Languages</span> <span class="value">${data.languages}</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Right Column: Main Info -->
+          <div class="col-lg-8">
+            <div class="glass-card">
+              <h3 class="section-title">About Me</h3>
+              <p class="about-text">
+                ${data.about}
+              </p>
+
+              <h3 class="section-title">Expertise</h3>
+              <div class="specs-container">
+                ${specsHTML}
+              </div>
+
+              <h3 class="section-title">Gallery</h3>
+              <div class="gallery-grid">
+                ${galleryHTML}
+              </div>
+
+              <h3 class="section-title">What Travelers Say</h3>
+              <div class="reviews-container">
+                ${reviewsHTML}
+              </div>
+            </div>
+          </div>
+        `;
+
+        container.innerHTML = html;
       }
 
-      // Simple interaction for Follow button
-      const followBtn = document.querySelector(".btn-primary");
-      followBtn.addEventListener("click", function () {
-        if (this.innerText === "Follow") {
-          this.innerText = "Following";
-          this.style.backgroundColor = "#10B981"; // Green
-        } else {
-          this.innerText = "Follow";
-          this.style.backgroundColor = "var(--primary)";
-        }
-      });
+      // 3. Modal Logic
+      function openBookingModal(name) {
+        document.getElementById("modalGuiderName").innerText = name;
+        const myModal = new bootstrap.Modal(
+          document.getElementById("bookingModal")
+        );
+        myModal.show();
+      }
+
+      function confirmBooking() {
+        const btn = document.querySelector("#bookingModal .btn-primary");
+        const originalText = btn.innerText;
+
+        btn.innerText = "Processing...";
+        btn.disabled = true;
+
+        setTimeout(() => {
+          // Close modal
+          const modalEl = document.getElementById("bookingModal");
+          const modalInstance = bootstrap.Modal.getInstance(modalEl);
+          modalInstance.hide();
+
+          // Reset button
+          btn.innerText = originalText;
+          btn.disabled = false;
+
+          alert(
+            "Booking request sent successfully! The guider will contact you shortly."
+          );
+        }, 1500);
+      }
     </script>
   </body>
 </html>
