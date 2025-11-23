@@ -3,322 +3,693 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blog Storys: Unforgettable Train Journey - Sri Lanka Tourism</title>
+    <title>Voyager - Sri Lanka Travel Stories</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Icons -->
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="../css/destination.css" />
-    <link rel="stylesheet" href="../css/blog-story.css" />
+
+    <style>
+      /* --- CSS Reset & Variables --- */
+      :root {
+        --primary-color: #2c3e50;
+        --accent-color: #e67e22;
+        --accent-hover: #d35400;
+        --bg-color: #fdfbf7;
+        --card-bg: #ffffff;
+        --text-color: #4a4a4a;
+        --text-light: #95a5a6;
+        --header-font: "Playfair Display", serif;
+        --body-font: "Lato", sans-serif;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: var(--body-font);
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        line-height: 1.6;
+        scroll-behavior: smooth;
+      }
+
+      /* --- Navigation --- */
+      nav {
+        position: sticky;
+        top: 0;
+        width: 100%;
+        padding: 1.2rem 5%;
+        display: flex;
+        justify-content: center; /* Changed from space-between to center */
+        align-items: center;
+        z-index: 1000;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+      }
+
+      .logo {
+        font-family: var(--header-font);
+        font-weight: 700;
+        font-size: 1.8rem;
+        color: var(--primary-color);
+        text-decoration: none;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--primary-color);
+        font-weight: 700;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: var(--accent-color);
+      }
+
+      /* --- Hero Section --- */
+      header.hero {
+        height: 70vh;
+        /* Nine Arches Bridge Hero Image */
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.2),
+            rgba(0, 0, 0, 0.3)
+          ),
+          url("https://images.unsplash.com/photo-1566296314736-6eaac1ca0cb9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        margin-bottom: 4rem;
+        background-attachment: fixed;
+      }
+
+      .hero-content h1 {
+        font-family: var(--header-font);
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+      }
+
+      .hero-content p {
+        font-size: 1.4rem;
+        max-width: 600px;
+        margin: 0 auto;
+        opacity: 0.95;
+        text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+      }
+
+      /* --- Filter Tags --- */
+      .filter-container {
+        max-width: 1200px;
+        margin: 0 auto 3rem;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .filter-btn {
+        padding: 0.5rem 1.5rem;
+        border: 2px solid transparent;
+        border-radius: 50px;
+        background: white;
+        color: var(--text-color);
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-family: var(--body-font);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .filter-btn:hover,
+      .filter-btn.active {
+        background: var(--primary-color);
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      /* --- Blog Grid --- */
+      .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 2.5rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem 4rem;
+      }
+
+      .blog-card {
+        background: var(--card-bg);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+      }
+
+      .blog-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+      }
+
+      .card-image-wrapper {
+        position: relative;
+        height: 250px;
+        overflow: hidden;
+      }
+
+      .card-image-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .blog-card:hover .card-image-wrapper img {
+        transform: scale(1.1);
+      }
+
+      .card-category {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        background: rgba(255, 255, 255, 0.95);
+        color: var(--primary-color);
+        padding: 0.4rem 1rem;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .card-content {
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+      }
+
+      .card-meta {
+        display: flex;
+        gap: 1rem;
+        font-size: 0.85rem;
+        color: var(--text-light);
+        margin-bottom: 1rem;
+      }
+
+      .card-meta i {
+        color: var(--accent-color);
+        margin-right: 5px;
+      }
+
+      .card-title {
+        font-family: var(--header-font);
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+        line-height: 1.3;
+      }
+
+      .card-excerpt {
+        color: #666;
+        margin-bottom: 1.5rem;
+        flex-grow: 1;
+      }
+
+      .card-footer {
+        border-top: 1px solid #eee;
+        padding-top: 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .read-more {
+        text-decoration: none;
+        color: var(--accent-color);
+        font-weight: 700;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: gap 0.3s;
+      }
+
+      .read-more:hover {
+        gap: 0.8rem;
+        color: var(--accent-hover);
+      }
+
+      .author {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .author img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .author span {
+        font-size: 0.85rem;
+        color: var(--text-light);
+      }
+
+      /* --- Footer --- */
+      footer {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 4rem 2rem;
+        text-align: center;
+      }
+
+      /* --- Mobile Responsive --- */
+      @media (max-width: 768px) {
+        .blog-grid {
+          grid-template-columns: 1fr;
+          padding: 0 1.5rem;
+        }
+        .hero-content h1 {
+          font-size: 2.5rem;
+        }
+        .nav-links {
+          display: none;
+        }
+      }
+    </style>
   </head>
   <body>
-    <h1>Hello word</h1>
-    <nav class="navbar navbar-expand-lg fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="#">
-          <img
-            src="../assets/HomeAssets/Logo.png"
-            alt="Logo"
-            class="navbar-logo"
-          />
-        </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav mx-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="home.html">Home</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="destination.html"
-                role="button"
-                data-bs-toggle="dropdown"
-              >
-                Destinations
-              </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a class="dropdown-item" href="destination.html#byCity"
-                    >By City</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="destination.html#byCategory"
-                    >By Category</a
-                  >
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="hotel-restro.html"
-                >Hotels & Restaurants</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="guider-login.html">Find a Guide</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="blog-story.html">Blog/Stories</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="home.html#about">About us</a>
-            </li>
-          </ul>
-          <div class="d-flex align-items-center gap-3">
-            <div class="search-box">
-              <input type="text" class="form-control" placeholder="Search" />
-              <i class="fas fa-search"></i>
-            </div>
-            <div class="user-section">
-              <i class="fas fa-user"></i>
-              <span>User Name</span>
-            </div>
-          </div>
-        </div>
+    <!-- Navigation -->
+    <nav>
+      <!-- Logo Removed -->
+      <div class="nav-links">
+        <!-- Destinations Link Removed -->
+        <a href="#stories">Stories</a>
+        <a href="#">Subscribe</a>
       </div>
     </nav>
 
-    <main class="blog-story-page">
-      <header class="article-hero">
-        <div class="container">
-          <span class="article-category">🚂 Travel Stories</span>
-          <h1 class="article-title">
-            The World's Most Beautiful Train Journey: Ella to Kandy
-          </h1>
-          <div class="article-meta">
-            <span class="author-info">
-              <i class="fas fa-user-circle"></i> By **Samantha Perera**
-            </span>
-            <span class="date-info">
-              <i class="fas fa-calendar-alt"></i> November 10, 2025
-            </span>
-            <span class="read-time">
-              <i class="fas fa-clock"></i> 8 min read
-            </span>
-          </div>
-        </div>
-      </header>
-
-      <section class="article-section">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-lg-8">
-              <figure class="featured-image">
-                <img
-                  src="../assets/blog/ella.jpg"
-                  alt="Scenic train traveling through the Sri Lankan hill country"
-                  class="img-fluid"
-                />
-                <figcaption>
-                  Climbing through the misty tea plantations of Sri Lanka.
-                </figcaption>
-              </figure>
-
-              <p class="lead-paragraph">
-                There are train rides, and then there is **The Train Ride**.
-                Winding through the central highlands of Sri Lanka, the journey
-                from Ella to Kandy (or vice-versa) is often hailed as one of the
-                most breathtaking rail routes on the planet. It’s a slow, seven
-                hour immersion into an emerald world of misty mountains,
-                cascading waterfalls, and endless, manicured tea plantations.
-              </p>
-
-              <hr class="section-divider" />
-
-              <h2>The Climb to Nanu Oya: A Green Sea</h2>
-              <p>
-                The first hours leaving Ella are a symphony of greens. You pass
-                famous landmarks like the **Nine Arch Bridge**, where the train
-                slows down just enough for you to capture that perfect,
-                postcard-worthy photo. Make sure to grab a second or third-class
-                ticket for the best window views (or lack thereof, since many
-                windows are open!).
-              </p>
-
-              <blockquote>
-                <i class="fas fa-quote-left"></i>
-                <p>
-                  The air is cool, carrying the scent of damp earth and fresh
-                  tea leaves. Every window is a living, moving landscape
-                  painting.
-                </p>
-                <cite>- A fellow traveler on the train.</cite>
-              </blockquote>
-
-              <h2>Tea Estates and Local Life</h2>
-              <p>
-                As the train gains altitude towards **Nuwara Eliya** (via Nanu
-                Oya station), the climate noticeably shifts. You'll see Tamil
-                tea-pluckers, vibrant in their saris, dotting the impossibly
-                steep hillsides. This is the heart of Ceylon Tea country, a
-                legacy left by colonial times that still thrives today.
-              </p>
-
-              <div class="text-center my-5">
-                <img
-                  src="../assets/PhotogalleryAssets/Tea plantations image.jpeg"
-                  alt="Tea pluckers working on a hill"
-                  class="img-fluid article-image-mid"
-                />
-                <p class="text-muted small mt-2">
-                  Tea pluckers are a common, beautiful sight along the route.
-                </p>
-              </div>
-
-              <h2>Arrival in Kandy: Cultural Capital</h2>
-              <p>
-                The final approach into Kandy, Sri Lanka's cultural capital, is
-                a gentle descent back into a warmer, more bustling environment.
-                You leave the quiet serenity of the mountains for the historic
-                charm of Kandy Lake and the **Temple of the Tooth Relic**. The
-                train ride is an adventure, but Kandy is the perfect place to
-                settle down and reflect on the beauty you just witnessed.
-              </p>
-
-              <hr class="section-divider" />
-
-              <div class="article-footer-meta">
-                <div class="tags">
-                  **Tags:**
-                  <a href="#" class="tag-link">#SriLanka</a>
-                  <a href="#" class="tag-link">#TrainTravel</a>
-                  <a href="#" class="tag-link">#Ella</a>
-                  <a href="#" class="tag-link">#Kandy</a>
-                </div>
-                <div class="share-icons">
-                  **Share:**
-                  <a href="#"><i class="fab fa-facebook-f"></i></a>
-                  <a href="#"><i class="fab fa-twitter"></i></a>
-                  <a href="#"><i class="fab fa-whatsapp"></i></a>
-                  <a href="#"><i class="fas fa-envelope"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="related-posts py-5 bg-light">
-        <div class="container">
-          <h3 class="text-center mb-5">You Might Also Like 🚀</h3>
-          <div class="row g-4">
-            <div class="col-md-4">
-              <div class="related-card">
-                <img
-                  src="../assets/PhotogalleryAssets/galle fort image.jpeg"
-                  alt="Galle Fort"
-                  class="img-fluid"
-                />
-                <div class="card-body">
-                  <h5>Exploring the Dutch Charm of Galle Fort</h5>
-                  <p class="small text-muted">Heritage • 5 min read</p>
-                  <a href="#" class="btn-read-more"
-                    >Read Story <i class="fas fa-arrow-right"></i
-                  ></a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="related-card">
-                <img
-                  src="../assets/blog/yala.jpg"
-                  alt="Leopard in Yala"
-                  class="img-fluid"
-                />
-                <div class="card-body">
-                  <h5>Yala National Park: Hunting for the Elusive Leopard</h5>
-                  <p class="small text-muted">Wildlife • 10 min read</p>
-                  <a href="#" class="btn-read-more"
-                    >Read Story <i class="fas fa-arrow-right"></i
-                  ></a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="related-card">
-                <img
-                  src="../assets/blog/colombo.jpg"
-                  alt="Colombo Skyline"
-                  class="img-fluid"
-                />
-                <div class="card-body">
-                  <h5>Colombo's Modern Edge: A City Guide</h5>
-                  <p class="small text-muted">City Guide • 6 min read</p>
-                  <a href="#" class="btn-read-more"
-                    >Read Story <i class="fas fa-arrow-right"></i
-                  ></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-3 col-md-6 mb-4">
-            <div class="footer-logo">
-              <h3>IIA</h3>
-              <p>DIGITAL PROJECT</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mb-4">
-            <h5>Quick Links</h5>
-            <ul class="footer-links">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Destinations</a></li>
-              <li><a href="#">Hotels & Restaurant</a></li>
-              <li><a href="#">Find a guide</a></li>
-              <li><a href="#">Blog / Stories</a></li>
-              <li><a href="#">Contacts</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mb-4">
-            <h5>Contacts</h5>
-            <ul class="footer-contacts">
-              <li>
-                <i class="fas fa-map-marker-alt"></i> 1234 Sample Street<br />Austin
-                Texas 78704
-              </li>
-              <li><i class="fas fa-phone"></i> 512.333.2222</li>
-              <li><i class="fas fa-envelope"></i> sampleemail@gmail.com</li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mb-4">
-            <h5>Social Media</h5>
-            <div class="social-icons">
-              <a href="#"><i class="fab fa-facebook"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
-              <a href="#"><i class="fab fa-linkedin"></i></a>
-              <a href="#"><i class="fab fa-pinterest"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="footer-bottom">
-          <p>&copy; 2025 All Rights Reserved</p>
-        </div>
+    <!-- Hero Section -->
+    <header class="hero">
+      <div class="hero-content">
+        <h1>The Pearl of the Indian Ocean</h1>
+        <p>
+          Discovering the hidden wonders of Sri Lanka, from coast to mountains.
+        </p>
       </div>
+    </header>
+
+    <!-- Filter Buttons -->
+    <div class="filter-container">
+      <button class="filter-btn active">All</button>
+      <button class="filter-btn">Adventure</button>
+      <button class="filter-btn">Culture</button>
+      <button class="filter-btn">Food</button>
+      <button class="filter-btn">Relaxation</button>
+    </div>
+
+    <!-- Blog Grid -->
+    <section class="blog-grid" id="stories">
+      <!-- Card 1: Belihuloya (Sabaragamuwa Region) - NEW Personalized Card -->
+      <article class="blog-card">
+        <div class="card-image-wrapper">
+          <span class="card-category">Adventure</span>
+          <img
+            src="https://images.unsplash.com/photo-1546252438-e6b7261a8661?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            alt="Belihuloya Waterfalls"
+          />
+        </div>
+        <div class="card-content">
+          <div class="card-meta">
+            <span><i class="far fa-calendar"></i> Nov 02, 2023</span>
+            <span><i class="far fa-clock"></i> 6 min read</span>
+          </div>
+          <h3 class="card-title">Belihuloya: Hidden Gem of Sabaragamuwa</h3>
+          <p class="card-excerpt">
+            Exploring the pristine waterfalls and misty mountains surrounding
+            the university town of Belihuloya.
+          </p>
+          <div class="card-footer">
+            <div class="author">
+              <img
+                src="https://randomuser.me/api/portraits/women/28.jpg"
+                alt="Author"
+              />
+              <span>Dilini P.</span>
+            </div>
+            <a href="#" class="read-more"
+              >Read Story <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 2: Yala (Leopard) -->
+      <article class="blog-card">
+        <div class="card-image-wrapper">
+          <span class="card-category">Adventure</span>
+          <img
+            src="https://images.unsplash.com/photo-1625736300986-7e2874154948?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            alt="Leopard in Yala"
+          />
+        </div>
+        <div class="card-content">
+          <div class="card-meta">
+            <span><i class="far fa-calendar"></i> Oct 24, 2023</span>
+            <span><i class="far fa-clock"></i> 6 min read</span>
+          </div>
+          <h3 class="card-title">Tracking Leopards in Yala</h3>
+          <p class="card-excerpt">
+            A dawn safari into the dense jungles of Yala National Park in search
+            of the elusive Sri Lankan leopard.
+          </p>
+          <div class="card-footer">
+            <div class="author">
+              <img
+                src="https://randomuser.me/api/portraits/women/44.jpg"
+                alt="Author"
+              />
+              <span>Sarah J.</span>
+            </div>
+            <a href="#" class="read-more"
+              >Read Story <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 3: Kandy (Temple of Tooth) -->
+      <article class="blog-card">
+        <div class="card-image-wrapper">
+          <span class="card-category">Culture</span>
+          <img
+            src="https://images.unsplash.com/photo-1590053163773-04983050965d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            alt="Kandy Temple of Tooth"
+          />
+        </div>
+        <div class="card-content">
+          <div class="card-meta">
+            <span><i class="far fa-calendar"></i> Oct 18, 2023</span>
+            <span><i class="far fa-clock"></i> 8 min read</span>
+          </div>
+          <h3 class="card-title">Sacred Rhythms of Kandy</h3>
+          <p class="card-excerpt">
+            Witnessing the mesmerizing drum beats and traditional dancers at the
+            Temple of the Sacred Tooth Relic.
+          </p>
+          <div class="card-footer">
+            <div class="author">
+              <img
+                src="https://randomuser.me/api/portraits/men/32.jpg"
+                alt="Author"
+              />
+              <span>Mike R.</span>
+            </div>
+            <a href="#" class="read-more"
+              >Read Story <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 4: Galle (Lighthouse) -->
+      <article class="blog-card">
+        <div class="card-image-wrapper">
+          <span class="card-category">Food</span>
+          <img
+            src="https://images.unsplash.com/photo-1566378401347-1941ba924556?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            alt="Galle Fort Lighthouse"
+          />
+        </div>
+        <div class="card-content">
+          <div class="card-meta">
+            <span><i class="far fa-calendar"></i> Sep 30, 2023</span>
+            <span><i class="far fa-clock"></i> 5 min read</span>
+          </div>
+          <h3 class="card-title">Culinary Walks in Galle Fort</h3>
+          <p class="card-excerpt">
+            From spicy crab curry to colonial-style afternoon tea: tasting
+            history inside the Dutch ramparts.
+          </p>
+          <div class="card-footer">
+            <div class="author">
+              <img
+                src="https://randomuser.me/api/portraits/women/65.jpg"
+                alt="Author"
+              />
+              <span>Elena G.</span>
+            </div>
+            <a href="#" class="read-more"
+              >Read Story <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 5: Mirissa (Coconut Tree Hill) -->
+      <article class="blog-card">
+        <div class="card-image-wrapper">
+          <span class="card-category">Relaxation</span>
+          <img
+            src="https://images.unsplash.com/photo-1582236894056-b8b8098c4d29?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            alt="Mirissa Coconut Tree Hill"
+          />
+        </div>
+        <div class="card-content">
+          <div class="card-meta">
+            <span><i class="far fa-calendar"></i> Sep 15, 2023</span>
+            <span><i class="far fa-clock"></i> 4 min read</span>
+          </div>
+          <h3 class="card-title">Sunset Palms in Mirissa</h3>
+          <p class="card-excerpt">
+            Why this southern coastal gem is the perfect spot to unwind, surf,
+            and watch the whales go by.
+          </p>
+          <div class="card-footer">
+            <div class="author">
+              <img
+                src="https://randomuser.me/api/portraits/men/88.jpg"
+                alt="Author"
+              />
+              <span>David K.</span>
+            </div>
+            <a href="#" class="read-more"
+              >Read Story <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 6: Horton Plains (Landscape) -->
+      <article class="blog-card">
+        <div class="card-image-wrapper">
+          <span class="card-category">Adventure</span>
+          <img
+            src="https://images.unsplash.com/photo-1625902092284-933e496cb135?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            alt="Horton Plains Landscape"
+          />
+        </div>
+        <div class="card-content">
+          <div class="card-meta">
+            <span><i class="far fa-calendar"></i> Aug 22, 2023</span>
+            <span><i class="far fa-clock"></i> 7 min read</span>
+          </div>
+          <h3 class="card-title">Trekking to World's End</h3>
+          <p class="card-excerpt">
+            A misty morning hike across the Horton Plains plateau to witness the
+            sheer cliff drop at World's End.
+          </p>
+          <div class="card-footer">
+            <div class="author">
+              <img
+                src="https://randomuser.me/api/portraits/women/12.jpg"
+                alt="Author"
+              />
+              <span>Anna M.</span>
+            </div>
+            <a href="#" class="read-more"
+              >Read Story <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 7: Colombo (Lotus Tower) -->
+      <article class="blog-card">
+        <div class="card-image-wrapper">
+          <span class="card-category">City</span>
+          <img
+            src="https://images.unsplash.com/photo-1620049581552-3081e74f17f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            alt="Colombo Lotus Tower"
+          />
+        </div>
+        <div class="card-content">
+          <div class="card-meta">
+            <span><i class="far fa-calendar"></i> Aug 05, 2023</span>
+            <span><i class="far fa-clock"></i> 5 min read</span>
+          </div>
+          <h3 class="card-title">Colombo: Chaos & Curry</h3>
+          <p class="card-excerpt">
+            Navigating the bustling streets of Pettah market and finding the
+            best street food in the capital.
+          </p>
+          <div class="card-footer">
+            <div class="author">
+              <img
+                src="https://randomuser.me/api/portraits/men/45.jpg"
+                alt="Author"
+              />
+              <span>Chris P.</span>
+            </div>
+            <a href="#" class="read-more"
+              >Read Story <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 8: Sigiriya (Lion Rock) -->
+      <article class="blog-card">
+        <div class="card-image-wrapper">
+          <span class="card-category">Culture</span>
+          <img
+            src="https://images.unsplash.com/photo-1606213702118-2e8f17a9442a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            alt="Sigiriya Rock Fortress"
+          />
+        </div>
+        <div class="card-content">
+          <div class="card-meta">
+            <span><i class="far fa-calendar"></i> Jul 12, 2023</span>
+            <span><i class="far fa-clock"></i> 6 min read</span>
+          </div>
+          <h3 class="card-title">The Lion Rock: Sigiriya's Mystery</h3>
+          <p class="card-excerpt">
+            Climbing the ancient rock fortress in the heart of the cultural
+            triangle to witness the sunrise.
+          </p>
+          <div class="card-footer">
+            <div class="author">
+              <img
+                src="https://randomuser.me/api/portraits/women/68.jpg"
+                alt="Author"
+              />
+              <span>Amara S.</span>
+            </div>
+            <a href="#" class="read-more"
+              >Read Story <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 9: Ella (Nine Arches) -->
+      <article class="blog-card">
+        <div class="card-image-wrapper">
+          <span class="card-category">Adventure</span>
+          <img
+            src="https://images.unsplash.com/photo-1566296314736-6eaac1ca0cb9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            alt="Nine Arches Bridge Ella"
+          />
+        </div>
+        <div class="card-content">
+          <div class="card-meta">
+            <span><i class="far fa-calendar"></i> Jul 08, 2023</span>
+            <span><i class="far fa-clock"></i> 5 min read</span>
+          </div>
+          <h3 class="card-title">Mist and Rails: Ella</h3>
+          <p class="card-excerpt">
+            Taking the iconic blue train through the misty tea plantations of
+            Ella for the ultimate scenic ride.
+          </p>
+          <div class="card-footer">
+            <div class="author">
+              <img
+                src="https://randomuser.me/api/portraits/men/22.jpg"
+                alt="Author"
+              />
+              <span>Kasun P.</span>
+            </div>
+            <a href="#" class="read-more"
+              >Read Story <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <!-- VOYAGER Title Removed -->
+      <p style="margin-top: 1rem; opacity: 0.7">
+        &copy; 2023 Voyager Travel Blog. All rights reserved.
+      </p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/destination.js"></script>
+    <script>
+      // Simple Filter Functionality
+      const buttons = document.querySelectorAll(".filter-btn");
+      const cards = document.querySelectorAll(".blog-card");
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          // Remove active class from all buttons
+          buttons.forEach((btn) => btn.classList.remove("active"));
+          // Add active class to clicked button
+          button.classList.add("active");
+
+          const filter = button.textContent;
+
+          cards.forEach((card) => {
+            const category = card.querySelector(".card-category").textContent;
+
+            if (
+              filter === "All" ||
+              category === filter ||
+              (filter === "Culture" && category === "City")
+            ) {
+              card.style.display = "flex";
+              card.style.opacity = "0";
+              setTimeout(() => (card.style.opacity = "1"), 50);
+            } else {
+              card.style.display = "none";
+            }
+          });
+        });
+      });
+    </script>
   </body>
 </html>
