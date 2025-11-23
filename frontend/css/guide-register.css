@@ -10,7 +10,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url(../assets/GuiderLogin/Back\ image.jpg) no-repeat center center/cover;
+  background: url(../assets/GuiderLogin/Back\ image.jpg) no-repeat center
+    center/cover;
   padding: 20px;
   position: relative;
 }
