@@ -24,13 +24,12 @@
     />
 
     <style>
-      /* --- GLOBAL STYLES (Matching Index) --- */
+      /* --- GLOBAL STYLES --- */
       :root {
         --ceylon-gold: #fbbf24;
-        --tropical-teal: #22d3ee;
-        --glass-bg: rgba(20, 30, 20, 0.75); /* Darker jungle tint */
-        --glass-border: rgba(255, 255, 255, 0.15);
-        --text-light: #e2e8f0;
+        --tropical-teal: #0891b2; /* Darker teal for better contrast on white */
+        --text-dark: #1e293b;
+        --text-muted: #64748b;
       }
 
       * {
@@ -42,25 +41,17 @@
       body {
         font-family: "Poppins", Arial, sans-serif;
         min-height: 100vh;
-        color: #fff;
+        color: var(--text-dark);
         position: relative;
         overflow-x: hidden;
+        background-color: #ffffff; /* Explicit White Body */
       }
 
-      /* --- SRI LANKAN SCENIC BACKGROUND --- */
+      /* --- WHITE BACKGROUND SETUP --- */
       .bg-scenic {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        /* Iconic Nine Arch Bridge / Ella / Tea Plantation vibe */
-        background: url("https://images.unsplash.com/photo-1584950064562-b9e3065b9347?q=80&w=2670&auto=format&fit=crop")
-          no-repeat center center/cover;
+        display: none; /* Removed for pure white background */
       }
 
-      /* Overlay */
       .bg-overlay {
         position: fixed;
         top: 0;
@@ -68,13 +59,7 @@
         width: 100%;
         height: 100%;
         z-index: -1;
-        /* Gradient from dark jungle green to black */
-        background: linear-gradient(
-          to bottom,
-          rgba(6, 78, 59, 0.5),
-          rgba(15, 23, 42, 0.9)
-        );
-        backdrop-filter: brightness(0.9);
+        background: #ffffff; /* Pure White Background */
       }
 
       .container {
@@ -84,14 +69,12 @@
         padding-bottom: 60px;
       }
 
-      /* --- GLASS COMPONENTS --- */
+      /* --- CARDS (Adapted for White BG) --- */
       .glass-card {
-        background: var(--glass-bg);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border: 1px solid var(--glass-border);
+        background: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.08); /* Subtle border definition */
         border-radius: 24px;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06); /* Softer shadow for light mode */
         padding: 30px;
         margin-bottom: 25px;
         animation: fadeIn 0.6s ease;
@@ -105,8 +88,8 @@
         margin: 0 auto 20px auto;
         border-radius: 50%;
         border: 3px solid var(--ceylon-gold);
-        padding: 5px; /* Spacing between border and image */
-        box-shadow: 0 0 25px rgba(251, 191, 36, 0.3);
+        padding: 5px;
+        box-shadow: 0 10px 25px rgba(251, 191, 36, 0.2);
       }
 
       .profile-image-container img {
@@ -125,11 +108,11 @@
         font-weight: 700;
         font-size: 2rem;
         margin-bottom: 5px;
-        color: #fff;
+        color: #000;
       }
 
       .sidebar-info .location {
-        color: rgba(255, 255, 255, 0.7);
+        color: var(--text-muted);
         font-size: 0.9rem;
         margin-bottom: 15px;
         font-style: italic;
@@ -138,13 +121,13 @@
       .rating-box {
         display: inline-flex;
         align-items: center;
-        background: rgba(251, 191, 36, 0.15);
-        color: var(--ceylon-gold);
+        background: #fffbeb; /* Very light yellow bg */
+        color: #d97706; /* Darker gold text */
         padding: 6px 16px;
         border-radius: 50px;
         font-weight: 600;
         margin-bottom: 25px;
-        border: 1px solid rgba(251, 191, 36, 0.3);
+        border: 1px solid #fcd34d;
       }
 
       .contact-actions .btn {
@@ -168,20 +151,20 @@
 
       .btn-book:hover {
         transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(251, 191, 36, 0.5);
+        box-shadow: 0 6px 20px rgba(251, 191, 36, 0.4);
         color: white;
       }
 
       .btn-message {
-        background: transparent;
-        color: white;
-        border: 1px solid rgba(255, 255, 255, 0.3);
+        background: white;
+        color: var(--text-dark);
+        border: 1px solid #cbd5e1;
       }
 
       .btn-message:hover {
-        background: rgba(255, 255, 255, 0.1);
-        color: white;
-        border-color: #fff;
+        background: #f8fafc;
+        border-color: #94a3b8;
+        color: #000;
       }
 
       .info-list {
@@ -189,7 +172,7 @@
         text-align: left;
         margin-top: 25px;
         padding-top: 25px;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-top: 1px solid #e2e8f0;
       }
 
       .info-list li {
@@ -200,13 +183,13 @@
       }
 
       .info-list span.label {
-        color: rgba(255, 255, 255, 0.6);
-        font-weight: 300;
+        color: var(--text-muted);
+        font-weight: 400;
       }
 
       .info-list span.value {
-        font-weight: 500;
-        color: #fff;
+        font-weight: 600;
+        color: var(--text-dark);
       }
 
       /* --- MAIN CONTENT AREA --- */
@@ -215,21 +198,21 @@
         font-size: 1.6rem;
         font-weight: 700;
         margin-bottom: 25px;
-        color: var(--ceylon-gold);
+        color: #000; /* Darker title for white bg */
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 15px;
       }
 
       .section-title::after {
         content: "";
         flex: 1;
         height: 1px;
-        background: rgba(255, 255, 255, 0.1);
+        background: #e2e8f0; /* Light gray line */
       }
 
       .about-text {
-        color: rgba(255, 255, 255, 0.9);
+        color: #334155;
         line-height: 1.8;
         margin-bottom: 35px;
         font-weight: 300;
@@ -245,8 +228,8 @@
       }
 
       .spec-tag {
-        background: rgba(34, 211, 238, 0.1); /* Teal tint */
-        border: 1px solid rgba(34, 211, 238, 0.3);
+        background: #ecfeff; /* Very light teal */
+        border: 1px solid #a5f3fc;
         color: var(--tropical-teal);
         padding: 8px 16px;
         border-radius: 8px;
@@ -256,11 +239,11 @@
 
       /* Reviews */
       .review-item {
-        background: rgba(0, 0, 0, 0.2);
+        background: #f8fafc; /* Slight off-white for reviews */
         border-radius: 16px;
         padding: 20px;
         margin-bottom: 15px;
-        border: 1px solid rgba(255, 255, 255, 0.05);
+        border: 1px solid #e2e8f0;
       }
 
       .review-header {
@@ -271,19 +254,19 @@
 
       .reviewer-name {
         font-weight: 600;
-        color: #fff;
+        color: var(--text-dark);
         font-family: "Playfair Display", serif;
       }
 
       .review-stars {
-        color: var(--ceylon-gold);
+        color: #fbbf24;
         font-size: 0.85rem;
       }
 
       .review-text {
         font-size: 0.95rem;
         font-style: italic;
-        color: rgba(255, 255, 255, 0.8);
+        color: #475569;
         margin: 0;
       }
 
@@ -301,7 +284,7 @@
         overflow: hidden;
         cursor: pointer;
         position: relative;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
       }
 
       .gallery-item img {
@@ -317,7 +300,7 @@
 
       /* Back Button */
       .back-link {
-        color: rgba(255, 255, 255, 0.8);
+        color: #475569;
         text-decoration: none;
         display: inline-flex;
         align-items: center;
@@ -325,48 +308,57 @@
         font-weight: 500;
         transition: all 0.3s;
         padding: 8px 16px;
-        background: rgba(255, 255, 255, 0.1);
+        background: #f1f5f9;
         border-radius: 50px;
       }
 
       .back-link:hover {
         color: var(--ceylon-gold);
-        background: rgba(255, 255, 255, 0.2);
+        background: #fffbeb;
       }
 
-      /* --- MODAL STYLES --- */
+      /* --- MODAL STYLES (Switched to Light Mode) --- */
       .modal-content {
-        background: #0f172a; /* Solid dark color */
-        color: white;
-        border: 1px solid var(--ceylon-gold);
+        background: #ffffff;
+        color: var(--text-dark);
+        border: none;
         border-radius: 20px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
       }
       .modal-header {
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid #e2e8f0;
       }
       .modal-footer {
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-top: 1px solid #e2e8f0;
       }
       .modal-title {
         font-family: "Playfair Display", serif;
-        color: var(--ceylon-gold);
+        color: #000;
+        font-weight: 700;
       }
+      .btn-close {
+        /* Standard dark close button for light modal */
+        filter: none;
+      }
+
+      /* Light Mode Form Inputs */
       .form-control,
       .form-select {
-        background: #1e293b;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        color: white;
+        background: #f8fafc;
+        border: 1px solid #cbd5e1;
+        color: var(--text-dark);
         padding: 12px;
       }
       .form-control:focus,
       .form-select:focus {
-        background: #1e293b;
-        color: white;
+        background: #ffffff;
+        color: var(--text-dark);
         border-color: var(--ceylon-gold);
         box-shadow: 0 0 0 0.25rem rgba(251, 191, 36, 0.25);
       }
       .form-label {
-        color: rgba(255, 255, 255, 0.8);
+        color: #475569;
+        font-weight: 500;
         font-size: 0.9rem;
       }
 
@@ -383,8 +375,7 @@
     </style>
   </head>
   <body>
-    <!-- Scenic Background -->
-    <div class="bg-scenic"></div>
+    <!-- White Background Overlay -->
     <div class="bg-overlay"></div>
 
     <div class="container">
@@ -410,7 +401,7 @@
             role="status"
             style="width: 3rem; height: 3rem"
           ></div>
-          <p class="mt-3 text-white-50">Preparing your guide's profile...</p>
+          <p class="mt-3 text-muted">Preparing your guide's profile...</p>
         </div>
       </div>
     </div>
@@ -425,7 +416,7 @@
             </h5>
             <button
               type="button"
-              class="btn-close btn-close-white"
+              class="btn-close"
               data-bs-dismiss="modal"
               aria-label="Close"
             ></button>
@@ -622,7 +613,7 @@
         `
                 )
                 .join("")
-            : "<p class='text-white-50'>No gallery images available.</p>";
+            : "<p class='text-muted'>No gallery images available.</p>";
 
         // Generate Reviews HTML
         const reviewsHTML =
@@ -642,7 +633,7 @@
         `
                 )
                 .join("")
-            : "<p class='text-white-50'>No reviews yet.</p>";
+            : "<p class='text-muted'>No reviews yet.</p>";
 
         // Generate Specs HTML
         const specsHTML = data.specializations
@@ -661,7 +652,7 @@
               <p class="location"><i class="fas fa-map-marker-alt me-1"></i> ${data.location}</p>
               
               <div class="rating-box">
-                <i class="fas fa-star me-2"></i> ${data.rating} <span style="font-weight:400; margin-left:5px; color:rgba(255,255,255,0.7)">(${data.reviewsCount} Reviews)</span>
+                <i class="fas fa-star me-2"></i> ${data.rating} <span style="font-weight:400; margin-left:5px; color:rgba(0,0,0,0.5)">(${data.reviewsCount} Reviews)</span>
               </div>
 
               <div class="contact-actions">

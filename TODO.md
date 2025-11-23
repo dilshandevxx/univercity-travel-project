@@ -1,11 +1,8 @@
-# TODO: Implement Photo Gallery Upload Functionality
-
-## Tasks
-
-- [ ] Create backend/models/gallery.js with database functions for photo uploads
-- [ ] Create backend/routes/gallery.js with POST /upload endpoint using multer
-- [ ] Update backend/server.js to include gallery routes
-- [ ] Modify frontend/pages/photo-hallary.html to change form action to /api/gallery/upload
-- [ ] Test the upload functionality
-- [ ] Verify uploaded images are saved and can be displayed
-- [ ] Add error handling for invalid files or database issues
+- [ ] Update CSS variables for white background and dark text
+- [ ] Change .bg-scenic background to white
+- [ ] Change .bg-overlay background to white
+- [ ] Change body color to black
+- [ ] Update glass-card backgrounds to light
+- [ ] Update text colors in sidebar-info, about-text, etc., to black
+- [ ] Update modal styles to light background
+- [ ] Update other elements like .info-list, .review-item, etc., to dark text
