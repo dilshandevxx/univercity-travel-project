@@ -537,7 +537,7 @@
             <div class="col-12 col-md-6 col-lg-3" style="animation: fadeIn 0.6s ease-out ${delay}s backwards;">
               <div class="guide-card">
                 <div class="card-img-wrapper">
-                  <img src="${guider.img}" alt="${guider.name}">
+                  <img src="${guider.img}" alt="${guider.name}" onclick="window.location.href='guider-profile.html?id=${guider.id}'" style="cursor: pointer;">
                   <div class="rating-badge">
                     <i class="fas fa-star"></i> ${guider.rating}
                   </div>
@@ -559,7 +559,7 @@
                     ${langTags}
                   </div>
 
-                  <a href="/pages/guider-profile.html?id=${guider.id}" class="view-profile-btn" onclick="goToProfile(event, ${guider.id})">
+                  <a href="guider-profile.html?id=${guider.id}" class="view-profile-btn" onclick="goToProfile(event, ${guider.id})">
                     View Profile
                   </a>
                 </div>
