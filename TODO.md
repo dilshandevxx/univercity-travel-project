@@ -1,8 +1,15 @@
-- [ ] Update CSS variables for white background and dark text
-- [ ] Change .bg-scenic background to white
-- [ ] Change .bg-overlay background to white
-- [ ] Change body color to black
-- [ ] Update glass-card backgrounds to light
-- [ ] Update text colors in sidebar-info, about-text, etc., to black
-- [ ] Update modal styles to light background
-- [ ] Update other elements like .info-list, .review-item, etc., to dark text
+# TODO: Add Upload and Display Functionality to Photo Gallery Page
+
+## Tasks
+
+- [x] Modify frontend/js/Photogallery.js to fetch uploaded photos on page load and append to gallery grid
+- [x] Add event listener to upload form for AJAX submission using fetch
+- [x] On successful upload, refresh the gallery by re-fetching photos
+- [x] Ensure lightbox functionality works for dynamically added images
+- [x] Test the upload and display functionality
+
+## Notes
+
+- Keep static images as is, add uploaded ones dynamically.
+- Use /api/gallery endpoint to fetch photos.
+- Handle form submission without page reload.

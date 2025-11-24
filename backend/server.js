@@ -4,6 +4,7 @@ const app = express();
 const path = require("path");
 const authRoutes = require("./routes/auth");
 const guiderRoutes = require("./routes/guiders");
+const galleryRoutes = require("./routes/gallery");
 
 app.use(cors());
 app.use(express.json());
@@ -11,6 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "../", "frontend")));
 app.use("/api/auth", authRoutes);
 app.use("/api/guiders", guiderRoutes);
+app.use("/api/gallery", galleryRoutes);
 
 app.get("/", (req, res) => {
   res.sendFile(
