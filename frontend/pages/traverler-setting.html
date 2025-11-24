@@ -442,7 +442,7 @@
     <div class="container">
       <header class="header">
         <a
-          href="#"
+          href="home.html"
           style="
             color: var(--text-muted);
             text-decoration: none;
@@ -867,6 +867,68 @@ Lover of coffee, hiking, and finding the best street food in every city I visit.
     </div>
 
     <script>
+      // --- Load User Profile ---
+      async function loadUserProfile() {
+        const token = localStorage.getItem("token");
+        if (!token) {
+          alert("No authentication token found. Please login first.");
+          window.location.href = "TravelerLogin.html";
+          return;
+        }
+
+        try {
+          const response = await fetch("/api/auth/profile", {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          });
+
+          const data = await response.json();
+
+          if (data.success) {
+            populateUserData(data.user);
+          } else {
+            alert("Failed to load profile: " + data.message);
+          }
+        } catch (error) {
+          console.error("Error loading profile:", error);
+          alert("Error loading profile. Please try again.");
+        }
+      }
+
+      // --- Populate Form with User Data ---
+      function populateUserData(user) {
+        // Profile tab
+        const firstName = user.full_name ? user.full_name.split(" ")[0] : "";
+        const lastName = user.full_name
+          ? user.full_name.split(" ").slice(1).join(" ")
+          : "";
+
+        document.querySelector('input[value="John"]').value = firstName;
+        document.querySelector('input[value="Doe"]').value = lastName;
+        document.querySelector('input[placeholder="e.g. London, UK"]').value =
+          "Sri Lanka"; // Default location
+        document.querySelector(
+          "textarea"
+        ).value = `Traveler from Sri Lanka. Love exploring local destinations.`;
+
+        // Account tab
+        document.querySelector('input[type="email"][disabled]').value =
+          user.email;
+
+        // Update avatar if profile image exists
+        if (user.profile_image) {
+          document.getElementById("avatarPreview").src = user.profile_image;
+        }
+
+        // Update header with username
+        document.querySelector(
+          "h1"
+        ).textContent = `${user.username}'s Settings`;
+      }
+
       // --- Tab Switching Logic ---
       function openTab(tabName) {
         const tabs = document.getElementsByClassName("tab-pane");
