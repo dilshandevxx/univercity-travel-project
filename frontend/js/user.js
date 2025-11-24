@@ -27,5 +27,20 @@ function updateUserName() {
   }
 }
 
-// Call updateUserName on page load
-document.addEventListener("DOMContentLoaded", updateUserName);
+// Function to make user section clickable for settings
+function makeUserSectionClickable() {
+  const userSection = document.querySelector(".user-section");
+
+  if (userSection) {
+    userSection.style.cursor = "pointer";
+    userSection.addEventListener("click", function () {
+      window.location.href = "traverler-setting.html";
+    });
+  }
+}
+
+// Call updateUserName and make user section clickable on page load
+document.addEventListener("DOMContentLoaded", function () {
+  updateUserName();
+  makeUserSectionClickable();
+});

@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Traveler Settings | NomadJourney</title>
+    <!-- Using Inter font for a modern, clean look -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        /* Modern Minimalist Palette */
+        --primary: #2563eb; /* Vibrant Royal Blue */
+        --primary-hover: #1d4ed8;
+        --text-main: #111827; /* Almost Black */
+        --text-muted: #6b7280; /* Cool Gray */
+        --border: #e5e7eb; /* Very Light Gray */
+        --bg-input: #ffffff;
+        --focus-ring: rgba(37, 99, 235, 0.15);
+        --danger: #ef4444;
+
+        /* Dimensions */
+        --radius: 8px; /* Slightly sharper for professional look */
+        --container-max: 1000px; /* Tighter width for readability */
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #ffffff; /* Pure White Background */
+        color: var(--text-main);
+        line-height: 1.6;
+        min-height: 100vh;
+      }
+
+      /* --- Layout --- */
+      .container {
+        max-width: var(--container-max);
+        margin: 0 auto;
+        padding: 4rem 2rem;
+      }
+
+      .header {
+        margin-bottom: 3.5rem;
+      }
+
+      .header h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: var(--text-main);
+        margin-bottom: 0.5rem;
+      }
+
+      .header-sub {
+        color: var(--text-muted);
+        font-size: 1rem;
+      }
+
+      .layout-grid {
+        display: grid;
+        grid-template-columns: 240px 1fr;
+        gap: 4rem;
+        align-items: start;
+      }
+
+      /* --- Minimal Sidebar --- */
+      .sidebar {
+        position: sticky;
+        top: 2rem;
+      }
+
+      .nav-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem 0; /* Vertical padding only for clean look */
+        color: var(--text-muted);
+        text-decoration: none;
+        transition: all 0.2s ease;
+        cursor: pointer;
+        font-weight: 500;
+        border: none;
+        background: none;
+        width: 100%;
+        text-align: left;
+        font-size: 0.95rem;
+        border-right: 2px solid transparent; /* Right border indicator */
+      }
+
+      .nav-item:hover {
+        color: var(--text-main);
+      }
+
+      .nav-item.active {
+        color: var(--primary);
+        border-right-color: var(--primary); /* Minimal active indicator */
+      }
+
+      .nav-icon {
+        width: 18px;
+        height: 18px;
+        stroke-width: 2;
+      }
+
+      /* --- Main Content Area --- */
+      .settings-content {
+        /* No background or shadow - blends into page */
+        min-height: 500px;
+      }
+
+      .tab-pane {
+        display: none;
+        animation: fadeIn 0.4s ease;
+      }
+
+      .tab-pane.active {
+        display: block;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .section-header {
+        margin-bottom: 2.5rem;
+      }
+
+      .section-header h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        margin-bottom: 0.5rem;
+      }
+
+      .section-header p {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+      }
+
+      /* --- Modern Forms --- */
+      .form-group {
+        margin-bottom: 2rem;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+      }
+
+      label {
+        display: block;
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-bottom: 0.6rem;
+        color: var(--text-main);
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="password"],
+      select,
+      textarea {
+        width: 100%;
+        padding: 0.85rem 1rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        font-size: 0.95rem;
+        font-family: inherit;
+        color: var(--text-main);
+        background-color: var(--bg-input);
+        transition: all 0.2s ease;
+      }
+
+      input:hover,
+      select:hover,
+      textarea:hover {
+        border-color: #cbd5e1;
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 4px var(--focus-ring);
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+
+      .helper-text {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        margin-top: 0.5rem;
+        line-height: 1.4;
+      }
+
+      /* --- Clean Avatar Section --- */
+      .avatar-section {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        margin-bottom: 3rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .avatar-preview {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .btn-upload {
+        font-size: 0.9rem;
+        color: var(--primary);
+        font-weight: 600;
+        cursor: pointer;
+        transition: color 0.2s;
+      }
+
+      .btn-upload:hover {
+        color: var(--primary-hover);
+        text-decoration: underline;
+      }
+
+      /* --- Modern Buttons --- */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.85rem 2rem;
+        border-radius: var(--radius);
+        font-weight: 600;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        border: none;
+      }
+
+      .btn-primary {
+        background-color: var(--text-main); /* Black button for high contrast */
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background-color: #000;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .btn-danger {
+        background-color: transparent;
+        color: var(--danger);
+        border: 1px solid #fee2e2;
+      }
+
+      .btn-danger:hover {
+        background-color: #fef2f2;
+      }
+
+      .action-bar {
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border);
+        display: flex;
+        justify-content: flex-end;
+        gap: 1rem;
+      }
+
+      /* --- Pill Tags for Interests --- */
+      .interests-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+
+      .interest-label {
+        padding: 0.5rem 1.25rem;
+        border: 1px solid var(--border);
+        border-radius: 50px; /* Pill shape */
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        user-select: none;
+        background: white;
+        color: var(--text-muted);
+      }
+
+      .interest-label:hover {
+        border-color: #cbd5e1;
+        color: var(--text-main);
+      }
+
+      .interest-checkbox:checked + .interest-label {
+        background-color: var(--text-main);
+        border-color: var(--text-main);
+        color: white;
+      }
+
+      /* --- Refined Toggle Switch --- */
+      .toggle-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.5rem 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .toggle-wrapper:last-child {
+        border-bottom: none;
+      }
+
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 48px;
+        height: 28px;
+      }
+
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #e5e7eb;
+        transition: 0.3s;
+        border-radius: 34px;
+      }
+
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 22px;
+        width: 22px;
+        left: 3px;
+        bottom: 3px;
+        background-color: white;
+        transition: 0.3s;
+        border-radius: 50%;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      input:checked + .slider {
+        background-color: var(--primary);
+      }
+
+      input:checked + .slider:before {
+        transform: translateX(20px);
+      }
+
+      /* --- Toast Notification --- */
+      .toast {
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%) translateY(150%);
+        background-color: var(--text-main);
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-weight: 500;
+      }
+
+      .toast.show {
+        transform: translateX(-50%) translateY(0);
+      }
+
+      /* --- Responsive --- */
+      @media (max-width: 800px) {
+        .container {
+          padding: 2rem 1.5rem;
+        }
+        .layout-grid {
+          grid-template-columns: 1fr;
+          gap: 2.5rem;
+        }
+
+        .sidebar {
+          position: relative;
+          top: 0;
+          display: flex;
+          overflow-x: auto;
+          padding-bottom: 1rem;
+          border-bottom: 1px solid var(--border);
+          gap: 2rem;
+        }
+
+        .nav-item {
+          width: auto;
+          border-right: none;
+          border-bottom: 2px solid transparent;
+          white-space: nowrap;
+          padding: 0.5rem 0;
+        }
+
+        .nav-item.active {
+          border-right: none;
+          border-bottom-color: var(--primary);
+        }
+
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <a
+          href="#"
+          style="
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+          "
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M19 12H5M12 19l-7-7 7-7" />
+          </svg>
+          Back to Dashboard
+        </a>
+        <h1>Settings</h1>
+        <p class="header-sub">
+          Manage your profile, travel preferences, and account security.
+        </p>
+      </header>
+
+      <div class="layout-grid">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+          <button class="nav-item active" onclick="openTab('profile')">
+            Public Profile
+          </button>
+          <button class="nav-item" onclick="openTab('travel')">
+            Travel Preferences
+          </button>
+          <button class="nav-item" onclick="openTab('account')">
+            Account & Security
+          </button>
+          <button class="nav-item" onclick="openTab('notifications')">
+            Notifications
+          </button>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="settings-content">
+          <!-- Tab 1: Profile -->
+          <div id="profile" class="tab-pane active">
+            <div class="section-header">
+              <h2>Public Profile</h2>
+              <p>This information will be displayed on your public profile.</p>
+            </div>
+
+            <form onsubmit="handleSave(event)">
+              <div class="avatar-section">
+                <img
+                  src="https://ui-avatars.com/api/?name=John+Doe&background=000&color=fff&size=150"
+                  alt="Avatar"
+                  class="avatar-preview"
+                  id="avatarPreview"
+                />
+                <div class="avatar-actions">
+                  <label class="btn-upload">
+                    Upload New Photo
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onchange="previewImage(event)"
+                      style="display: none"
+                    />
+                  </label>
+                  <p class="helper-text">Recommended: 400x400px JPG or PNG.</p>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label>First Name</label>
+                  <input type="text" value="John" required />
+                </div>
+                <div class="form-group">
+                  <label>Last Name</label>
+                  <input type="text" value="Doe" required />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Home Base</label>
+                <input
+                  type="text"
+                  placeholder="e.g. London, UK"
+                  value="Singapore"
+                />
+              </div>
+
+              <div class="form-group">
+                <label>Bio</label>
+                <textarea
+                  placeholder="Tell other travelers a bit about yourself..."
+                >
+Lover of coffee, hiking, and finding the best street food in every city I visit. ✈️</textarea
+                >
+                <p class="helper-text">
+                  Brief description for your profile. Mentions @user are
+                  hyperlinked.
+                </p>
+              </div>
+
+              <div class="action-bar">
+                <button type="submit" class="btn btn-primary">
+                  Save Changes
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Tab 2: Travel Preferences -->
+          <div id="travel" class="tab-pane">
+            <div class="section-header">
+              <h2>Travel Preferences</h2>
+              <p>
+                We use this to personalize your search results and
+                recommendations.
+              </p>
+            </div>
+
+            <form onsubmit="handleSave(event)">
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Primary Passport</label>
+                  <select>
+                    <option>Select Country</option>
+                    <option value="us">United States</option>
+                    <option value="uk">United Kingdom</option>
+                    <option value="sg" selected>Singapore</option>
+                    <option value="lk">Sri Lanka</option>
+                    <option value="in">India</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Currency</label>
+                  <select>
+                    <option value="USD">USD ($)</option>
+                    <option value="EUR">EUR (€)</option>
+                    <option value="SGD" selected>SGD ($)</option>
+                    <option value="LKR">LKR (Rs)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Home Airport</label>
+                <input
+                  type="text"
+                  placeholder="e.g. SIN, LHR, JFK"
+                  value="SIN"
+                  style="text-transform: uppercase; letter-spacing: 1px"
+                />
+              </div>
+
+              <div class="form-group">
+                <label style="margin-bottom: 1rem">Travel Styles</label>
+                <div class="interests-grid">
+                  <label>
+                    <input
+                      type="checkbox"
+                      class="interest-checkbox"
+                      style="display: none"
+                      checked
+                    />
+                    <span class="interest-label">Adventure</span>
+                  </label>
+                  <label>
+                    <input
+                      type="checkbox"
+                      class="interest-checkbox"
+                      style="display: none"
+                    />
+                    <span class="interest-label">Luxury</span>
+                  </label>
+                  <label>
+                    <input
+                      type="checkbox"
+                      class="interest-checkbox"
+                      style="display: none"
+                      checked
+                    />
+                    <span class="interest-label">Foodie</span>
+                  </label>
+                  <label>
+                    <input
+                      type="checkbox"
+                      class="interest-checkbox"
+                      style="display: none"
+                    />
+                    <span class="interest-label">Backpacking</span>
+                  </label>
+                  <label>
+                    <input
+                      type="checkbox"
+                      class="interest-checkbox"
+                      style="display: none"
+                    />
+                    <span class="interest-label">History</span>
+                  </label>
+                  <label>
+                    <input
+                      type="checkbox"
+                      class="interest-checkbox"
+                      style="display: none"
+                      checked
+                    />
+                    <span class="interest-label">Nature</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Dietary Restrictions</label>
+                <input
+                  type="text"
+                  placeholder="e.g. Vegetarian, Gluten-free..."
+                />
+              </div>
+
+              <div class="action-bar">
+                <button type="submit" class="btn btn-primary">
+                  Update Preferences
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Tab 3: Account -->
+          <div id="account" class="tab-pane">
+            <div class="section-header">
+              <h2>Account Security</h2>
+              <p>Manage your login details and account privacy.</p>
+            </div>
+
+            <form onsubmit="handleSave(event)">
+              <div class="form-group">
+                <label>Email Address</label>
+                <input
+                  type="email"
+                  value="john.doe@example.com"
+                  disabled
+                  style="
+                    background-color: #f9fafb;
+                    color: #9ca3af;
+                    border-color: #f3f4f6;
+                  "
+                />
+              </div>
+
+              <div
+                style="
+                  padding: 2rem 0;
+                  border-top: 1px solid var(--border);
+                  border-bottom: 1px solid var(--border);
+                  margin: 2rem 0;
+                "
+              >
+                <h3
+                  style="
+                    font-size: 1.1rem;
+                    font-weight: 600;
+                    margin-bottom: 1.5rem;
+                  "
+                >
+                  Change Password
+                </h3>
+                <div class="form-group">
+                  <label>Current Password</label>
+                  <input type="password" />
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>New Password</label>
+                    <input type="password" />
+                  </div>
+                  <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="password" />
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="action-bar"
+                style="border: none; margin-top: 0; padding-top: 0"
+              >
+                <button type="submit" class="btn btn-primary">
+                  Update Password
+                </button>
+              </div>
+            </form>
+
+            <div style="margin-top: 4rem">
+              <h4
+                style="
+                  color: var(--danger);
+                  font-size: 1rem;
+                  margin-bottom: 0.5rem;
+                "
+              >
+                Delete Account
+              </h4>
+              <p
+                style="
+                  font-size: 0.9rem;
+                  color: var(--text-muted);
+                  margin-bottom: 1rem;
+                "
+              >
+                Permanently remove your account and all of its content from the
+                NomadJourney platform. This action is not reversible.
+              </p>
+              <button class="btn btn-danger" onclick="confirmDelete()">
+                Delete Account
+              </button>
+            </div>
+          </div>
+
+          <!-- Tab 4: Notifications -->
+          <div id="notifications" class="tab-pane">
+            <div class="section-header">
+              <h2>Notifications</h2>
+              <p>Choose what you want to be notified about.</p>
+            </div>
+
+            <div class="toggle-wrapper">
+              <div class="toggle-info">
+                <h4 style="font-weight: 600; font-size: 0.95rem">
+                  Flight Price Alerts
+                </h4>
+                <p style="color: var(--text-muted); font-size: 0.9rem">
+                  Get notified when prices drop for your saved trips.
+                </p>
+              </div>
+              <label class="switch">
+                <input type="checkbox" checked />
+                <span class="slider"></span>
+              </label>
+            </div>
+
+            <div class="toggle-wrapper">
+              <div class="toggle-info">
+                <h4 style="font-weight: 600; font-size: 0.95rem">
+                  Booking Confirmations
+                </h4>
+                <p style="color: var(--text-muted); font-size: 0.9rem">
+                  Receive email updates about your itinerary status.
+                </p>
+              </div>
+              <label class="switch">
+                <input type="checkbox" checked />
+                <span class="slider"></span>
+              </label>
+            </div>
+
+            <div class="toggle-wrapper">
+              <div class="toggle-info">
+                <h4 style="font-weight: 600; font-size: 0.95rem">
+                  Travel Tips & Guides
+                </h4>
+                <p style="color: var(--text-muted); font-size: 0.9rem">
+                  Weekly newsletter with guides for your next destination.
+                </p>
+              </div>
+              <label class="switch">
+                <input type="checkbox" />
+                <span class="slider"></span>
+              </label>
+            </div>
+
+            <div class="toggle-wrapper">
+              <div class="toggle-info">
+                <h4 style="font-weight: 600; font-size: 0.95rem">
+                  SMS Notifications
+                </h4>
+                <p style="color: var(--text-muted); font-size: 0.9rem">
+                  Get urgent flight updates via text message.
+                </p>
+              </div>
+              <label class="switch">
+                <input type="checkbox" checked />
+                <span class="slider"></span>
+              </label>
+            </div>
+
+            <div class="action-bar">
+              <button class="btn btn-primary" onclick="showToast()">
+                Save Preferences
+              </button>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Toast Notification Element -->
+    <div id="toast" class="toast">
+      <svg
+        style="width: 20px; height: 20px; color: #4ade80"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="3"
+          d="M5 13l4 4L19 7"
+        ></path>
+      </svg>
+      <span>Changes saved</span>
+    </div>
+
+    <script>
+      // --- Tab Switching Logic ---
+      function openTab(tabName) {
+        const tabs = document.getElementsByClassName("tab-pane");
+        for (let i = 0; i < tabs.length; i++) {
+          tabs[i].classList.remove("active");
+        }
+
+        const navItems = document.getElementsByClassName("nav-item");
+        for (let i = 0; i < navItems.length; i++) {
+          navItems[i].classList.remove("active");
+        }
+
+        document.getElementById(tabName).classList.add("active");
+        event.currentTarget.classList.add("active");
+      }
+
+      // --- Image Preview Logic ---
+      function previewImage(event) {
+        const input = event.target;
+        if (input.files && input.files[0]) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            document.getElementById("avatarPreview").src = e.target.result;
+          };
+          reader.readAsDataURL(input.files[0]);
+          showToast("Photo updated");
+        }
+      }
+
+      // --- Form Submission & Toast ---
+      function handleSave(event) {
+        event.preventDefault();
+        const btn = event.target.querySelector('button[type="submit"]');
+        const originalText = btn.innerText;
+        btn.innerText = "Saving...";
+
+        setTimeout(() => {
+          btn.innerText = originalText;
+          showToast();
+        }, 600);
+      }
+
+      function showToast(message) {
+        const toast = document.getElementById("toast");
+        if (message) toast.querySelector("span").innerText = message;
+        toast.classList.add("show");
+        setTimeout(() => {
+          toast.classList.remove("show");
+          setTimeout(
+            () => (toast.querySelector("span").innerText = "Changes saved"),
+            300
+          );
+        }, 3000);
+      }
+
+      function confirmDelete() {
+        if (
+          confirm(
+            "Are you sure you want to delete your account? This action cannot be undone."
+          )
+        ) {
+          showToast("Request sent");
+        }
+      }
+    </script>
+  </body>
+</html>
